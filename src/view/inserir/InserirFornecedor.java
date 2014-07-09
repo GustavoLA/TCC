@@ -113,11 +113,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
         id.setText("ID:");
 
         txId.setEditable(false);
-        txId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txIdActionPerformed(evt);
-            }
-        });
 
         campoObrigatorio.setText("* CAMPO OBRIGATÓRIO");
 
@@ -201,12 +196,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         numero.setText("NÚMERO *");
 
-        txRua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txRuaActionPerformed(evt);
-            }
-        });
-
         complemento.setText("COMPLEMENTO");
 
         estado.setText("ESTADO *");
@@ -287,12 +276,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
         cadastroFornecedor.addTab("ENDEREÇO", endereco);
 
         nomeProduto.setText("NOME DO PRODUTO *");
-
-        txNomeProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txNomeProdutoActionPerformed(evt);
-            }
-        });
 
         marcaProduto.setText("MARCA DO PRODUTO *");
 
@@ -408,18 +391,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txIdActionPerformed
-
-    private void txRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txRuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txRuaActionPerformed
-
-    private void txNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNomeProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txNomeProdutoActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         txDescricao.setText(null);

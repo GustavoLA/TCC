@@ -60,11 +60,6 @@ public class ListarCliente extends javax.swing.JFrame {
         painelLista.setMaximumSize(new java.awt.Dimension(400, 400));
         painelLista.setMinimumSize(new java.awt.Dimension(400, 400));
         painelLista.setPreferredSize(new java.awt.Dimension(400, 400));
-        painelLista.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                painelListaFocusGained(evt);
-            }
-        });
 
         btDeletar.setText("DELETAR");
         btDeletar.addActionListener(new java.awt.event.ActionListener() {
@@ -201,10 +196,6 @@ public class ListarCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "SELECIONE UM CLIENTE");
         }
     }//GEN-LAST:event_btDeletarActionPerformed
-
-    private void painelListaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_painelListaFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_painelListaFocusGained
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         modelo.setNumRows(0);
