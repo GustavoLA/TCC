@@ -11,31 +11,22 @@ public class InserirInvestimento extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     private int linhaSelecionada;
 
+    //INSERIR NOVO
     public InserirInvestimento(DefaultTableModel modelo) {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
     }
 
+    //EDITAR LINHA SELECIONADA
     public InserirInvestimento(DefaultTableModel modelo, int linhaSelecionada, int idInvestimento) {
-        initComponents();
         this.modelo = modelo;
-        this.linhaSelecionada = linhaSelecionada;
-        setLocationRelativeTo(null);
+        preencherCampos(linhaSelecionada, idInvestimento);
+    }
 
-        InvestimentoController ic = new InvestimentoController();
-        Investimento i = ic.listarInvestimentoPorId(idInvestimento);
-
-        txId.setText(String.valueOf(i.getCodigo()));
-        txDescricao.setText(i.getDescricaoInvestimento());
-        txFormaPagamento.setText(i.getFormaPagamento());
-        txNumeroParcela.setText(String.valueOf(i.getNumeroParcelas()));
-        txValorParcela.setText(String.valueOf(i.getValorParcela()));
-        txValorTotal.setText(String.valueOf(i.getValorTotal()));
-
-        SimpleDateFormat formataDtInvestimeto = new SimpleDateFormat("dd/MM/yyyy");
-        String dtInvestimentoEdt = formataDtInvestimeto.format(i.getDtInvestimento());
-        txDtInvestimento.setText(dtInvestimentoEdt);
+    public InserirInvestimento(int linhaSelecionada, int idInvestimento) {
+        preencherCampos(linhaSelecionada, idInvestimento);
+        bloquearCampos();
     }
 
     /**
@@ -68,7 +59,7 @@ public class InserirInvestimento extends javax.swing.JFrame {
         btSalvar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         id.setText("ID");
 
@@ -300,4 +291,34 @@ public class InserirInvestimento extends javax.swing.JFrame {
     private javax.swing.JLabel valorParcela;
     private javax.swing.JLabel valorTotal;
     // End of variables declaration//GEN-END:variables
+private void preencherCampos(int linhaSelecionada1, int idInvestimento) {
+        initComponents();
+        this.linhaSelecionada = linhaSelecionada1;
+        setLocationRelativeTo(null);
+        InvestimentoController ic = new InvestimentoController();
+        Investimento i = ic.listarInvestimentoPorId(idInvestimento);
+        txId.setText(String.valueOf(i.getCodigo()));
+        txDescricao.setText(i.getDescricaoInvestimento());
+        txFormaPagamento.setText(i.getFormaPagamento());
+        txNumeroParcela.setText(String.valueOf(i.getNumeroParcelas()));
+        txValorParcela.setText(String.valueOf(i.getValorParcela()));
+        txValorTotal.setText(String.valueOf(i.getValorTotal()));
+        SimpleDateFormat formataDtInvestimeto = new SimpleDateFormat("dd/MM/yyyy");
+        String dtInvestimentoEdt = formataDtInvestimeto.format(i.getDtInvestimento());
+        txDtInvestimento.setText(dtInvestimentoEdt);
+    }
+
+    private void bloquearCampos() {
+
+        txDescricao.setEditable(false);
+        txDtInvestimento.setEditable(false);
+        txFormaPagamento.setEditable(false);
+        txNumeroParcela.setEditable(false);
+        txValorParcela.setEditable(false);
+        txValorTotal.setEditable(false);
+        btLimpar.setEnabled(false);
+        btSalvar.setEnabled(false);
+
+    }
+
 }
