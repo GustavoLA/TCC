@@ -39,6 +39,7 @@ public class ListarCliente extends javax.swing.JFrame {
         txPesquisa = new javax.swing.JTextField();
         funcionarioLogado = new javax.swing.JLabel();
         pesquisar = new javax.swing.JLabel();
+        btVisualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -94,6 +95,13 @@ public class ListarCliente extends javax.swing.JFrame {
 
         pesquisar.setText("PESQUISAR");
 
+        btVisualizar.setText("VISUALIZAR");
+        btVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVisualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
         painelFundo.setLayout(painelFundoLayout);
         painelFundoLayout.setHorizontalGroup(
@@ -111,7 +119,9 @@ public class ListarCliente extends javax.swing.JFrame {
                         .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txPesquisa)
                             .addGroup(painelFundoLayout.createSequentialGroup()
-                                .addGap(178, 178, 178)
+                                .addGap(87, 87, 87)
+                                .addComponent(btVisualizar)
+                                .addGap(18, 18, 18)
                                 .addComponent(btInserir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btEditar)
@@ -134,7 +144,8 @@ public class ListarCliente extends javax.swing.JFrame {
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btEditar)
-                    .addComponent(btDeletar))
+                    .addComponent(btDeletar)
+                    .addComponent(btVisualizar))
                 .addGap(224, 224, 224))
         );
 
@@ -212,10 +223,26 @@ public class ListarCliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txPesquisaActionPerformed
 
+    private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
+        int linhaSelecionada = -1;
+
+        linhaSelecionada = tabela.getSelectedRow();
+
+        if (linhaSelecionada >= 0) {
+            int idCliente = (int) tabela.getValueAt(linhaSelecionada, 0);
+            ClienteController cc = new ClienteController();
+            InserirCliente visualizar = new InserirCliente(linhaSelecionada, idCliente);
+            visualizar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "SELECIONE UMA LINHA");
+        }
+    }//GEN-LAST:event_btVisualizarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btDeletar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btInserir;
+    private javax.swing.JButton btVisualizar;
     private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JPanel painelFundo;
     private javax.swing.JScrollPane painelLista;

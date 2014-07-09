@@ -8,52 +8,27 @@ import modelo.negocio.Cliente;
 import modelo.negocio.Endereco;
 
 public class InserirCliente extends javax.swing.JFrame {
-
+    
     private DefaultTableModel modelo;
     private int linhaSelecionada;
 
+    //INSERIR NOVO CLIENTE
     public InserirCliente(DefaultTableModel modelo) {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
     }
 
+    //EDITAR CLIENTE SELECIONADO
     public InserirCliente(DefaultTableModel modelo, int linhaSelecionada, int idCliente) {
-        initComponents();
         this.modelo = modelo;
-        this.linhaSelecionada = linhaSelecionada;
-        setLocationRelativeTo(null);
+        PreencherCampos(linhaSelecionada, idCliente);
+    }
 
-        ClienteController cc = new ClienteController();
-        Cliente c = cc.listarClientePorId(idCliente);
-
-        //CLIENTE
-        txId.setText(String.valueOf(c.getCodigo()));
-        txAnotacoes.setText(c.getAnotacoes());
-        txCelular.setText(c.getCelular());
-        txCpf.setText(c.getCpf());
-        txEmail.setText(c.getEmail());
-        txNome.setText(c.getNome());
-        txRg.setText(c.getRg());
-        txTelefone.setText(c.getTelefone());
-
-        SimpleDateFormat formataDtCadastro = new SimpleDateFormat("dd/MM/yyyy");
-        String dtCadastroEdt = formataDtCadastro.format(c.getDtCadastro());
-        txDtCadastro.setText(dtCadastroEdt);
-
-        SimpleDateFormat formataDtNascimento = new SimpleDateFormat("dd/MM/yyyy");
-        String dtNascimentoEdt = formataDtNascimento.format(c.getDtNascimento());
-        txDtNascimento.setText(dtNascimentoEdt);
-
-        //ENDEREÇO
-        txIdEndereco.setText(String.valueOf(c.getEndereco().getCodigo()));
-        txNumero.setText(String.valueOf(c.getEndereco().getNumero()));
-        txCidade.setText(c.getEndereco().getCidade());
-        TxComplemento.setText(c.getEndereco().getComplemento());
-        txEstado.setText(c.getEndereco().getEstado());
-        txRua.setText(c.getEndereco().getRua());
-        txCep.setText(c.getEndereco().getCep());
-
+    //VISUALIZAR CADASTRO
+    public InserirCliente(int linhaSelecionada, int idCliente) {
+        PreencherCampos(linhaSelecionada, idCliente);
+        bloquearCampos();
     }
 
     /**
@@ -111,7 +86,7 @@ public class InserirCliente extends javax.swing.JFrame {
         complemento = new javax.swing.JLabel();
         TxComplemento = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         painelFundo.setBackground(new java.awt.Color(255, 255, 153));
         painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder("CLIENTE"));
@@ -446,7 +421,7 @@ public class InserirCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-
+        
         Cliente c = new Cliente();
 
         //CLIENTE
@@ -457,7 +432,7 @@ public class InserirCliente extends javax.swing.JFrame {
         c.setNome(txNome.getText());
         c.setRg(txRg.getText());
         c.setTelefone(txTelefone.getText());
-
+        
         try {
             String data = txDtCadastro.getText();
             c.setDtCadastro(new SimpleDateFormat("dd/mm/yyyy").parse(data));
@@ -470,15 +445,15 @@ public class InserirCliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "FORMATO INVÁLIDO! UTILIZE DD/MM/YYYY\n" + ex);
         }
-
+        
         if (rbMasculino.isSelected()) {
             c.setSexo('M');
         } else {
             c.setSexo('F');
         }
-
+        
         Endereco e = new Endereco();
-
+        
         e.setCidade(txCidade.getText());
         e.setComplemento(TxComplemento.getText());
         e.setEstado(txEstado.getText());
@@ -489,13 +464,13 @@ public class InserirCliente extends javax.swing.JFrame {
             e.setCodigo(Integer.parseInt(txIdEndereco.getText()));
         }
         c.setEndereco(e);
-
+        
         ClienteController cc = new ClienteController();
-
+        
         if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
             c.setCodigo(Integer.parseInt(txId.getText()));
             cc.salvar(c);
-
+            
             modelo.removeRow(linhaSelecionada);
             modelo.addRow(new Object[]{c.getCodigo(), c.getAnotacoes(), c.getCelular(), c.getCpf(), c.getDtCadastro(), c.getDtNascimento(), c.getEmail(), c.getNome(), c.getRg(), c.getTelefone()});
             dispose();
@@ -507,7 +482,7 @@ public class InserirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-
+        
         txAnotacoes.setText(null);
         txCelular.setText(null);
         txCpf.setText(null);
@@ -517,7 +492,7 @@ public class InserirCliente extends javax.swing.JFrame {
         txNome.setText(null);
         txRg.setText(null);
         txTelefone.setText(null);
-
+        
         txCidade.setText(null);
         TxComplemento.setText(null);
         txEstado.setText(null);
@@ -575,4 +550,65 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txRua;
     private javax.swing.JTextField txTelefone;
     // End of variables declaration//GEN-END:variables
+
+    private void PreencherCampos(int linhaSelecionada1, int idCliente) {
+        initComponents();
+        this.linhaSelecionada = linhaSelecionada1;
+        setLocationRelativeTo(null);
+        ClienteController cc = new ClienteController();
+        Cliente c = cc.listarClientePorId(idCliente);
+        //CLIENTE
+        txId.setText(String.valueOf(c.getCodigo()));
+        txAnotacoes.setText(c.getAnotacoes());
+        txCelular.setText(c.getCelular());
+        txCpf.setText(c.getCpf());
+        txEmail.setText(c.getEmail());
+        txNome.setText(c.getNome());
+        txRg.setText(c.getRg());
+        txTelefone.setText(c.getTelefone());
+        SimpleDateFormat formataDtCadastro = new SimpleDateFormat("dd/MM/yyyy");
+        String dtCadastroEdt = formataDtCadastro.format(c.getDtCadastro());
+        txDtCadastro.setText(dtCadastroEdt);
+        SimpleDateFormat formataDtNascimento = new SimpleDateFormat("dd/MM/yyyy");
+        String dtNascimentoEdt = formataDtNascimento.format(c.getDtNascimento());
+        txDtNascimento.setText(dtNascimentoEdt);
+        if (c.getSexo() == 'F') {
+            rbFeminino.setSelected(true);
+        } else {
+            rbMasculino.setSelected(true);
+        }
+        //ENDEREÇO
+        txIdEndereco.setText(String.valueOf(c.getEndereco().getCodigo()));
+        txNumero.setText(String.valueOf(c.getEndereco().getNumero()));
+        txCidade.setText(c.getEndereco().getCidade());
+        TxComplemento.setText(c.getEndereco().getComplemento());
+        txEstado.setText(c.getEndereco().getEstado());
+        txRua.setText(c.getEndereco().getRua());
+        txCep.setText(c.getEndereco().getCep());
+    }
+    
+    private void bloquearCampos() {
+        
+        TxComplemento.setEditable(false);
+        txAnotacoes.setEditable(false);
+        txCelular.setEditable(false);
+        txCelular.setEditable(false);
+        txCep.setEditable(false);
+        txCidade.setEditable(false);
+        txCpf.setEditable(false);
+        txDtCadastro.setEditable(false);
+        txDtNascimento.setEditable(false);
+        txEmail.setEditable(false);
+        txEstado.setEditable(false);
+        txNome.setEditable(false);
+        txNumero.setEditable(false);
+        txRg.setEditable(false);
+        txRua.setEditable(false);
+        txTelefone.setEditable(false);
+        rbFeminino.setEnabled(false);
+        rbMasculino.setEnabled(false);
+        btLimpar.setEnabled(false);
+        btSalvar.setEnabled(false);
+        
+    }
 }
