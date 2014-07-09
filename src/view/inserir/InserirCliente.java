@@ -12,20 +12,20 @@ public class InserirCliente extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     private int linhaSelecionada;
 
-    //INSERIR NOVO CLIENTE
+    //INSERIR NOVO 
     public InserirCliente(DefaultTableModel modelo) {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
     }
 
-    //EDITAR CLIENTE SELECIONADO
+    //EDITAR LINHA SELECIONADA
     public InserirCliente(DefaultTableModel modelo, int linhaSelecionada, int idCliente) {
         this.modelo = modelo;
         PreencherCampos(linhaSelecionada, idCliente);
     }
 
-    //VISUALIZAR CADASTRO
+    //VISUALIZAR LINHA SELECIONADA
     public InserirCliente(int linhaSelecionada, int idCliente) {
         PreencherCampos(linhaSelecionada, idCliente);
         bloquearCampos();
