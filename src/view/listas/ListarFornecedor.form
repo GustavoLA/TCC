@@ -77,7 +77,9 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txPesquisa" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                                  <Component id="btVisualizar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btInserir" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btEditar" min="-2" max="-2" attributes="0"/>
@@ -108,6 +110,7 @@
                       <Component id="btInserir" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="btEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btDeletar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btVisualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
               </Group>
@@ -168,6 +171,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="PESQUISAR"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btVisualizar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="visualizar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVisualizarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

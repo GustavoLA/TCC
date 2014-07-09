@@ -8,48 +8,27 @@ import modelo.negocio.Endereco;
 import modelo.negocio.Fornecedor;
 
 public class InserirFornecedor extends javax.swing.JFrame {
-
+    
     private DefaultTableModel modelo;
     private int linhaSelecionada;
 
+    //INSERIR NOVO
     public InserirFornecedor(DefaultTableModel modelo) {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
     }
 
+    //EDITAR LINHA SELECIONADA
     public InserirFornecedor(DefaultTableModel modelo, int linhaSelecionada, int idFornecedor) {
-        initComponents();
         this.modelo = modelo;
-        this.linhaSelecionada = linhaSelecionada;
-        setLocationRelativeTo(null);
+        PreencherCampos(linhaSelecionada, idFornecedor);
+    }
 
-        FornecedorController fc = new FornecedorController();
-        Fornecedor f = fc.listarFornecedorPorId(idFornecedor);
-
-        //FORNECEDOR
-        txId.setText(String.valueOf(f.getCodigo()));
-        txDescricao.setText(f.getDescricao());
-        txEmail.setText(f.getEmail());
-        txFax.setText(f.getFax());
-        txMarcaProduto.setText(f.getMarcaProduto());
-        txNome.setText(f.getNomeFantasia());
-        txNomeProduto.setText(f.getNomeProduto());
-        txTelefone.setText(f.getTelefone());
-
-        SimpleDateFormat formataDtFornecimento = new SimpleDateFormat("dd/MM/yyyy");
-        String dtFornecimentoEdt = formataDtFornecimento.format(f.getDtFornecimento());
-        txDtFornecimento.setText(dtFornecimentoEdt);
-
-        //ENDEREÇO
-        txCidade.setText(String.valueOf(f.getEndereco().getCidade()));
-        txComplemento.setText(String.valueOf(f.getEndereco().getComplemento()));
-        txEstado.setText(String.valueOf(f.getEndereco().getEstado()));
-        txNumero.setText(String.valueOf(f.getEndereco().getNumero()));
-        txRua.setText(String.valueOf(f.getEndereco().getRua()));
-        txIdEndereco.setText(String.valueOf(f.getEndereco().getCodigo()));
-        txCep.setText(f.getEndereco().getCep());
-
+    //VISUALIZAR LINHA SELECIONADA
+    public InserirFornecedor(int linhaSelecionada, int idFornecedor) {
+        PreencherCampos(linhaSelecionada, idFornecedor);
+        bloquearCampos();
     }
 
     /**
@@ -451,20 +430,20 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txNome.setText(null);
         txNomeProduto.setText(null);
         txTelefone.setText(null);
-
+        
         txCidade.setText(null);
         txComplemento.setText(null);
         txEstado.setText(null);
         txNumero.setText(null);
         txRua.setText(null);
         txCep.setText(null);
-
+        
 
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Fornecedor f = new Fornecedor();
-
+        
         f.setCnpj(txCnpj.getText());
         f.setDescricao(txDescricao.getText());
         f.setEmail(txEmail.getText());
@@ -479,7 +458,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "FORMATO INVÁLIDO! UTILIZE: DD/MM/YYYY\n" + ex);
         }
-
+        
         Endereco e = new Endereco();
         e.setCidade(txCidade.getText());
         e.setComplemento(txComplemento.getText());
@@ -487,17 +466,17 @@ public class InserirFornecedor extends javax.swing.JFrame {
         e.setNumero(Integer.parseInt(txNumero.getText()));
         e.setRua(txRua.getText());
         e.setCep(txCep.getText());
-
+        
         if (!(txIdEndereco.getText().equals("") | (txIdEndereco.getText().equals(null)))) {
             e.setCodigo(Integer.parseInt(txIdEndereco.getText()));
         }
         f.setEndereco(e);
-
+        
         FornecedorController fc = new FornecedorController();
         if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
             f.setCodigo(Integer.parseInt(txId.getText()));
             fc.salvar(f);
-
+            
             modelo.removeRow(linhaSelecionada);
             modelo.addRow(new Object[]{f.getCodigo(), f.getCnpj(), f.getDescricao(), f.getDtFornecimento(), f.getEmail(), f.getFax(), f.getMarcaProduto(), f.getNomeFantasia(), f.getNomeProduto(), f.getTelefone()});
             dispose();
@@ -553,4 +532,55 @@ public class InserirFornecedor extends javax.swing.JFrame {
     private javax.swing.JTextField txRua;
     private javax.swing.JFormattedTextField txTelefone;
     // End of variables declaration//GEN-END:variables
+
+    private void PreencherCampos(int linhaSelecionada1, int idFornecedor) {
+        initComponents();
+        this.linhaSelecionada = linhaSelecionada1;
+        setLocationRelativeTo(null);
+        FornecedorController fc = new FornecedorController();
+        Fornecedor f = fc.listarFornecedorPorId(idFornecedor);
+        //FORNECEDOR
+        txId.setText(String.valueOf(f.getCodigo()));
+        txDescricao.setText(f.getDescricao());
+        txEmail.setText(f.getEmail());
+        txFax.setText(f.getFax());
+        txMarcaProduto.setText(f.getMarcaProduto());
+        txNome.setText(f.getNomeFantasia());
+        txNomeProduto.setText(f.getNomeProduto());
+        txTelefone.setText(f.getTelefone());
+        SimpleDateFormat formataDtFornecimento = new SimpleDateFormat("dd/MM/yyyy");
+        String dtFornecimentoEdt = formataDtFornecimento.format(f.getDtFornecimento());
+        txDtFornecimento.setText(dtFornecimentoEdt);
+        //ENDEREÇO
+        txCidade.setText(String.valueOf(f.getEndereco().getCidade()));
+        txComplemento.setText(String.valueOf(f.getEndereco().getComplemento()));
+        txEstado.setText(String.valueOf(f.getEndereco().getEstado()));
+        txNumero.setText(String.valueOf(f.getEndereco().getNumero()));
+        txRua.setText(String.valueOf(f.getEndereco().getRua()));
+        txIdEndereco.setText(String.valueOf(f.getEndereco().getCodigo()));
+        txCep.setText(f.getEndereco().getCep());
+    }
+    
+    private void bloquearCampos() {
+        
+        txCep.setEditable(false);
+        txCidade.setEditable(false);
+        txCnpj.setEditable(false);
+        txComplemento.setEditable(false);
+        txDescricao.setEditable(false);
+        txDtFornecimento.setEditable(false);
+        txEmail.setEditable(false);
+        txEstado.setEditable(false);
+        txFax.setEditable(false);
+        txMarcaProduto.setEditable(false);
+        txNome.setEditable(false);
+        txNomeProduto.setEditable(false);
+        txNumero.setEditable(false);
+        txRua.setEditable(false);
+        txTelefone.setEditable(false);
+        btLimpar.setEnabled(false);
+        btSalvar.setEnabled(false);
+        
+    }
+    
 }
