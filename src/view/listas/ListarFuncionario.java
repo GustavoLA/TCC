@@ -234,8 +234,8 @@ public class ListarFuncionario extends javax.swing.JFrame {
         if (linhaSelecionada >= 0) {
             int idFuncionario = (int) tabela.getValueAt(linhaSelecionada, 0);
             FuncionarioController fc = new FuncionarioController();
-            InserirFuncionario vis = new InserirFuncionario(linhaSelecionada, idFuncionario);
-            vis.setVisible(true);
+            InserirFuncionario visualizar = new InserirFuncionario(linhaSelecionada, idFuncionario);
+            visualizar.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "SELECIONE UM FUNCIONARIO");
         }
