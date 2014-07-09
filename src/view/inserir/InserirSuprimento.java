@@ -5,30 +5,27 @@ import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Suprimento;
 
 public class InserirSuprimento extends javax.swing.JFrame {
-
+    
     private DefaultTableModel modelo;
     private int linhaSelecionada;
 
+    //INSERIR
     public InserirSuprimento(DefaultTableModel modelo) {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
     }
 
+    //EDITAR LINHA SELECIONADA 
     public InserirSuprimento(DefaultTableModel modelo, int linhaSelecionada, int idSuprimento) {
-        initComponents();
         this.modelo = modelo;
-        this.linhaSelecionada = linhaSelecionada;
-        setLocationRelativeTo(null);
+        preencherCampos(linhaSelecionada, idSuprimento);
+    }
 
-        SuprimentoController sc = new SuprimentoController();
-        Suprimento s = sc.listarSuprimentoPorId(idSuprimento);
-
-        txId.setText(String.valueOf(s.getCodigo()));
-        txDescricao.setText(s.getDescricao());
-        txNome.setText(s.getNome());
-        txQntdade.setText(String.valueOf(s.getQtdade()));
-
+    //VISUALIZAR LINHA SELECIONADA
+    public InserirSuprimento(int linhaSelecionada, int idSuprimento) {
+        preencherCampos(linhaSelecionada, idSuprimento);
+        bloquearCampos();
     }
 
     /**
@@ -59,7 +56,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
         btSalvar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         painelFundo.setBackground(new java.awt.Color(255, 222, 173));
         painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder("SUPRIMENTO"));
@@ -225,25 +222,25 @@ public class InserirSuprimento extends javax.swing.JFrame {
     }//GEN-LAST:event_txIdActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-
+        
         Suprimento s = new Suprimento();
-
+        
         s.setDescricao(txDescricao.getText());
         s.setNome(txNome.getText());
         s.setQtdade(Integer.parseInt(txQntdade.getText()));
-
+        
         if (rbNao.isSelected()) {
-            s.setProdução(true);
+            s.setProducao('N');
         } else {
-            s.setProdução(false);
+            s.setProducao('S');
         }
-
+        
         SuprimentoController sc = new SuprimentoController();
-
+        
         if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
             s.setCodigo(Integer.parseInt(txId.getText()));
             sc.salvar(s);
-
+            
             modelo.removeRow(linhaSelecionada);
             modelo.addRow(new Object[]{s.getCodigo(), s.getDescricao(), s.getNome(), s.getQtdade()});
             dispose();
@@ -254,7 +251,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-
+        
         txDescricao.setText(null);
         txNome.setText(null);
         txQntdade.setText(null);
@@ -282,4 +279,34 @@ public class InserirSuprimento extends javax.swing.JFrame {
     private javax.swing.JTextField txNome;
     private javax.swing.JTextField txQntdade;
     // End of variables declaration//GEN-END:variables
+
+    private void preencherCampos(int linhaSelecionada1, int idSuprimento) {
+        initComponents();
+        this.linhaSelecionada = linhaSelecionada1;
+        setLocationRelativeTo(null);
+        SuprimentoController sc = new SuprimentoController();
+        Suprimento s = sc.listarSuprimentoPorId(idSuprimento);
+        txId.setText(String.valueOf(s.getCodigo()));
+        txDescricao.setText(s.getDescricao());
+        txNome.setText(s.getNome());
+        txQntdade.setText(String.valueOf(s.getQtdade()));
+        
+        if (s.getProducao() == 'N') {
+            rbNao.setSelected(true);
+        } else {
+            rbSim.setSelected(true);
+        }
+    }
+    
+    private void bloquearCampos() {
+        
+        txDescricao.setEditable(false);
+        txNome.setEditable(false);
+        txQntdade.setEditable(false);
+        rbNao.setEnabled(false);
+        rbSim.setEnabled(false);
+        btLimpar.setEnabled(false);
+        btSalvar.setEnabled(false);
+        
+    }
 }

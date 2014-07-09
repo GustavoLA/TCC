@@ -15,7 +15,7 @@ public class Suprimento {
     private String nome;
     @Lob
     private String descricao;
-    private boolean producao;
+    private char producao;
 
     public int getCodigo() {
         return codigo;
@@ -49,12 +49,12 @@ public class Suprimento {
         this.descricao = descricao;
     }
 
-    public boolean isProdução() {
+    public char getProducao() {
         return producao;
     }
 
-    public void setProdução(boolean produção) {
-        this.producao = produção;
+    public void setProducao(char producao) {
+        this.producao = producao;
     }
 
 }
