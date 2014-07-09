@@ -24,55 +24,13 @@ public class InserirFuncionario extends javax.swing.JFrame {
         preencherCampos(linhaSelecionada, idFuncionario);
         bloquearCampos();
     }
-    
-      //COSTRUTOR PARA EDITAR UM FUNCIONARIO SELECIONADO
+
+    //COSTRUTOR PARA EDITAR UM FUNCIONARIO SELECIONADO
     public InserirFuncionario(DefaultTableModel modelo, int linhaSelecionada, int idFuncionario) {
-       
+
         this.modelo = modelo;
         preencherCampos(linhaSelecionada, idFuncionario);
     }
-
-    private void preencherCampos(int linhaSelecionada, int idFuncionario) {
-        initComponents();
-        this.linhaSelecionada = linhaSelecionada;
-        setLocationRelativeTo(null);
-        FuncionarioController fc = new FuncionarioController();
-        Funcionario f = fc.listarFuncionarioPorId(idFuncionario);
-        //FUNCIONARIO
-        txId.setText(String.valueOf(f.getCodigo()));
-        txSalario.setText(String.valueOf(f.getSalario()));
-        txCpf.setText(f.getCpf());
-        txCtps.setText(f.getcTrabalho());
-        txLogin.setText(f.getLogin());
-        txNome.setText(f.getNome());
-        txRg.setText(f.getRg());
-        txSenha.setText(f.getSenha());
-        txTelefone.setText(f.getTelefone());
-        if (f.getSexo() == 'F') {
-            rbFeminino.setSelected(true);
-        } else {
-            rbMasculino.setSelected(true);
-        }
-        SimpleDateFormat formataDtAdmissao = new SimpleDateFormat("dd/MM/yyyy");
-        String dtAdmissaoEdt = formataDtAdmissao.format(f.getDtAdmissao());
-        txDtAdmissao.setText(dtAdmissaoEdt);
-        SimpleDateFormat formataDtDemissao = new SimpleDateFormat("dd/MM/yyyy");
-        String dtDemissaoEdt = formataDtDemissao.format(f.getDtDemissao());
-        txDtDemissao.setText(dtDemissaoEdt);
-        SimpleDateFormat formatadtNascimento = new SimpleDateFormat("dd/MM/yyyy");
-        String dtNascimentoEdt = formatadtNascimento.format(f.getDtNascimento());
-        txDtNascimento.setText(dtNascimentoEdt);
-        //ENDEREÇO
-        txIdEndereco.setText(String.valueOf(f.getEndereco().getCodigo()));
-        txNumero.setText(String.valueOf(f.getEndereco().getNumero()));
-        txCidade.setText(f.getEndereco().getCidade());
-        txComplemento.setText(f.getEndereco().getComplemento());
-        txEstado.setText(f.getEndereco().getEstado());
-        txRua.setText(f.getEndereco().getRua());
-        txCep.setText(f.getEndereco().getCep());
-    }
-
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -189,11 +147,6 @@ public class InserirFuncionario extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txDtNascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txDtNascimentoActionPerformed(evt);
-            }
-        });
 
         try {
             txTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
@@ -659,9 +612,6 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txCep.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
-    private void txDtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDtNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txDtNascimentoActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelFundo;
     private javax.swing.ButtonGroup bgSexo;
@@ -720,10 +670,68 @@ public class InserirFuncionario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txTelefone;
     // End of variables declaration//GEN-END:variables
 
+    private void preencherCampos(int linhaSelecionada, int idFuncionario) {
+        initComponents();
+        this.linhaSelecionada = linhaSelecionada;
+        setLocationRelativeTo(null);
+        FuncionarioController fc = new FuncionarioController();
+        Funcionario f = fc.listarFuncionarioPorId(idFuncionario);
+        //FUNCIONARIO
+        txId.setText(String.valueOf(f.getCodigo()));
+        txSalario.setText(String.valueOf(f.getSalario()));
+        txCpf.setText(f.getCpf());
+        txCtps.setText(f.getcTrabalho());
+        txLogin.setText(f.getLogin());
+        txNome.setText(f.getNome());
+        txRg.setText(f.getRg());
+        txSenha.setText(f.getSenha());
+        txTelefone.setText(f.getTelefone());
+        if (f.getSexo() == 'F') {
+            rbFeminino.setSelected(true);
+        } else {
+            rbMasculino.setSelected(true);
+        }
+        SimpleDateFormat formataDtAdmissao = new SimpleDateFormat("dd/MM/yyyy");
+        String dtAdmissaoEdt = formataDtAdmissao.format(f.getDtAdmissao());
+        txDtAdmissao.setText(dtAdmissaoEdt);
+        SimpleDateFormat formataDtDemissao = new SimpleDateFormat("dd/MM/yyyy");
+        String dtDemissaoEdt = formataDtDemissao.format(f.getDtDemissao());
+        txDtDemissao.setText(dtDemissaoEdt);
+        SimpleDateFormat formatadtNascimento = new SimpleDateFormat("dd/MM/yyyy");
+        String dtNascimentoEdt = formatadtNascimento.format(f.getDtNascimento());
+        txDtNascimento.setText(dtNascimentoEdt);
+        //ENDEREÇO
+        txIdEndereco.setText(String.valueOf(f.getEndereco().getCodigo()));
+        txNumero.setText(String.valueOf(f.getEndereco().getNumero()));
+        txCidade.setText(f.getEndereco().getCidade());
+        txComplemento.setText(f.getEndereco().getComplemento());
+        txEstado.setText(f.getEndereco().getEstado());
+        txRua.setText(f.getEndereco().getRua());
+        txCep.setText(f.getEndereco().getCep());
+    }
+
     private void bloquearCampos() {
         txNome.setEditable(false);
+        txCep.setEditable(false);
+        txCidade.setEditable(false);
+        txComplemento.setEditable(false);
+        txCpf.setEditable(false);
+        txCtps.setEditable(false);
+        txDtDemissao.setEditable(false);
+        txDtNascimento.setEditable(false);
+        txEstado.setEditable(false);
+        txLogin.setEditable(false);
+        txNumero.setEditable(false);
+        txObservacao.setEditable(false);
+        txRg.setEditable(false);
+        txSalario.setEditable(false);
+        txRua.setEditable(false);
+        txTelefone.setEditable(false);
         txDtAdmissao.setEditable(false);
         rbFeminino.setEnabled(false);
         rbMasculino.setEnabled(false);
+        txSenha.setEditable(false);
+        btLimpar.setEnabled(false);
+        btSalvar.setEnabled(false);
     }
 }
