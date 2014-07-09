@@ -27,7 +27,6 @@ public class InserirFuncionario extends javax.swing.JFrame {
 
     //COSTRUTOR PARA EDITAR UM FUNCIONARIO SELECIONADO
     public InserirFuncionario(DefaultTableModel modelo, int linhaSelecionada, int idFuncionario) {
-
         this.modelo = modelo;
         preencherCampos(linhaSelecionada, idFuncionario);
     }
@@ -674,8 +673,10 @@ public class InserirFuncionario extends javax.swing.JFrame {
         initComponents();
         this.linhaSelecionada = linhaSelecionada;
         setLocationRelativeTo(null);
+
         FuncionarioController fc = new FuncionarioController();
         Funcionario f = fc.listarFuncionarioPorId(idFuncionario);
+
         //FUNCIONARIO
         txId.setText(String.valueOf(f.getCodigo()));
         txSalario.setText(String.valueOf(f.getSalario()));
