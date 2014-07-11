@@ -1,9 +1,14 @@
 package view.inserir;
 
+import controller.FornecedorController;
 import controller.SuprimentoController;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.negocio.Fornecedor;
 import modelo.negocio.Suprimento;
 
 public class InserirSuprimento extends javax.swing.JFrame {
@@ -16,12 +21,16 @@ public class InserirSuprimento extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
+        carregarCombo();
+
     }
 
     //EDITAR LINHA SELECIONADA 
     public InserirSuprimento(DefaultTableModel modelo, int linhaSelecionada, int idSuprimento) {
         this.modelo = modelo;
         preencherCampos(linhaSelecionada, idSuprimento);
+        carregarCombo();
+
     }
 
     //VISUALIZAR LINHA SELECIONADA
@@ -65,6 +74,10 @@ public class InserirSuprimento extends javax.swing.JFrame {
         rbNao1 = new javax.swing.JRadioButton();
         dataValidade = new javax.swing.JLabel();
         txDtValidade = new javax.swing.JFormattedTextField();
+        fornecedor = new javax.swing.JLabel();
+        cbFornecedor = new javax.swing.JComboBox();
+        cbFormaPagamento = new javax.swing.JComboBox();
+        formaPagamento = new javax.swing.JLabel();
         btSalvar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
 
@@ -124,6 +137,12 @@ public class InserirSuprimento extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        fornecedor.setText("FORNECEDOR");
+
+        cbFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cheque", "Cartão", "A vista", "Outro" }));
+
+        formaPagamento.setText("FORMA PAGAMENTO");
+
         javax.swing.GroupLayout produtoLayout = new javax.swing.GroupLayout(produto);
         produto.setLayout(produtoLayout);
         produtoLayout.setHorizontalGroup(
@@ -165,9 +184,13 @@ public class InserirSuprimento extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(rbNao))
                                     .addGroup(produtoLayout.createSequentialGroup()
-                                        .addComponent(dataValidade)
+                                        .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(dataValidade)
+                                            .addComponent(fornecedor))
                                         .addGap(18, 18, 18)
-                                        .addComponent(txDtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txDtValidade, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                                            .addComponent(cbFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(18, 18, 18)
                         .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(produtoLayout.createSequentialGroup()
@@ -179,8 +202,12 @@ public class InserirSuprimento extends javax.swing.JFrame {
                             .addGroup(produtoLayout.createSequentialGroup()
                                 .addComponent(unidadeMedida)
                                 .addGap(18, 18, 18)
-                                .addComponent(txUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(111, Short.MAX_VALUE))
+                                .addComponent(txUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(produtoLayout.createSequentialGroup()
+                                .addComponent(formaPagamento)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbFormaPagamento, 0, 192, Short.MAX_VALUE)))))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         produtoLayout.setVerticalGroup(
             produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +245,13 @@ public class InserirSuprimento extends javax.swing.JFrame {
                 .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dataValidade)
                     .addComponent(txDtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fornecedor)
+                    .addComponent(cbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formaPagamento)
+                    .addComponent(cbFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id)
                     .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,9 +326,10 @@ public class InserirSuprimento extends javax.swing.JFrame {
     }//GEN-LAST:event_txIdActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-
         Suprimento s = new Suprimento();
 
+        s.setFormaPagamento(cbFormaPagamento.getSelectedItem() + "");
+        s.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
         s.setValor(Double.parseDouble(txValor.getText()));
         s.setUnidadeMedida(txUnidadeMedida.getText());
 
@@ -355,8 +389,12 @@ public class InserirSuprimento extends javax.swing.JFrame {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JTabbedPane cadastroSuprimento;
+    private javax.swing.JComboBox cbFormaPagamento;
+    private javax.swing.JComboBox cbFornecedor;
     private javax.swing.JLabel dataValidade;
     private javax.swing.JLabel descricao;
+    private javax.swing.JLabel formaPagamento;
+    private javax.swing.JLabel fornecedor;
     private javax.swing.JLabel id;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel notaFiscal;
@@ -408,5 +446,18 @@ public class InserirSuprimento extends javax.swing.JFrame {
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
 
+    }
+
+    private void carregarCombo() {
+        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbFornecedor.getModel();
+        comboModel.removeAllElements();
+        List<Fornecedor> f = new ArrayList<>();
+        FornecedorController fc = new FornecedorController();
+        f = fc.listarFornecedor();
+
+        for (int linha = 0; linha < f.size(); linha++) {
+            Fornecedor fb = f.get(linha);
+            comboModel.addElement(fb);
+        }
     }
 }

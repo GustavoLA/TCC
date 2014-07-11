@@ -154,9 +154,15 @@
                                                   <Component id="rbNao" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="dataValidade" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="dataValidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="fornecedor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="txDtValidade" min="-2" pref="108" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="txDtValidade" pref="108" max="32767" attributes="0"/>
+                                                      <Component id="cbFornecedor" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -175,10 +181,15 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="txUnidadeMedida" min="-2" pref="115" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="formaPagamento" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="cbFormaPagamento" pref="192" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="111" max="32767" attributes="0"/>
+                          <EmptySpace pref="95" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -226,7 +237,14 @@
                               <Component id="dataValidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txDtValidade" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="96" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="fornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="formaPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbFormaPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="58" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txId" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -358,6 +376,35 @@
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="##/##/####" subtype="-1" type="5"/>
                     </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="fornecedor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="FORNECEDOR"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbFornecedor">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbFormaPagamento">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Cheque"/>
+                        <StringItem index="1" value="Cart&#xe3;o"/>
+                        <StringItem index="2" value="A vista"/>
+                        <StringItem index="3" value="Outro"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="formaPagamento">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="FORMA PAGAMENTO"/>
                   </Properties>
                 </Component>
               </SubComponents>

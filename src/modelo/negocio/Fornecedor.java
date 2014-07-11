@@ -121,4 +121,9 @@ public class Fornecedor {
         this.marcaProduto = marcaProduto;
     }
 
+    @Override
+    public String toString() {
+        return nomeFantasia;
+    }
+
 }
