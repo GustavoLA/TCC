@@ -78,6 +78,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
         cbFornecedor = new javax.swing.JComboBox();
         cbFormaPagamento = new javax.swing.JComboBox();
         formaPagamento = new javax.swing.JLabel();
+        cbOutro = new javax.swing.JCheckBox();
         btSalvar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
 
@@ -95,6 +96,12 @@ public class InserirSuprimento extends javax.swing.JFrame {
         qntdade.setText("QUANTIDADE *");
 
         scrollDescricao.setViewportView(txDescricao);
+
+        txNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txNomeActionPerformed(evt);
+            }
+        });
 
         id.setText("ID");
 
@@ -143,6 +150,13 @@ public class InserirSuprimento extends javax.swing.JFrame {
 
         formaPagamento.setText("FORMA PAGAMENTO");
 
+        cbOutro.setText("Outro");
+        cbOutro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbOutroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout produtoLayout = new javax.swing.GroupLayout(produto);
         produto.setLayout(produtoLayout);
         produtoLayout.setHorizontalGroup(
@@ -188,9 +202,11 @@ public class InserirSuprimento extends javax.swing.JFrame {
                                             .addComponent(dataValidade)
                                             .addComponent(fornecedor))
                                         .addGap(18, 18, 18)
-                                        .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txDtValidade, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                                            .addComponent(cbFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbOutro)
+                                            .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txDtValidade, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                                                .addComponent(cbFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                         .addGap(18, 18, 18)
                         .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(produtoLayout.createSequentialGroup()
@@ -251,7 +267,9 @@ public class InserirSuprimento extends javax.swing.JFrame {
                     .addComponent(cbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formaPagamento)
                     .addComponent(cbFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbOutro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id)
                     .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -329,7 +347,14 @@ public class InserirSuprimento extends javax.swing.JFrame {
         Suprimento s = new Suprimento();
 
         s.setFormaPagamento(cbFormaPagamento.getSelectedItem() + "");
-        s.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
+
+        //Quero ver fazer listar e editar
+        if (cbOutro.isSelected()) {
+            s.setFornecedor(null);
+        } else {
+            s.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
+        }
+
         s.setValor(Double.parseDouble(txValor.getText()));
         s.setUnidadeMedida(txUnidadeMedida.getText());
 
@@ -346,9 +371,6 @@ public class InserirSuprimento extends javax.swing.JFrame {
             s.setNotaFiscal('S');
         }
 
-        /**
-         * Pra cima feito agr.
-         */
         s.setDescricao(txDescricao.getText());
         s.setNome(txNome.getText());
         s.setQtdade(Integer.parseInt(txQntdade.getText()));
@@ -382,6 +404,20 @@ public class InserirSuprimento extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btLimparActionPerformed
 
+    private void txNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txNomeActionPerformed
+
+    private void cbOutroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOutroActionPerformed
+
+        if (cbOutro.isSelected()) {
+            cbFornecedor.setEnabled(false);
+        } else {
+            cbFornecedor.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_cbOutroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgNotaFiscal;
@@ -391,6 +427,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
     private javax.swing.JTabbedPane cadastroSuprimento;
     private javax.swing.JComboBox cbFormaPagamento;
     private javax.swing.JComboBox cbFornecedor;
+    private javax.swing.JCheckBox cbOutro;
     private javax.swing.JLabel dataValidade;
     private javax.swing.JLabel descricao;
     private javax.swing.JLabel formaPagamento;

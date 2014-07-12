@@ -159,9 +159,12 @@
                                                       <Component id="fornecedor" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="txDtValidade" pref="108" max="32767" attributes="0"/>
-                                                      <Component id="cbFornecedor" max="32767" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="cbOutro" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="txDtValidade" pref="108" max="32767" attributes="0"/>
+                                                          <Component id="cbFornecedor" max="32767" attributes="0"/>
+                                                      </Group>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -244,7 +247,9 @@
                               <Component id="formaPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbFormaPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="58" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cbOutro" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="33" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txId" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -282,6 +287,9 @@
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JTextField" name="txNome">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txNomeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txQntdade">
                 </Component>
@@ -406,6 +414,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="FORMA PAGAMENTO"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbOutro">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Outro"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbOutroActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
