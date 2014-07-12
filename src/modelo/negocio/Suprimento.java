@@ -26,7 +26,6 @@ public class Suprimento {
     private String descricao;
     private char producao;
     @ManyToOne
-//    @Column(nullable = false)
     private Fornecedor fornecedor;
     @Column(nullable = false)
     private String formaPagamento;

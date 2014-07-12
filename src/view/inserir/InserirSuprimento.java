@@ -465,12 +465,25 @@ public class InserirSuprimento extends javax.swing.JFrame {
         txDescricao.setText(s.getDescricao());
         txNome.setText(s.getNome());
         txQntdade.setText(String.valueOf(s.getQtdade()));
+        txValor.setText(String.valueOf(s.getValor()));
+        txUnidadeMedida.setText(s.getUnidadeMedida());
+
+        SimpleDateFormat formataDtValidade = new SimpleDateFormat("dd/MM/yyyy");
+        String dtValidadeEdt = formataDtValidade.format(s.getDtVencimento());
+        txDtValidade.setText(dtValidadeEdt);
+
+        if (s.getNotaFiscal() == 'N') {
+            rbNao1.setSelected(true);
+        } else {
+            rbSim1.setSelected(true);
+        }
 
         if (s.getProducao() == 'N') {
             rbNao.setSelected(true);
         } else {
             rbSim.setSelected(true);
         }
+
     }
 
     private void bloquearCampos() {
