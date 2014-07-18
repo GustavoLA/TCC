@@ -29,7 +29,7 @@ public class Suprimento {
     private Fornecedor fornecedor;
     @Column(nullable = false)
     private String formaPagamento;
-
+    
     public String getFormaPagamento() {
         return formaPagamento;
     }

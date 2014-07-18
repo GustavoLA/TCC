@@ -12,7 +12,7 @@ import modelo.negocio.Fornecedor;
 import modelo.negocio.Suprimento;
 
 public class InserirSuprimento extends javax.swing.JFrame {
-    
+
     private DefaultTableModel modelo;
     private int linhaSelecionada;
 
@@ -23,15 +23,15 @@ public class InserirSuprimento extends javax.swing.JFrame {
         this.modelo = modelo;
         carregarCombo();
         setResizable(false);
-        
+
     }
 
     //EDITAR LINHA SELECIONADA 
     public InserirSuprimento(DefaultTableModel modelo, int linhaSelecionada, int idSuprimento) {
         this.modelo = modelo;
-        
+
         preencherCampos(linhaSelecionada, idSuprimento);
-        
+
     }
 
     //VISUALIZAR LINHA SELECIONADA
@@ -150,7 +150,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
 
         formaPagamento.setText("FORMA PAGAMENTO");
 
-        cbFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cheque", "Cartão", "A vista", "Outro" }));
+        cbFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Dinheiro", "Cartão de Crédito/Débito", "Outro" }));
 
         txId.setEditable(false);
 
@@ -276,9 +276,8 @@ public class InserirSuprimento extends javax.swing.JFrame {
                                 .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(rbNao1)
                                     .addComponent(rbSim1)
-                                    .addComponent(notaFiscal))
-                                .addContainerGap(79, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, produtoLayout.createSequentialGroup()
+                                    .addComponent(notaFiscal)))
+                            .addGroup(produtoLayout.createSequentialGroup()
                                 .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(id))
@@ -286,8 +285,8 @@ public class InserirSuprimento extends javax.swing.JFrame {
                                 .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(rbNao)
                                     .addComponent(rbSim)
-                                    .addComponent(producao))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(producao))))
+                        .addContainerGap(79, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, produtoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(produtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -339,7 +338,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Suprimento s = new Suprimento();
-        
+
         s.setFormaPagamento(cbFormaPagamento.getSelectedItem() + "");
 
         //Quero ver fazer listar e editar
@@ -348,39 +347,39 @@ public class InserirSuprimento extends javax.swing.JFrame {
         } else {
             s.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
         }
-        
+
         s.setValor(Double.parseDouble(txValor.getText()));
         s.setUnidadeMedida(txUnidadeMedida.getText());
-        
+
         try {
             String data = txDtValidade.getText();
             s.setDtVencimento(new SimpleDateFormat("dd/mm/yyyy").parse(data));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "FORMATO INVÁLIDO! UTILIZE: DD/MM/YYYY\n" + ex);
         }
-        
+
         if (rbNao1.isSelected()) {
             s.setNotaFiscal('N');
         } else {
             s.setNotaFiscal('S');
         }
-        
+
         s.setDescricao(txDescricao.getText());
         s.setNome(txNome.getText());
         s.setQtdade(Integer.parseInt(txQntdade.getText()));
-        
+
         if (rbNao.isSelected()) {
             s.setProducao('N');
         } else {
             s.setProducao('S');
         }
-        
+
         SuprimentoController sc = new SuprimentoController();
-        
+
         if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
             s.setCodigo(Integer.parseInt(txId.getText()));
             sc.salvar(s);
-            
+
             modelo.removeRow(linhaSelecionada);
             modelo.addRow(new Object[]{s.getCodigo(), s.getDescricao(), s.getNome(), s.getQtdade()});
             dispose();
@@ -391,7 +390,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        
+
         txDescricao.setText(null);
         txNome.setText(null);
         txQntdade.setText(null);
@@ -440,35 +439,42 @@ public class InserirSuprimento extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         SuprimentoController sc = new SuprimentoController();
         Suprimento s = sc.listarSuprimentoPorId(idSuprimento);
-        
+
         txId.setText(String.valueOf(s.getCodigo()));
         txDescricao.setText(s.getDescricao());
         txNome.setText(s.getNome());
         txQntdade.setText(String.valueOf(s.getQtdade()));
         txValor.setText(String.valueOf(s.getValor()));
         txUnidadeMedida.setText(s.getUnidadeMedida());
-        
+
         SimpleDateFormat formataDtValidade = new SimpleDateFormat("dd/MM/yyyy");
         String dtValidadeEdt = formataDtValidade.format(s.getDtVencimento());
         txDtValidade.setText(dtValidadeEdt);
         carregarComboESetarValor(s.getFornecedor());
-        
+
         if (s.getNotaFiscal() == 'N') {
             rbNao1.setSelected(true);
         } else {
             rbSim1.setSelected(true);
         }
-        
+
         if (s.getProducao() == 'N') {
             rbNao.setSelected(true);
         } else {
             rbSim.setSelected(true);
         }
-        
+
+        if (s.getFormaPagamento().equals("Dinheiro")) {
+            cbFormaPagamento.setSelectedIndex(1);
+        } else if (s.getFormaPagamento().equals("Cartão de Crédito/Débito")) {
+            cbFormaPagamento.setSelectedIndex(2);
+        } else if (s.getFormaPagamento().equals("Outro")) {
+            cbFormaPagamento.setSelectedIndex(3);
+        }
     }
-    
+
     private void bloquearCampos() {
-        
+
         txDescricao.setEditable(false);
         txNome.setEditable(false);
         txQntdade.setEditable(false);
@@ -476,43 +482,43 @@ public class InserirSuprimento extends javax.swing.JFrame {
         rbSim.setEnabled(false);
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
-        
+
     }
-    
+
     private void carregarCombo() {
         DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbFornecedor.getModel();
         comboModel.removeAllElements();
         List<Fornecedor> f = new ArrayList<>();
         FornecedorController fc = new FornecedorController();
         f = fc.listarFornecedor();
-        
+
         for (int linha = 0; linha < f.size(); linha++) {
             Fornecedor fb = f.get(linha);
             comboModel.addElement(fb);
         }
-        
+
     }
-    
+
     private void carregarComboESetarValor(Fornecedor forn) {
         DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbFornecedor.getModel();
         comboModel.removeAllElements();
         List<Fornecedor> f = new ArrayList<>();
         FornecedorController fc = new FornecedorController();
         f = fc.listarFornecedor();
-        
+
         for (int linha = 0; linha < f.size(); linha++) {
-            
+
             Fornecedor fb = f.get(linha);
             comboModel.addElement(fb);
-            
+
             if (forn != null) {
                 if (fb.getCodigo() == forn.getCodigo()) {
-                    
+
                     comboModel.setSelectedItem(fb);
                 }
             }
-            
+
         }
-        
+
     }
 }
