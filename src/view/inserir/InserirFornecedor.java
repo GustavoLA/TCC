@@ -71,6 +71,8 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txIdEndereco = new javax.swing.JTextField();
         cep = new javax.swing.JLabel();
         txCep = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txBairro = new javax.swing.JTextField();
         tipoProduto = new javax.swing.JPanel();
         nomeProduto = new javax.swing.JLabel();
         txNomeProduto = new javax.swing.JTextField();
@@ -86,9 +88,11 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        painelFundo.setBackground(new java.awt.Color(255, 255, 153));
-        painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder("FORNECEDOR"));
-        painelFundo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        painelFundo.setBackground(new java.awt.Color(0, 153, 153));
+        painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FORNECEDOR", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), java.awt.Color.white)); // NOI18N
+        painelFundo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+
+        dadosFornecedor.setBackground(java.awt.Color.white);
 
         nome.setText("NOME *");
 
@@ -123,65 +127,56 @@ public class InserirFornecedor extends javax.swing.JFrame {
         dadosFornecedorLayout.setHorizontalGroup(
             dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                        .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(telefone)
-                            .addComponent(fax))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(txFax))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(id)
+                        .addGap(18, 18, 18)
+                        .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoObrigatorio)
                     .addGroup(dadosFornecedorLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                                    .addComponent(nome)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                    .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dadosFornecedorLayout.createSequentialGroup()
-                                    .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(email)
-                                        .addComponent(cnpj))
-                                    .addGap(31, 31, 31)
-                                    .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txEmail)
-                                        .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                                            .addComponent(txCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(nome)
                             .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                                .addComponent(id)
-                                .addGap(18, 18, 18)
-                                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(campoObrigatorio))
-                        .addGap(0, 375, Short.MAX_VALUE))))
+                                .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(telefone)
+                                    .addComponent(fax)
+                                    .addComponent(email)
+                                    .addComponent(cnpj))
+                                .addGap(50, 50, 50)
+                                .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txFax, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(0, 159, Short.MAX_VALUE))
         );
         dadosFornecedorLayout.setVerticalGroup(
             dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(30, 30, 30)
                 .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome)
-                    .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nome))
+                .addGap(30, 30, 30)
                 .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telefone)
                     .addComponent(txTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fax)
-                    .addComponent(txFax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txFax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fax))
+                .addGap(30, 30, 30)
                 .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(email)
                     .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cnpj)
                     .addComponent(txCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addComponent(campoObrigatorio)
                 .addGap(40, 40, 40)
                 .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +187,8 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         cadastroFornecedor.addTab("DADOS DO FORNECEDOR", dadosFornecedor);
 
+        endereco.setBackground(java.awt.Color.white);
+
         rua.setText("RUA  *");
 
         numero.setText("NÚMERO *");
@@ -200,73 +197,93 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         estado.setText("ESTADO *");
 
+        txEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txEstadoActionPerformed(evt);
+            }
+        });
+
         cidade.setText("CIDADE  *");
 
         idEndereco.setText("ID");
 
         cep.setText("CEP");
 
+        jLabel1.setText("BAIRRO");
+
+        txBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txBairroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout enderecoLayout = new javax.swing.GroupLayout(endereco);
         endereco.setLayout(enderecoLayout);
         enderecoLayout.setHorizontalGroup(
             enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(enderecoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(20, 20, 20)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(enderecoLayout.createSequentialGroup()
+                        .addComponent(idEndereco)
+                        .addGap(18, 18, 18)
+                        .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13))
                     .addGroup(enderecoLayout.createSequentialGroup()
                         .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rua)
                             .addComponent(numero)
+                            .addComponent(rua)
                             .addComponent(estado)
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(idEndereco)
-                                .addGap(18, 18, 18)
-                                .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cidade))
-                        .addGap(24, 24, 24)
-                        .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(txNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(complemento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txComplemento))
-                            .addComponent(txRua, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
-                            .addComponent(txEstado)
-                            .addComponent(txCidade))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(enderecoLayout.createSequentialGroup()
-                        .addComponent(cep)
-                        .addGap(18, 18, 18)
-                        .addComponent(txCep)))
-                .addContainerGap())
+                            .addComponent(cep)
+                            .addComponent(cidade)
+                            .addComponent(jLabel1))
+                        .addGap(17, 17, 17)))
+                .addGap(45, 45, 45)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txRua, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                        .addComponent(txCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                        .addComponent(txBairro)
+                        .addGroup(enderecoLayout.createSequentialGroup()
+                            .addComponent(txNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(complemento)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
         enderecoLayout.setVerticalGroup(
             enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(enderecoLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rua)
-                    .addComponent(txRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(cidade)
+                    .addComponent(txCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rua))
+                .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numero)
                     .addComponent(txNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(complemento)
                     .addComponent(txComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(estado)
                     .addComponent(txEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cidade))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cep)
-                    .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
+                    .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cep))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idEndereco)
                     .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -274,6 +291,8 @@ public class InserirFornecedor extends javax.swing.JFrame {
         );
 
         cadastroFornecedor.addTab("ENDEREÇO", endereco);
+
+        tipoProduto.setBackground(java.awt.Color.white);
 
         nomeProduto.setText("NOME DO PRODUTO *");
 
@@ -298,44 +317,47 @@ public class InserirFornecedor extends javax.swing.JFrame {
         tipoProdutoLayout.setHorizontalGroup(
             tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tipoProdutoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tipoProdutoLayout.createSequentialGroup()
-                        .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeProduto)
-                            .addComponent(marcaProduto)
-                            .addComponent(descricao))
-                        .addGap(28, 28, 28)
-                        .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txNomeProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-                            .addComponent(txMarcaProduto)
-                            .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(tipoProdutoLayout.createSequentialGroup()
-                        .addComponent(dtFornecimento)
-                        .addGap(18, 18, 18)
-                        .addComponent(txDtFornecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(341, Short.MAX_VALUE))
+                    .addComponent(dtFornecimento)
+                    .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txMarcaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(tipoProdutoLayout.createSequentialGroup()
+                            .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(descricao)
+                                .addComponent(nomeProduto)
+                                .addComponent(marcaProduto))
+                            .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tipoProdutoLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(tipoProdutoLayout.createSequentialGroup()
+                                    .addGap(51, 51, 51)
+                                    .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txDtFornecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         tipoProdutoLayout.setVerticalGroup(
             tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tipoProdutoLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(30, 30, 30)
                 .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeProduto)
                     .addComponent(txNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txMarcaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marcaProduto))
+                .addGap(30, 30, 30)
                 .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(marcaProduto)
-                    .addComponent(txMarcaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descricao)
-                    .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descricao))
+                .addGap(30, 30, 30)
                 .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dtFornecimento)
                     .addComponent(txDtFornecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         cadastroFornecedor.addTab("TIPO DE PRODUTO", tipoProduto);
@@ -457,6 +479,14 @@ public class InserirFornecedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
+    private void txEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txEstadoActionPerformed
+
+    private void txBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txBairroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLimpar;
@@ -476,6 +506,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel fax;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idEndereco;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel marcaProduto;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel nomeProduto;
@@ -485,6 +516,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollDescricao;
     private javax.swing.JLabel telefone;
     private javax.swing.JPanel tipoProduto;
+    private javax.swing.JTextField txBairro;
     private javax.swing.JFormattedTextField txCep;
     private javax.swing.JTextField txCidade;
     private javax.swing.JFormattedTextField txCnpj;
