@@ -44,6 +44,40 @@ public class InserirFuncionario extends javax.swing.JFrame {
         bgSexo = new javax.swing.ButtonGroup();
         PainelFundo = new javax.swing.JPanel();
         cadastroFuncionarios = new javax.swing.JTabbedPane();
+        dadosProfissionais = new javax.swing.JPanel();
+        ctps = new javax.swing.JLabel();
+        txCtps = new javax.swing.JTextField();
+        dtAdmissao = new javax.swing.JLabel();
+        dtDemissao = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
+        login = new javax.swing.JLabel();
+        senha = new javax.swing.JLabel();
+        txLogin = new javax.swing.JTextField();
+        observacao = new javax.swing.JLabel();
+        txSenha = new javax.swing.JPasswordField();
+        txDtAdmissao = new javax.swing.JFormattedTextField();
+        txDtDemissao = new javax.swing.JFormattedTextField();
+        salario = new javax.swing.JLabel();
+        txSalario = new javax.swing.JFormattedTextField();
+        scrollTxObservacao = new javax.swing.JScrollPane();
+        txObservacao = new javax.swing.JTextArea();
+        endereco = new javax.swing.JPanel();
+        rua = new javax.swing.JLabel();
+        cidade = new javax.swing.JLabel();
+        estado = new javax.swing.JLabel();
+        numero = new javax.swing.JLabel();
+        complemento = new javax.swing.JLabel();
+        txRua = new javax.swing.JTextField();
+        txNumero = new javax.swing.JTextField();
+        txComplemento = new javax.swing.JTextField();
+        txEstado = new javax.swing.JTextField();
+        txCidade = new javax.swing.JTextField();
+        idEndereco = new javax.swing.JLabel();
+        txIdEndereco = new javax.swing.JTextField();
+        cep = new javax.swing.JLabel();
+        txCep = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         dadosPessoais = new javax.swing.JPanel();
         nome = new javax.swing.JLabel();
         txNome = new javax.swing.JTextField();
@@ -61,48 +95,253 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txCpf = new javax.swing.JFormattedTextField();
         txDtNascimento = new javax.swing.JFormattedTextField();
         txTelefone = new javax.swing.JFormattedTextField();
-        dadosProfissionais = new javax.swing.JPanel();
-        ctps = new javax.swing.JLabel();
-        txCtps = new javax.swing.JTextField();
-        dtAdmissao = new javax.swing.JLabel();
-        dtDemissao = new javax.swing.JLabel();
-        separador = new javax.swing.JSeparator();
-        login = new javax.swing.JLabel();
-        senha = new javax.swing.JLabel();
-        txLogin = new javax.swing.JTextField();
-        observacao = new javax.swing.JLabel();
-        scrollTxObservacao = new javax.swing.JScrollPane();
-        txObservacao = new javax.swing.JTextArea();
-        txSenha = new javax.swing.JPasswordField();
-        txDtAdmissao = new javax.swing.JFormattedTextField();
-        txDtDemissao = new javax.swing.JFormattedTextField();
-        salario = new javax.swing.JLabel();
-        txSalario = new javax.swing.JFormattedTextField();
-        endereco = new javax.swing.JPanel();
-        rua = new javax.swing.JLabel();
-        cidade = new javax.swing.JLabel();
-        estado = new javax.swing.JLabel();
-        numero = new javax.swing.JLabel();
-        complemento = new javax.swing.JLabel();
-        txRua = new javax.swing.JTextField();
-        txNumero = new javax.swing.JTextField();
-        txComplemento = new javax.swing.JTextField();
-        txEstado = new javax.swing.JTextField();
-        txCidade = new javax.swing.JTextField();
-        idEndereco = new javax.swing.JLabel();
-        txIdEndereco = new javax.swing.JTextField();
-        cep = new javax.swing.JLabel();
-        txCep = new javax.swing.JFormattedTextField();
         btLimpar = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        PainelFundo.setBackground(new java.awt.Color(255, 255, 153));
-        PainelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder("FUNCIONÁRIOS"));
+        PainelFundo.setBackground(new java.awt.Color(0, 153, 153));
+        PainelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FUNCIONÁRIOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), java.awt.Color.white)); // NOI18N
         PainelFundo.setMinimumSize(new java.awt.Dimension(592, 422));
 
         cadastroFuncionarios.setBackground(new java.awt.Color(255, 255, 153));
+
+        dadosProfissionais.setBackground(java.awt.Color.white);
+
+        ctps.setText("CARTEIRA DE TRABALHO *");
+
+        dtAdmissao.setText("DATA DE ADMISSÃO *");
+
+        dtDemissao.setText("DATA DE DEMISSÃO");
+
+        login.setText("LOGIN");
+
+        senha.setText("SENHA");
+
+        observacao.setText("OBSERVAÇÕES");
+
+        try {
+            txDtAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txDtDemissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        salario.setText("SALÁRIO *");
+
+        txObservacao.setColumns(20);
+        txObservacao.setRows(5);
+        scrollTxObservacao.setViewportView(txObservacao);
+
+        javax.swing.GroupLayout dadosProfissionaisLayout = new javax.swing.GroupLayout(dadosProfissionais);
+        dadosProfissionais.setLayout(dadosProfissionaisLayout);
+        dadosProfissionaisLayout.setHorizontalGroup(
+            dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(separador, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(dadosProfissionaisLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dadosProfissionaisLayout.createSequentialGroup()
+                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txLogin)
+                            .addComponent(txSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(dadosProfissionaisLayout.createSequentialGroup()
+                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ctps)
+                            .addComponent(dtAdmissao)
+                            .addComponent(dtDemissao)
+                            .addComponent(observacao))
+                        .addGap(18, 18, 18)
+                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dadosProfissionaisLayout.createSequentialGroup()
+                                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txCtps)
+                                    .addComponent(txDtAdmissao)
+                                    .addComponent(txDtDemissao))
+                                .addGap(18, 18, 18)
+                                .addComponent(salario)
+                                .addGap(18, 18, 18)
+                                .addComponent(txSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(scrollTxObservacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(1, 1, 1))
+        );
+
+        dadosProfissionaisLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ctps, dtAdmissao, dtDemissao, txCtps});
+
+        dadosProfissionaisLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {login, senha, txLogin, txSenha});
+
+        dadosProfissionaisLayout.setVerticalGroup(
+            dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dadosProfissionaisLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ctps)
+                    .addComponent(txCtps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salario)
+                    .addComponent(txSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dtAdmissao)
+                    .addComponent(txDtAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dtDemissao)
+                    .addComponent(txDtDemissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(observacao)
+                    .addComponent(scrollTxObservacao, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(login)
+                    .addComponent(txLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(senha)
+                    .addComponent(txSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        dadosProfissionaisLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ctps, dtAdmissao, dtDemissao, txCtps});
+
+        dadosProfissionaisLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {login, senha, txLogin, txSenha});
+
+        cadastroFuncionarios.addTab("DADOS PROFISSIONAIS", dadosProfissionais);
+
+        endereco.setBackground(java.awt.Color.white);
+
+        rua.setText("RUA *");
+
+        cidade.setText("CIDADE *");
+
+        estado.setText("ESTADO *");
+
+        numero.setText("NÚMERO *");
+
+        complemento.setText("COMPLEMENTO");
+
+        idEndereco.setText("ID");
+
+        txIdEndereco.setEditable(false);
+
+        cep.setText("CEP");
+
+        jLabel1.setText("BAIRRO");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout enderecoLayout = new javax.swing.GroupLayout(endereco);
+        endereco.setLayout(enderecoLayout);
+        enderecoLayout.setHorizontalGroup(
+            enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(enderecoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(enderecoLayout.createSequentialGroup()
+                        .addComponent(idEndereco)
+                        .addGap(18, 18, 18)
+                        .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(enderecoLayout.createSequentialGroup()
+                            .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(enderecoLayout.createSequentialGroup()
+                                        .addComponent(cep)
+                                        .addGap(74, 74, 74))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enderecoLayout.createSequentialGroup()
+                                        .addComponent(estado)
+                                        .addGap(28, 28, 28)))
+                                .addGroup(enderecoLayout.createSequentialGroup()
+                                    .addComponent(numero)
+                                    .addGap(28, 28, 28)))
+                            .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txEstado)
+                                .addGroup(enderecoLayout.createSequentialGroup()
+                                    .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(enderecoLayout.createSequentialGroup()
+                                            .addComponent(txNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(complemento))
+                                        .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(enderecoLayout.createSequentialGroup()
+                            .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(rua)
+                                .addComponent(jLabel1))
+                            .addGap(26, 26, 26)
+                            .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txRua, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(enderecoLayout.createSequentialGroup()
+                            .addComponent(cidade)
+                            .addGap(26, 26, 26)
+                            .addComponent(txCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txComplemento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(334, Short.MAX_VALUE))
+        );
+
+        enderecoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cidade, complemento, estado, numero, rua});
+
+        enderecoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {idEndereco, txIdEndereco});
+
+        enderecoLayout.setVerticalGroup(
+            enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(enderecoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cidade)
+                    .addComponent(txCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rua)
+                    .addComponent(txRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numero)
+                    .addComponent(txNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(complemento)
+                    .addComponent(txComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estado))
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cep)
+                    .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idEndereco)
+                    .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        enderecoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cidade, complemento, estado, numero, rua, txCidade, txComplemento, txEstado, txNumero, txRua});
+
+        enderecoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idEndereco, txIdEndereco});
+
+        cadastroFuncionarios.addTab("ENDEREÇO", endereco);
+
+        dadosPessoais.setBackground(java.awt.Color.white);
 
         nome.setText("NOME *");
 
@@ -158,49 +397,43 @@ public class InserirFuncionario extends javax.swing.JFrame {
         dadosPessoaisLayout.setHorizontalGroup(
             dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dadosPessoaisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dadosPessoaisLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dadosPessoaisLayout.createSequentialGroup()
                         .addComponent(id)
                         .addGap(18, 18, 18)
                         .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(obrigatorio)
-                    .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(dadosPessoaisLayout.createSequentialGroup()
-                            .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(dadosPessoaisLayout.createSequentialGroup()
-                                    .addGap(79, 79, 79)
-                                    .addComponent(rbMasculino)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rbFeminino))
-                                .addGroup(dadosPessoaisLayout.createSequentialGroup()
-                                    .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(dadosPessoaisLayout.createSequentialGroup()
-                                            .addGap(14, 14, 14)
-                                            .addComponent(telefone)
-                                            .addGap(78, 78, 78))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dadosPessoaisLayout.createSequentialGroup()
-                                            .addComponent(dataNascimento)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                    .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txDtNascimento)
-                                        .addComponent(txTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))))
-                            .addGap(143, 143, 143))
-                        .addGroup(dadosPessoaisLayout.createSequentialGroup()
-                            .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nome)
-                                .addComponent(cpf)
-                                .addComponent(sexo))
-                            .addGap(18, 18, 18)
-                            .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(dadosPessoaisLayout.createSequentialGroup()
-                                    .addComponent(txCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rg)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txRg, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(149, Short.MAX_VALUE))
+                    .addComponent(obrigatorio, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dadosPessoaisLayout.createSequentialGroup()
+                        .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nome)
+                            .addComponent(cpf)
+                            .addComponent(sexo))
+                        .addGap(98, 98, 98)
+                        .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(dadosPessoaisLayout.createSequentialGroup()
+                                .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(dadosPessoaisLayout.createSequentialGroup()
+                                        .addComponent(txCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(rg)
+                                        .addGap(36, 36, 36))
+                                    .addGroup(dadosPessoaisLayout.createSequentialGroup()
+                                        .addComponent(rbMasculino)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rbFeminino)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(txRg, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dadosPessoaisLayout.createSequentialGroup()
+                        .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dataNascimento)
+                            .addComponent(telefone))
+                        .addGap(18, 18, 18)
+                        .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         dadosPessoaisLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {id, txId});
@@ -208,31 +441,30 @@ public class InserirFuncionario extends javax.swing.JFrame {
         dadosPessoaisLayout.setVerticalGroup(
             dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dadosPessoaisLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(30, 30, 30)
+                .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nome)
                     .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
                 .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpf)
                     .addComponent(rg)
                     .addComponent(txRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbMasculino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rbFeminino)
-                        .addComponent(sexo)))
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
+                .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbFeminino)
+                    .addComponent(sexo)
+                    .addComponent(rbMasculino, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dataNascimento)
                     .addComponent(txDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telefone)
                     .addComponent(txTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(obrigatorio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -249,225 +481,6 @@ public class InserirFuncionario extends javax.swing.JFrame {
         rbFeminino.getAccessibleContext().setAccessibleDescription("");
 
         cadastroFuncionarios.addTab("DADOS PESSOAIS", dadosPessoais);
-
-        ctps.setText("CARTEIRA DE TRABALHO *");
-
-        dtAdmissao.setText("DATA DE ADMISSÃO *");
-
-        dtDemissao.setText("DATA DE DEMISSÃO");
-
-        login.setText("LOGIN");
-
-        senha.setText("SENHA");
-
-        observacao.setText("OBSERVAÇÕES");
-
-        txObservacao.setColumns(20);
-        txObservacao.setRows(5);
-        scrollTxObservacao.setViewportView(txObservacao);
-
-        try {
-            txDtAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            txDtDemissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        salario.setText("SALÁRIO *");
-
-        javax.swing.GroupLayout dadosProfissionaisLayout = new javax.swing.GroupLayout(dadosProfissionais);
-        dadosProfissionais.setLayout(dadosProfissionaisLayout);
-        dadosProfissionaisLayout.setHorizontalGroup(
-            dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(separador, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(dadosProfissionaisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dadosProfissionaisLayout.createSequentialGroup()
-                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txLogin)
-                            .addComponent(txSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(dadosProfissionaisLayout.createSequentialGroup()
-                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ctps)
-                            .addComponent(dtAdmissao)
-                            .addComponent(dtDemissao)
-                            .addComponent(observacao))
-                        .addGap(18, 18, 18)
-                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollTxObservacao, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
-                            .addGroup(dadosProfissionaisLayout.createSequentialGroup()
-                                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txCtps)
-                                    .addComponent(txDtAdmissao)
-                                    .addComponent(txDtDemissao))
-                                .addGap(18, 18, 18)
-                                .addComponent(salario)
-                                .addGap(18, 18, 18)
-                                .addComponent(txSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 50, Short.MAX_VALUE)))))
-                .addContainerGap())
-        );
-
-        dadosProfissionaisLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ctps, dtAdmissao, dtDemissao, txCtps});
-
-        dadosProfissionaisLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {login, senha, txLogin, txSenha});
-
-        dadosProfissionaisLayout.setVerticalGroup(
-            dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dadosProfissionaisLayout.createSequentialGroup()
-                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dadosProfissionaisLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ctps)
-                            .addComponent(txCtps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salario)
-                            .addComponent(txSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dtAdmissao)
-                            .addComponent(txDtAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dtDemissao)
-                            .addComponent(txDtDemissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(observacao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(dadosProfissionaisLayout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(scrollTxObservacao, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)))
-                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(login)
-                    .addComponent(txLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(dadosProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senha)
-                    .addComponent(txSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        dadosProfissionaisLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ctps, dtAdmissao, dtDemissao, txCtps});
-
-        dadosProfissionaisLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {login, senha, txLogin, txSenha});
-
-        cadastroFuncionarios.addTab("DADOS PROFISSIONAIS", dadosProfissionais);
-
-        rua.setText("RUA *");
-
-        cidade.setText("CIDADE *");
-
-        estado.setText("ESTADO *");
-
-        numero.setText("NÚMERO *");
-
-        complemento.setText("COMPLEMENTO");
-
-        idEndereco.setText("ID");
-
-        txIdEndereco.setEditable(false);
-
-        cep.setText("CEP");
-
-        javax.swing.GroupLayout enderecoLayout = new javax.swing.GroupLayout(endereco);
-        endereco.setLayout(enderecoLayout);
-        enderecoLayout.setHorizontalGroup(
-            enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(enderecoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(enderecoLayout.createSequentialGroup()
-                        .addComponent(idEndereco)
-                        .addGap(18, 18, 18)
-                        .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(enderecoLayout.createSequentialGroup()
-                        .addComponent(rua)
-                        .addGap(18, 18, 18)
-                        .addComponent(txRua))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enderecoLayout.createSequentialGroup()
-                        .addComponent(cidade)
-                        .addGap(18, 18, 18)
-                        .addComponent(txCidade))
-                    .addGroup(enderecoLayout.createSequentialGroup()
-                        .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(numero)
-                                .addGap(18, 18, 18)
-                                .addComponent(txNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(estado)
-                                .addGap(18, 18, 18)
-                                .addComponent(txEstado)))
-                        .addGap(18, 18, 18)
-                        .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(complemento)
-                                .addGap(18, 18, 18)
-                                .addComponent(txComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(cep)
-                                .addGap(18, 18, 18)
-                                .addComponent(txCep)))))
-                .addContainerGap(205, Short.MAX_VALUE))
-        );
-
-        enderecoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cidade, complemento, estado, numero, rua, txNumero});
-
-        enderecoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {idEndereco, txIdEndereco});
-
-        enderecoLayout.setVerticalGroup(
-            enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(enderecoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rua)
-                    .addComponent(txRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numero)
-                    .addComponent(complemento)
-                    .addComponent(txNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(enderecoLayout.createSequentialGroup()
-                        .addComponent(estado)
-                        .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enderecoLayout.createSequentialGroup()
-                        .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cep)
-                            .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cidade)
-                    .addComponent(txCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idEndereco)
-                    .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        enderecoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cidade, complemento, estado, numero, rua, txCidade, txComplemento, txEstado, txNumero, txRua});
-
-        enderecoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idEndereco, txIdEndereco});
-
-        cadastroFuncionarios.addTab("ENDEREÇO", endereco);
 
         btLimpar.setText("LIMPAR");
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -488,15 +501,12 @@ public class InserirFuncionario extends javax.swing.JFrame {
         PainelFundoLayout.setHorizontalGroup(
             PainelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelFundoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PainelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cadastroFuncionarios)
-                    .addGroup(PainelFundoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btLimpar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btLimpar)
                 .addContainerGap())
+            .addComponent(cadastroFuncionarios)
         );
         PainelFundoLayout.setVerticalGroup(
             PainelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -611,6 +621,10 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txCep.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelFundo;
     private javax.swing.ButtonGroup bgSexo;
@@ -631,7 +645,9 @@ public class InserirFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel estado;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idEndereco;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel login;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel numero;
