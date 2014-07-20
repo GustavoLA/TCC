@@ -51,8 +51,8 @@ public class ListarCliente extends javax.swing.JFrame {
             }
         });
 
-        painelFundo.setBackground(new java.awt.Color(255, 255, 153));
-        painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder("FUNCIONÁRIOS"));
+        painelFundo.setBackground(new java.awt.Color(0, 153, 153));
+        painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CLIENTES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), java.awt.Color.white)); // NOI18N
         painelFundo.setMaximumSize(new java.awt.Dimension(800, 600));
         painelFundo.setMinimumSize(new java.awt.Dimension(800, 600));
         painelFundo.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -101,28 +101,30 @@ public class ListarCliente extends javax.swing.JFrame {
         painelFundo.setLayout(painelFundoLayout);
         painelFundoLayout.setHorizontalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelFundoLayout.createSequentialGroup()
-                .addComponent(funcionarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(painelFundoLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFundoLayout.createSequentialGroup()
                         .addComponent(pesquisar)
+                        .addGap(32, 32, 32)
+                        .addComponent(txPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(263, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
+                        .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(painelFundoLayout.createSequentialGroup()
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(funcionarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(btVisualizar)
+                        .addGap(35, 35, 35)
+                        .addComponent(btInserir)
                         .addGap(18, 18, 18)
-                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txPesquisa)
-                            .addGroup(painelFundoLayout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(btVisualizar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btInserir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btDeletar)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btEditar)
+                        .addGap(27, 27, 27)
+                        .addComponent(btDeletar)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,28 +133,28 @@ public class ListarCliente extends javax.swing.JFrame {
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pesquisar))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(funcionarioLogado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(45, 45, 45)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btVisualizar)
                     .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btEditar)
-                    .addComponent(btDeletar)
-                    .addComponent(btVisualizar))
-                .addGap(224, 224, 224))
+                    .addComponent(btDeletar))
+                .addGap(158, 158, 158))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 593, Short.MAX_VALUE)
+            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 426, Short.MAX_VALUE)
+            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
