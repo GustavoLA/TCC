@@ -16,6 +16,7 @@ public class Endereco {
     private String estado;
     private String cep;
     private String complemento;
+    private String bairro;
 
     public int getCodigo() {
         return codigo;
@@ -77,5 +78,14 @@ public class Endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+    
 
 }
