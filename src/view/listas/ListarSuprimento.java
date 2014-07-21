@@ -9,10 +9,10 @@ import modelo.util.Acesso;
 import view.inserir.InserirSuprimento;
 
 public class ListarSuprimento extends javax.swing.JFrame {
-    
+
     private JTable tabela;
     private DefaultTableModel modelo = new DefaultTableModel();
-    
+
     public ListarSuprimento() {
         initComponents();
         criaJTable();
@@ -40,6 +40,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
         funcionarioLogado = new javax.swing.JLabel();
         pesquisar = new javax.swing.JLabel();
         btVisualizar = new javax.swing.JButton();
+        btInvestimento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -97,6 +98,13 @@ public class ListarSuprimento extends javax.swing.JFrame {
             }
         });
 
+        btInvestimento.setText("movimentação");
+        btInvestimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInvestimentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
         painelFundo.setLayout(painelFundoLayout);
         painelFundoLayout.setHorizontalGroup(
@@ -114,7 +122,9 @@ public class ListarSuprimento extends javax.swing.JFrame {
                         .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txPesquisa)
                             .addGroup(painelFundoLayout.createSequentialGroup()
-                                .addGap(115, 115, 115)
+                                .addGap(24, 24, 24)
+                                .addComponent(btInvestimento)
+                                .addGap(18, 18, 18)
                                 .addComponent(btVisualizar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btInserir)
@@ -140,7 +150,8 @@ public class ListarSuprimento extends javax.swing.JFrame {
                     .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btEditar)
                     .addComponent(btDeletar)
-                    .addComponent(btVisualizar))
+                    .addComponent(btVisualizar)
+                    .addComponent(btInvestimento))
                 .addGap(224, 224, 224))
         );
 
@@ -164,11 +175,11 @@ public class ListarSuprimento extends javax.swing.JFrame {
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        
+
         int linhaSelecionada = -1;
-        
+
         linhaSelecionada = tabela.getSelectedRow();
-        
+
         if (linhaSelecionada >= 0) {
             int idSuprimento = (int) tabela.getValueAt(linhaSelecionada, 0);
             SuprimentoController fc = new SuprimentoController();
@@ -183,10 +194,10 @@ public class ListarSuprimento extends javax.swing.JFrame {
     private void btDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarActionPerformed
         int linhaSelecionada = -1;
         linhaSelecionada = tabela.getSelectedRow();
-        
+
         if (linhaSelecionada >= 0) {
             int id = (int) tabela.getValueAt(linhaSelecionada, 0);
-            
+
             SuprimentoController sc = new SuprimentoController();
             if (sc.excluir(id));
             {
@@ -194,7 +205,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(null, "SELECIONE UM SUPRIMENTO");
-            
+
         }
     }//GEN-LAST:event_btDeletarActionPerformed
 
@@ -208,7 +219,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
     private void txPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisaActionPerformed
         modelo.setNumRows(0);
         SuprimentoController sc = new SuprimentoController();
-        
+
         for (Suprimento s : sc.pesquisar(txPesquisa.getText())) {
             modelo.addRow(new Object[]{s.getCodigo(), s.getNome(), s.getDescricao(), s.getQtdade()});
         }
@@ -217,9 +228,9 @@ public class ListarSuprimento extends javax.swing.JFrame {
 
     private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
         int linhaSelecionada = -1;
-        
+
         linhaSelecionada = tabela.getSelectedRow();
-        
+
         if (linhaSelecionada >= 0) {
             int idSuprimento = (int) tabela.getValueAt(linhaSelecionada, 0);
             SuprimentoController sc = new SuprimentoController();
@@ -231,10 +242,29 @@ public class ListarSuprimento extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btVisualizarActionPerformed
 
+    private void btInvestimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInvestimentoActionPerformed
+
+        int selecionado = -1;
+        selecionado = tabela.getSelectedRow();
+
+        if (selecionado >= 0) {
+            Integer idSuprimento = (Integer) modelo.getValueAt(selecionado, 0);
+            ListarNovoSuprimento novo = new ListarNovoSuprimento(idSuprimento);
+            novo.setLocationRelativeTo(null);
+            novo.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "É necessário selecionar uma linha");
+
+        }
+
+
+    }//GEN-LAST:event_btInvestimentoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btDeletar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btInserir;
+    private javax.swing.JButton btInvestimento;
     private javax.swing.JButton btVisualizar;
     private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JPanel painelFundo;
@@ -244,28 +274,28 @@ public class ListarSuprimento extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void criaJTable() {
-        
+
         tabela = new JTable(modelo) {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        
+
         modelo.addColumn("ID");
         modelo.addColumn("NOME");
         modelo.addColumn("QUANTIDADE");
-        
+
         preencherJTable();
     }
-    
+
     private void preencherJTable() {
-        
+
         SuprimentoController sc = new SuprimentoController();
-        
+
         for (Suprimento s : sc.listarSuprimento()) {
             modelo.addRow(new Object[]{s.getCodigo(), s.getNome(), s.getQtdade()});
-            
+
         }
-        
+
     }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import modelo.negocio.EntradaSuprimento;
 import modelo.negocio.Suprimento;
 import modelo.persistencia.SuprimentoDAOJPA;
 import modelo.persistencia.dao.SuprimentoDAO;
@@ -37,5 +38,7 @@ public class SuprimentoController {
         return dao.pesquisar(nome);
 
     }
+//*****************************************************************************
+   
 
 }
