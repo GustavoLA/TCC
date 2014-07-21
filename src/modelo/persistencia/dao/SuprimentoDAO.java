@@ -1,7 +1,6 @@
 package modelo.persistencia.dao;
 
 import java.util.List;
-import modelo.negocio.EntradaSuprimento;
 import modelo.negocio.Suprimento;
 
 public interface SuprimentoDAO extends DAO<Suprimento, Integer> {
