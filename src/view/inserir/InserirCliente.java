@@ -85,10 +85,12 @@ public class InserirCliente extends javax.swing.JFrame {
         txIdEndereco = new javax.swing.JTextField();
         complemento = new javax.swing.JLabel();
         TxComplemento = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txBairro = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        painelFundo.setBackground(new java.awt.Color(0, 153, 153));
+        painelFundo.setBackground(new java.awt.Color(217, 176, 60));
         painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CLIENTE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), java.awt.Color.white)); // NOI18N
 
         btSalvar.setText("SALVAR");
@@ -105,9 +107,9 @@ public class InserirCliente extends javax.swing.JFrame {
             }
         });
 
-        cadastroCliente.setBackground(java.awt.Color.white);
+        cadastroCliente.setBackground(new java.awt.Color(255, 241, 111));
 
-        dadosPessoais.setBackground(java.awt.Color.white);
+        dadosPessoais.setBackground(new java.awt.Color(255, 255, 153));
 
         nome.setText("NOME *");
 
@@ -272,7 +274,7 @@ public class InserirCliente extends javax.swing.JFrame {
 
         cadastroCliente.addTab("DADOS PESSOAIS ", dadosPessoais);
 
-        endereco.setBackground(java.awt.Color.white);
+        endereco.setBackground(new java.awt.Color(255, 255, 153));
 
         rua.setText("RUA *");
 
@@ -290,11 +292,19 @@ public class InserirCliente extends javax.swing.JFrame {
             }
         });
 
+        txCep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txCepActionPerformed(evt);
+            }
+        });
+
         idEndereco.setText("ID");
 
         txIdEndereco.setEditable(false);
 
         complemento.setText("COMPLEMENTO");
+
+        jLabel1.setText("BAIRRO");
 
         javax.swing.GroupLayout enderecoLayout = new javax.swing.GroupLayout(endereco);
         endereco.setLayout(enderecoLayout);
@@ -318,12 +328,14 @@ public class InserirCliente extends javax.swing.JFrame {
                                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(estado)
                                     .addComponent(cidade)
-                                    .addComponent(cep))
+                                    .addComponent(cep)
+                                    .addComponent(jLabel1))
                                 .addGap(58, 58, 58)
                                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                                     .addComponent(txCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                                    .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txBairro)))
                             .addGroup(enderecoLayout.createSequentialGroup()
                                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rua)
@@ -337,7 +349,7 @@ public class InserirCliente extends javax.swing.JFrame {
         enderecoLayout.setVerticalGroup(
             enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(enderecoLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(complemento))
@@ -361,7 +373,11 @@ public class InserirCliente extends javax.swing.JFrame {
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cep)
                     .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idEndereco)
                     .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -501,6 +517,10 @@ public class InserirCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txEstadoActionPerformed
 
+    private void txCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCepActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txCepActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxComplemento;
@@ -522,6 +542,7 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JLabel estado;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idEndereco;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel numero;
     private javax.swing.JPanel painelFundo;
@@ -533,6 +554,7 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JLabel sexo;
     private javax.swing.JLabel telefone;
     private javax.swing.JTextPane txAnotacoes;
+    private javax.swing.JTextField txBairro;
     private javax.swing.JFormattedTextField txCelular;
     private javax.swing.JFormattedTextField txCep;
     private javax.swing.JTextField txCidade;
