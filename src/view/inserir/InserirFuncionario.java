@@ -8,7 +8,7 @@ import modelo.negocio.Endereco;
 import modelo.negocio.Funcionario;
 
 public class InserirFuncionario extends javax.swing.JFrame {
-
+    
     private DefaultTableModel modelo;
     private int linhaSelecionada;
 
@@ -76,8 +76,8 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txIdEndereco = new javax.swing.JTextField();
         cep = new javax.swing.JLabel();
         txCep = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        bairro = new javax.swing.JLabel();
+        txBairro = new javax.swing.JTextField();
         dadosPessoais = new javax.swing.JPanel();
         nome = new javax.swing.JLabel();
         txNome = new javax.swing.JTextField();
@@ -237,11 +237,11 @@ public class InserirFuncionario extends javax.swing.JFrame {
 
         cep.setText("CEP");
 
-        jLabel1.setText("BAIRRO");
+        bairro.setText("BAIRRO");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txBairroActionPerformed(evt);
             }
         });
 
@@ -282,10 +282,10 @@ public class InserirFuncionario extends javax.swing.JFrame {
                         .addGroup(enderecoLayout.createSequentialGroup()
                             .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(rua)
-                                .addComponent(jLabel1))
+                                .addComponent(bairro))
                             .addGap(26, 26, 26)
                             .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txRua, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(enderecoLayout.createSequentialGroup()
                             .addComponent(cidade)
@@ -308,8 +308,8 @@ public class InserirFuncionario extends javax.swing.JFrame {
                     .addComponent(txCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bairro)
+                    .addComponent(txBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rua)
@@ -535,9 +535,9 @@ public class InserirFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-
+        
         Funcionario f = new Funcionario();
-
+        
         f.setCpf(txCpf.getText());
         f.setLogin(txLogin.getText());
         f.setRg(txRg.getText());
@@ -569,26 +569,27 @@ public class InserirFuncionario extends javax.swing.JFrame {
         } else {
             f.setSexo('F');
         }
-
+        
         Endereco e = new Endereco();
-
+        
         e.setCidade(txCidade.getText());
         e.setComplemento(txComplemento.getText());
         e.setEstado(txEstado.getText());
         e.setNumero(Integer.parseInt(txNumero.getText()));
         e.setRua(txRua.getText());
         e.setCep(txCep.getText());
+        e.setBairro(txBairro.getText());
         if (!(txIdEndereco.getText().equals("") | (txIdEndereco.getText().equals(null)))) {
             e.setCodigo(Integer.parseInt(txIdEndereco.getText()));
         }
         f.setEndereco(e);
-
+        
         FuncionarioController fc = new FuncionarioController();
-
+        
         if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
             f.setCodigo(Integer.parseInt(txId.getText()));
             fc.salvar(f);
-
+            
             modelo.removeRow(linhaSelecionada);
             modelo.addRow(new Object[]{f.getCodigo(), f.getCpf(), f.getDtAdmissao(), f.getDtDemissao(), f.getDtNascimento(), f.getLogin(), f.getNome(), f.getRg(), f.getSenha(), f.getTelefone(), f.getcTrabalho(), f.getSalario()});
             dispose();
@@ -612,21 +613,23 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txTelefone.setText(null);
         txRg.setText(null);
         txSalario.setText(null);
-
+        
         txCidade.setText(null);
         txComplemento.setText(null);
         txEstado.setText(null);
         txNumero.setText(null);
         txRua.setText(null);
         txCep.setText(null);
+        txBairro.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBairroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txBairroActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PainelFundo;
+    private javax.swing.JLabel bairro;
     private javax.swing.ButtonGroup bgSexo;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
@@ -645,9 +648,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel estado;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idEndereco;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel login;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel numero;
@@ -663,6 +664,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
     private javax.swing.JSeparator separador;
     private javax.swing.JLabel sexo;
     private javax.swing.JLabel telefone;
+    private javax.swing.JTextField txBairro;
     private javax.swing.JFormattedTextField txCep;
     private javax.swing.JTextField txCidade;
     private javax.swing.JTextField txComplemento;
@@ -689,7 +691,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
         initComponents();
         this.linhaSelecionada = linhaSelecionada;
         setLocationRelativeTo(null);
-
+        
         FuncionarioController fc = new FuncionarioController();
         Funcionario f = fc.listarFuncionarioPorId(idFuncionario);
 
@@ -725,8 +727,9 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txEstado.setText(f.getEndereco().getEstado());
         txRua.setText(f.getEndereco().getRua());
         txCep.setText(f.getEndereco().getCep());
+        txBairro.setText(f.getEndereco().getCep());
     }
-
+    
     private void bloquearCampos() {
         txNome.setEditable(false);
         txCep.setEditable(false);
@@ -750,5 +753,6 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txSenha.setEditable(false);
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
+        txBairro.setEnabled(false);
     }
 }

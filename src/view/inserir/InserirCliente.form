@@ -412,12 +412,16 @@
                                               <Component id="estado" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="cidade" min="-2" max="-2" attributes="0"/>
                                               <Component id="cep" min="-2" max="-2" attributes="0"/>
+                                              <Component id="bairro" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="txEstado" alignment="0" pref="390" max="32767" attributes="0"/>
                                               <Component id="txCidade" alignment="0" pref="390" max="32767" attributes="0"/>
-                                              <Component id="txCep" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="txBairro" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txCep" alignment="0" pref="117" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
@@ -471,7 +475,12 @@
                               <Component id="cep" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txCep" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="252" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="bairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="214" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="idEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txIdEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -536,6 +545,13 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="TxComplemento">
+                </Component>
+                <Component class="javax.swing.JLabel" name="bairro">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="BAIRRO"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txBairro">
                 </Component>
               </SubComponents>
             </Container>

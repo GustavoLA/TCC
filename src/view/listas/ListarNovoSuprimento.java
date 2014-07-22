@@ -7,8 +7,10 @@ package view.listas;
 
 import controller.EntradaSuprimentoController;
 import controller.SuprimentoController;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelo.negocio.EntradaProduto;
 import modelo.negocio.EntradaSuprimento;
 import view.inserir.CadastrarNovoSuprimento;
 
@@ -39,6 +41,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
 
         painelLista = new javax.swing.JScrollPane();
         btNovo = new javax.swing.JToggleButton();
+        btRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -56,6 +59,13 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
             }
         });
 
+        btRemover.setText("remover");
+        btRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,7 +75,9 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
                 .addComponent(painelLista)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(320, Short.MAX_VALUE)
+                .addContainerGap(229, Short.MAX_VALUE)
+                .addComponent(btRemover)
+                .addGap(18, 18, 18)
                 .addComponent(btNovo)
                 .addGap(23, 23, 23))
         );
@@ -73,7 +85,9 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(btNovo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btNovo)
+                    .addComponent(btRemover))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -93,9 +107,27 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
         preencherJTable();
     }//GEN-LAST:event_formWindowGainedFocus
 
+    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
+        int linhaSelecionada = -1;
+        linhaSelecionada = tabela.getSelectedRow();
+
+        if (linhaSelecionada >= 0) {
+            int id = (int) tabela.getValueAt(linhaSelecionada, 0);
+
+            EntradaSuprimentoController sc = new EntradaSuprimentoController();
+            if (sc.excluir(id));
+            {
+                modelo.removeRow(linhaSelecionada);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "SELECIONE UMA LINHA");
+
+        }    }//GEN-LAST:event_btRemoverActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btNovo;
+    private javax.swing.JButton btRemover;
     private javax.swing.JScrollPane painelLista;
     // End of variables declaration//GEN-END:variables
 

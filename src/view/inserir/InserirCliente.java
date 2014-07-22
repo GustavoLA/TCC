@@ -85,6 +85,8 @@ public class InserirCliente extends javax.swing.JFrame {
         txIdEndereco = new javax.swing.JTextField();
         complemento = new javax.swing.JLabel();
         TxComplemento = new javax.swing.JTextField();
+        bairro = new javax.swing.JLabel();
+        txBairro = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -296,6 +298,8 @@ public class InserirCliente extends javax.swing.JFrame {
 
         complemento.setText("COMPLEMENTO");
 
+        bairro.setText("BAIRRO");
+
         javax.swing.GroupLayout enderecoLayout = new javax.swing.GroupLayout(endereco);
         endereco.setLayout(enderecoLayout);
         enderecoLayout.setHorizontalGroup(
@@ -318,12 +322,15 @@ public class InserirCliente extends javax.swing.JFrame {
                                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(estado)
                                     .addComponent(cidade)
-                                    .addComponent(cep))
+                                    .addComponent(cep)
+                                    .addComponent(bairro))
                                 .addGap(58, 58, 58)
                                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                                     .addComponent(txCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                                    .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txBairro, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txCep, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))))
                             .addGroup(enderecoLayout.createSequentialGroup()
                                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rua)
@@ -361,7 +368,11 @@ public class InserirCliente extends javax.swing.JFrame {
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cep)
                     .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bairro)
+                    .addComponent(txBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idEndereco)
                     .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -451,6 +462,7 @@ public class InserirCliente extends javax.swing.JFrame {
         e.setNumero(Integer.parseInt(txNumero.getText()));
         e.setRua(txRua.getText());
         e.setCep(txCep.getText());
+        e.setBairro(txBairro.getText());
         if (!(txIdEndereco.getText().equals("") | (txIdEndereco.getText().equals(null)))) {
             e.setCodigo(Integer.parseInt(txIdEndereco.getText()));
         }
@@ -490,6 +502,7 @@ public class InserirCliente extends javax.swing.JFrame {
         txNumero.setText(null);
         txRua.setText(null);
         txCep.setText(null);
+        txBairro.setText(null);
 
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -505,6 +518,7 @@ public class InserirCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxComplemento;
     private javax.swing.JLabel anotacoes;
+    private javax.swing.JLabel bairro;
     private javax.swing.ButtonGroup bgSexo;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
@@ -533,6 +547,7 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JLabel sexo;
     private javax.swing.JLabel telefone;
     private javax.swing.JTextPane txAnotacoes;
+    private javax.swing.JTextField txBairro;
     private javax.swing.JFormattedTextField txCelular;
     private javax.swing.JFormattedTextField txCep;
     private javax.swing.JTextField txCidade;
@@ -584,6 +599,8 @@ public class InserirCliente extends javax.swing.JFrame {
         txEstado.setText(c.getEndereco().getEstado());
         txRua.setText(c.getEndereco().getRua());
         txCep.setText(c.getEndereco().getCep());
+        txBairro.setText(c.getEndereco().getBairro());
+        
     }
     
     private void bloquearCampos() {
@@ -608,6 +625,6 @@ public class InserirCliente extends javax.swing.JFrame {
         rbMasculino.setEnabled(false);
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
-        
+        txBairro.setEditable(false);
     }
 }

@@ -5,42 +5,37 @@
  */
 package view.inserir;
 
+import controller.IngredienteController;
 import controller.ProdutoController;
 import controller.SuprimentoController;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelo.negocio.Ingrediente;
 import modelo.negocio.Produto;
 import modelo.negocio.Suprimento;
 
 public class InserirProduto extends javax.swing.JFrame {
 
-    //Suprimento
-    List<Suprimento> suprimentoAdd = new ArrayList();
-    private JTable tabela;
-    private DefaultTableModel tabelaSuprimento = new DefaultTableModel();
+    //Suprimento para produção
+    private JTable tabelaIngrediente;
+    private DefaultTableModel modeloIngrediente = new DefaultTableModel();
 
     //Produto
     private DefaultTableModel modelo;
     private int linhaSelecionada;
-
-    //INSERIR SUPRIMENTO
-    public InserirProduto() {
-        initComponents();
-        criaJTable();
-        listaIngrediente.setViewportView(tabela);
-        setLocationRelativeTo(null);
-    }
 
     //INSERIR
     public InserirProduto(DefaultTableModel modelo) {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
-        carregarCombo();
         setResizable(false);
+        criaJTable();
+        painelIngrediente.setViewportView(tabelaIngrediente);
     }
 
     //EDITAR LINHA SELECIONADA 
@@ -74,13 +69,13 @@ public class InserirProduto extends javax.swing.JFrame {
         txDescricao = new javax.swing.JTextArea();
         btSalvar = new javax.swing.JButton();
         txNome = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        ingrediente = new javax.swing.JLabel();
         btAdicionar = new javax.swing.JButton();
         btDeletar = new javax.swing.JButton();
-        cbIngrediente = new javax.swing.JComboBox();
         id = new javax.swing.JLabel();
         txId = new javax.swing.JTextField();
-        listaIngrediente = new javax.swing.JScrollPane();
+        painelIngrediente = new javax.swing.JScrollPane();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -106,7 +101,7 @@ public class InserirProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Ingredientes");
+        ingrediente.setText("Ingredientes");
 
         btAdicionar.setText("Adicionar");
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +110,12 @@ public class InserirProduto extends javax.swing.JFrame {
             }
         });
 
-        btDeletar.setText("Deletar");
+        btDeletar.setText("Remover");
+        btDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeletarActionPerformed(evt);
+            }
+        });
 
         id.setText("ID");
 
@@ -138,26 +138,24 @@ public class InserirProduto extends javax.swing.JFrame {
                                 .addComponent(nome)
                                 .addGap(31, 31, 31)
                                 .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(300, Short.MAX_VALUE))
+                        .addContainerGap(208, Short.MAX_VALUE))
                     .addGroup(cadastroProdutoLayout.createSequentialGroup()
                         .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(listaIngrediente)
-                                    .addComponent(cbIngrediente, 0, 334, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btAdicionar)
-                                    .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btSalvar)
-                                        .addComponent(btDeletar))))
-                            .addGroup(cadastroProdutoLayout.createSequentialGroup()
                                 .addComponent(id)
                                 .addGap(18, 18, 18)
-                                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btSalvar)
+                                .addGroup(cadastroProdutoLayout.createSequentialGroup()
+                                    .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ingrediente)
+                                        .addComponent(btAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(painelIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 21, Short.MAX_VALUE))))
+            .addComponent(jSeparator1)
         );
         cadastroProdutoLayout.setVerticalGroup(
             cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,26 +172,20 @@ public class InserirProduto extends javax.swing.JFrame {
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descricao)
                     .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ingrediente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                        .addComponent(btSalvar)
-                        .addGap(19, 19, 19))
-                    .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btAdicionar))
+                        .addComponent(btAdicionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                                .addComponent(btDeletar)
-                                .addGap(77, 77, 77))
-                            .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                                .addComponent(listaIngrediente)
-                                .addContainerGap())))))
+                        .addComponent(btDeletar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btSalvar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
@@ -253,20 +245,34 @@ public class InserirProduto extends javax.swing.JFrame {
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
 
-        Suprimento suprimentoExcluirCombo = (Suprimento) cbIngrediente.getSelectedItem();
-        suprimentoAdd.add(suprimentoExcluirCombo);
-
-        cbIngrediente.removeItem(suprimentoExcluirCombo);
+        InserirIngrediente novo = new InserirIngrediente(modeloIngrediente);
+        novo.setVisible(true);
 
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
 
-        tabelaSuprimento.setNumRows(0);
-        //Metodo para atualizar a lista quando for acrescentado outro item
+        modeloIngrediente.setNumRows(0);
         preencherJTable();
 
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void btDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarActionPerformed
+        int linhaSelecionadaIngrediente = -1;
+        linhaSelecionadaIngrediente = tabelaIngrediente.getSelectedRow();
+
+        if (linhaSelecionadaIngrediente >= 0) {
+            int idIngrediente = (int) tabelaIngrediente.getValueAt(linhaSelecionadaIngrediente, 0);
+
+            IngredienteController ic = new IngredienteController();
+            if (ic.excluir(idIngrediente));
+            {
+                modeloIngrediente.removeRow(linhaSelecionadaIngrediente);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "SELECIONE UMA LINHA");
+
+        }    }//GEN-LAST:event_btDeletarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,13 +280,13 @@ public class InserirProduto extends javax.swing.JFrame {
     private javax.swing.JButton btDeletar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JPanel cadastroProduto;
-    private javax.swing.JComboBox cbIngrediente;
     private javax.swing.JLabel descricao;
     private javax.swing.JLabel id;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane listaIngrediente;
+    private javax.swing.JLabel ingrediente;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nome;
     private javax.swing.JPanel painelFundo;
+    private javax.swing.JScrollPane painelIngrediente;
     private javax.swing.JScrollPane scrollDescricao;
     private javax.swing.JTextArea txDescricao;
     private javax.swing.JTextField txId;
@@ -307,41 +313,45 @@ public class InserirProduto extends javax.swing.JFrame {
 
     }
 
-    //Adicionar ingrediente
-    private void carregarCombo() {
-        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbIngrediente.getModel();
-        comboModel.removeAllElements();
-        List<Suprimento> s = new ArrayList<>();
-        SuprimentoController sc = new SuprimentoController();
-        s = sc.listarSuprimento();
-
-        for (int linha = 0; linha < s.size(); linha++) {
-            Suprimento sb = s.get(linha);
-            comboModel.addElement(sb);
-        }
-
-    }
-
+//    Carregar comboBox com suprimentos que são para produção
+//    private void carregarCombo() {
+//
+//        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbIngrediente.getModel();
+//        comboModel.removeAllElements();
+//        List<Suprimento> s = new ArrayList<>();
+//
+//        SuprimentoController sc = new SuprimentoController();
+//        s = sc.listarSuprimento();
+//
+//        for (int linha = 0; linha < s.size(); linha++) {
+//            Suprimento sb = s.get(linha);
+//            if (sb.getProducao() == 'S') {
+//
+//                comboModel.addElement(sb);
+//
+//            }
+//        }
+//    }
     private void criaJTable() {
 
-        tabela = new JTable(tabelaSuprimento) {
+        tabelaIngrediente = new JTable(modeloIngrediente) {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
 
-        tabelaSuprimento.addColumn("NOME");
-        tabelaSuprimento.addColumn("QUANTIDADAE");
+        modeloIngrediente.addColumn("PRODUTO");
+        modeloIngrediente.addColumn("QUANTIDADE");
+        modeloIngrediente.addColumn("UNIDADE MEDIDA");
 
         preencherJTable();
     }
 
     private void preencherJTable() {
 
-        SuprimentoController sc = new SuprimentoController();
-
-        for (Suprimento s : sc.listarSuprimento()) {
-            tabelaSuprimento.addRow(new Object[]{s.getNome()});
+        IngredienteController sc = new IngredienteController();
+        for (Ingrediente s : sc.listarIngrediente()) {
+            modeloIngrediente.addRow(new Object[]{s.getNome(), s.getQntidade(), s.getMedida()});
 
         }
 
