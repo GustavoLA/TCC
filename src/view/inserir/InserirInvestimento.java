@@ -39,132 +39,28 @@ public class InserirInvestimento extends javax.swing.JFrame {
     private void initComponents() {
 
         painelFundo = new javax.swing.JPanel();
-        cadastroInvestimento = new javax.swing.JTabbedPane();
-        investimento = new javax.swing.JPanel();
-        id = new javax.swing.JLabel();
-        descricaoInvestimento = new javax.swing.JLabel();
-        formaPagamento = new javax.swing.JLabel();
-        valorTotal = new javax.swing.JLabel();
-        valorParcela = new javax.swing.JLabel();
-        numeroParcela = new javax.swing.JLabel();
-        dtInvestimento = new javax.swing.JLabel();
-        txId = new javax.swing.JTextField();
-        txDtInvestimento = new javax.swing.JFormattedTextField();
-        txFormaPagamento = new javax.swing.JFormattedTextField();
-        txValorTotal = new javax.swing.JFormattedTextField();
-        txValorParcela = new javax.swing.JFormattedTextField();
-        txNumeroParcela = new javax.swing.JFormattedTextField();
-        scrollDescricao = new javax.swing.JScrollPane();
-        txDescricao = new javax.swing.JTextArea();
         btSalvar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        id = new javax.swing.JLabel();
+        txId = new javax.swing.JTextField();
+        dtInvestimento = new javax.swing.JLabel();
+        txDtInvestimento = new javax.swing.JFormattedTextField();
+        formaPagamento = new javax.swing.JLabel();
+        txFormaPagamento = new javax.swing.JFormattedTextField();
+        valorTotal = new javax.swing.JLabel();
+        txValorTotal = new javax.swing.JFormattedTextField();
+        valorParcela = new javax.swing.JLabel();
+        txValorParcela = new javax.swing.JFormattedTextField();
+        numeroParcela = new javax.swing.JLabel();
+        txNumeroParcela = new javax.swing.JFormattedTextField();
+        descricaoInvestimento = new javax.swing.JLabel();
+        scrollDescricao = new javax.swing.JScrollPane();
+        txDescricao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        id.setText("ID");
-
-        descricaoInvestimento.setText("DESCRIÇÃO");
-
-        formaPagamento.setText("FORMA DE PAGAMENTO");
-
-        valorTotal.setText("VALOR TOTAL");
-
-        valorParcela.setText("VALOR DA PARCELA");
-
-        numeroParcela.setText("NÚMERO DE PARCELAS");
-
-        dtInvestimento.setText("DATA");
-
-        txId.setEditable(false);
-
-        try {
-            txDtInvestimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        txDescricao.setColumns(20);
-        txDescricao.setRows(5);
-        scrollDescricao.setViewportView(txDescricao);
-
-        javax.swing.GroupLayout investimentoLayout = new javax.swing.GroupLayout(investimento);
-        investimento.setLayout(investimentoLayout);
-        investimentoLayout.setHorizontalGroup(
-            investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(investimentoLayout.createSequentialGroup()
-                .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(investimentoLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(investimentoLayout.createSequentialGroup()
-                                .addComponent(numeroParcela)
-                                .addGap(18, 18, 18)
-                                .addComponent(txNumeroParcela))
-                            .addGroup(investimentoLayout.createSequentialGroup()
-                                .addComponent(valorTotal)
-                                .addGap(18, 18, 18)
-                                .addComponent(txValorTotal))
-                            .addGroup(investimentoLayout.createSequentialGroup()
-                                .addComponent(id)
-                                .addGap(18, 18, 18)
-                                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(investimentoLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(valorParcela)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                .addComponent(txValorParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, investimentoLayout.createSequentialGroup()
-                                .addComponent(formaPagamento)
-                                .addGap(18, 18, 18)
-                                .addComponent(txFormaPagamento))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, investimentoLayout.createSequentialGroup()
-                                .addComponent(dtInvestimento)
-                                .addGap(42, 42, 42)
-                                .addComponent(txDtInvestimento, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(investimentoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(descricaoInvestimento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
-        investimentoLayout.setVerticalGroup(
-            investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(investimentoLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(id)
-                    .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txDtInvestimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dtInvestimento))
-                .addGap(18, 18, 18)
-                .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(formaPagamento)
-                    .addComponent(txFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valorTotal)
-                    .addComponent(txValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valorParcela)
-                    .addComponent(txValorParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numeroParcela)
-                    .addComponent(txNumeroParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(investimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(investimentoLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(descricaoInvestimento))
-                    .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        cadastroInvestimento.addTab("INVESTIMENTOS", investimento);
+        painelFundo.setBackground(new java.awt.Color(217, 176, 60));
 
         btSalvar.setText("SALVAR");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -180,46 +76,143 @@ public class InserirInvestimento extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INVESTIMENTO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
+
+        id.setText("ID");
+
+        txId.setEditable(false);
+
+        dtInvestimento.setText("DATA");
+
+        try {
+            txDtInvestimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        formaPagamento.setText("FORMA DE PAGAMENTO");
+
+        valorTotal.setText("VALOR TOTAL");
+
+        valorParcela.setText("VALOR DA PARCELA");
+
+        numeroParcela.setText("NÚMERO DE PARCELAS");
+
+        descricaoInvestimento.setText("DESCRIÇÃO");
+
+        txDescricao.setColumns(20);
+        txDescricao.setRows(5);
+        scrollDescricao.setViewportView(txDescricao);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(formaPagamento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(valorTotal)
+                        .addGap(18, 18, 18)
+                        .addComponent(txValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(valorParcela)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txValorParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(numeroParcela)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txNumeroParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(descricaoInvestimento)
+                        .addGap(44, 44, 44)
+                        .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(id)
+                            .addComponent(dtInvestimento))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txId)
+                            .addComponent(txDtInvestimento, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id)
+                    .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dtInvestimento)
+                            .addComponent(txDtInvestimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(formaPagamento)
+                            .addComponent(txFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(valorTotal)
+                            .addComponent(txValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(valorParcela))
+                    .addComponent(txValorParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numeroParcela)
+                    .addComponent(txNumeroParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(descricaoInvestimento)
+                        .addGap(82, 82, 82))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+
         javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
         painelFundo.setLayout(painelFundoLayout);
         painelFundoLayout.setHorizontalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFundoLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(cadastroInvestimento, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(243, 243, 243)
                 .addComponent(btSalvar)
                 .addGap(18, 18, 18)
                 .addComponent(btLimpar)
-                .addGap(80, 80, 80))
+                .addContainerGap(204, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFundoLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(cadastroInvestimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(73, 73, 73)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSalvar)
                     .addComponent(btLimpar))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(painelFundo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -272,12 +265,11 @@ public class InserirInvestimento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JTabbedPane cadastroInvestimento;
     private javax.swing.JLabel descricaoInvestimento;
     private javax.swing.JLabel dtInvestimento;
     private javax.swing.JLabel formaPagamento;
     private javax.swing.JLabel id;
-    private javax.swing.JPanel investimento;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel numeroParcela;
     private javax.swing.JPanel painelFundo;
     private javax.swing.JScrollPane scrollDescricao;
