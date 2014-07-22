@@ -88,11 +88,11 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        painelFundo.setBackground(new java.awt.Color(0, 153, 153));
+        painelFundo.setBackground(new java.awt.Color(217, 176, 60));
         painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FORNECEDOR", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), java.awt.Color.white)); // NOI18N
         painelFundo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
-        dadosFornecedor.setBackground(java.awt.Color.white);
+        dadosFornecedor.setBackground(new java.awt.Color(255, 255, 153));
 
         nome.setText("NOME *");
 
@@ -187,7 +187,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         cadastroFornecedor.addTab("DADOS DO FORNECEDOR", dadosFornecedor);
 
-        endereco.setBackground(java.awt.Color.white);
+        endereco.setBackground(new java.awt.Color(255, 255, 153));
 
         rua.setText("RUA  *");
 
@@ -292,7 +292,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         cadastroFornecedor.addTab("ENDEREÇO", endereco);
 
-        tipoProduto.setBackground(java.awt.Color.white);
+        tipoProduto.setBackground(new java.awt.Color(255, 255, 153));
 
         nomeProduto.setText("NOME DO PRODUTO *");
 
