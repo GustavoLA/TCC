@@ -84,7 +84,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        painelFundo.setBackground(new java.awt.Color(0, 153, 153));
+        painelFundo.setBackground(new java.awt.Color(217, 176, 60));
 
         btSalvar.setBackground(new java.awt.Color(255, 255, 255));
         btSalvar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
