@@ -100,13 +100,13 @@ public class InserirFuncionario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        PainelFundo.setBackground(new java.awt.Color(0, 153, 153));
+        PainelFundo.setBackground(new java.awt.Color(217, 176, 60));
         PainelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FUNCIONÁRIOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), java.awt.Color.white)); // NOI18N
         PainelFundo.setMinimumSize(new java.awt.Dimension(592, 422));
 
         cadastroFuncionarios.setBackground(new java.awt.Color(255, 255, 153));
 
-        dadosProfissionais.setBackground(java.awt.Color.white);
+        dadosProfissionais.setBackground(new java.awt.Color(255, 255, 153));
 
         ctps.setText("CARTEIRA DE TRABALHO *");
 
@@ -219,7 +219,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
 
         cadastroFuncionarios.addTab("DADOS PROFISSIONAIS", dadosProfissionais);
 
-        endereco.setBackground(java.awt.Color.white);
+        endereco.setBackground(new java.awt.Color(255, 255, 153));
 
         rua.setText("RUA *");
 
@@ -341,7 +341,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
 
         cadastroFuncionarios.addTab("ENDEREÇO", endereco);
 
-        dadosPessoais.setBackground(java.awt.Color.white);
+        dadosPessoais.setBackground(new java.awt.Color(255, 255, 153));
 
         nome.setText("NOME *");
 
