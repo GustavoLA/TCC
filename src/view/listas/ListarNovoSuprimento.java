@@ -49,6 +49,8 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
             }
         });
 
+        painelLista.setBackground(new java.awt.Color(255, 255, 153));
+
         btNovo.setText("novo");
         btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
