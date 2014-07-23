@@ -52,12 +52,13 @@ public class ListarSuprimento extends javax.swing.JFrame {
             }
         });
 
-        painelFundo.setBackground(new java.awt.Color(255, 255, 153));
-        painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder("FUNCIONÁRIOS"));
+        painelFundo.setBackground(new java.awt.Color(217, 176, 60));
+        painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder("SUPRIMENTOS"));
         painelFundo.setMaximumSize(new java.awt.Dimension(800, 600));
         painelFundo.setMinimumSize(new java.awt.Dimension(800, 600));
         painelFundo.setPreferredSize(new java.awt.Dimension(800, 600));
 
+        painelLista.setBackground(new java.awt.Color(255, 255, 153));
         painelLista.setMaximumSize(new java.awt.Dimension(400, 400));
         painelLista.setMinimumSize(new java.awt.Dimension(400, 400));
         painelLista.setPreferredSize(new java.awt.Dimension(400, 400));
