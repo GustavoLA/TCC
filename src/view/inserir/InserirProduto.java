@@ -340,6 +340,7 @@ public class InserirProduto extends javax.swing.JFrame {
             }
         };
 
+        modeloIngrediente.addColumn("ID");
         modeloIngrediente.addColumn("PRODUTO");
         modeloIngrediente.addColumn("QUANTIDADE");
         modeloIngrediente.addColumn("UNIDADE MEDIDA");
@@ -351,7 +352,7 @@ public class InserirProduto extends javax.swing.JFrame {
 
         IngredienteController sc = new IngredienteController();
         for (Ingrediente s : sc.listarIngrediente()) {
-            modeloIngrediente.addRow(new Object[]{s.getNome(), s.getQntidade(), s.getMedida()});
+            modeloIngrediente.addRow(new Object[]{s.getCodigo(), s.getNome(), s.getQntidade(), s.getMedida()});
 
         }
 
