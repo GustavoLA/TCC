@@ -8,15 +8,16 @@ import modelo.negocio.Cliente;
 import modelo.negocio.Endereco;
 
 public class InserirCliente extends javax.swing.JFrame {
-    
+
     private DefaultTableModel modelo;
     private int linhaSelecionada;
 
     //INSERIR NOVO 
     public InserirCliente(DefaultTableModel modelo) {
+        this.modelo = modelo;
         initComponents();
         setLocationRelativeTo(null);
-        this.modelo = modelo;
+
     }
 
     //EDITAR LINHA SELECIONADA
@@ -92,6 +93,8 @@ public class InserirCliente extends javax.swing.JFrame {
 
         painelFundo.setBackground(new java.awt.Color(217, 176, 60));
         painelFundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CLIENTE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18), java.awt.Color.white)); // NOI18N
+        painelFundo.setMaximumSize(new java.awt.Dimension(800, 600));
+        painelFundo.setMinimumSize(new java.awt.Dimension(800, 600));
 
         btSalvar.setText("SALVAR");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +222,7 @@ public class InserirCliente extends javax.swing.JFrame {
                                 .addComponent(txCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 141, Short.MAX_VALUE))
+                .addGap(0, 148, Short.MAX_VALUE))
         );
         dadosPessoaisLayout.setVerticalGroup(
             dadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,7 +347,7 @@ public class InserirCliente extends javax.swing.JFrame {
                                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txRua, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         enderecoLayout.setVerticalGroup(
             enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,7 +431,7 @@ public class InserirCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        
+
         Cliente c = new Cliente();
 
         //CLIENTE
@@ -439,7 +442,7 @@ public class InserirCliente extends javax.swing.JFrame {
         c.setNome(txNome.getText());
         c.setRg(txRg.getText());
         c.setTelefone(txTelefone.getText());
-        
+
         try {
             String data = txDtCadastro.getText();
             c.setDtCadastro(new SimpleDateFormat("dd/mm/yyyy").parse(data));
@@ -452,15 +455,15 @@ public class InserirCliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "FORMATO INVÁLIDO! UTILIZE DD/MM/YYYY\n" + ex);
         }
-        
+
         if (rbMasculino.isSelected()) {
             c.setSexo('M');
         } else {
             c.setSexo('F');
         }
-        
+
         Endereco e = new Endereco();
-        
+
         e.setCidade(txCidade.getText());
         e.setComplemento(TxComplemento.getText());
         e.setEstado(txEstado.getText());
@@ -471,13 +474,13 @@ public class InserirCliente extends javax.swing.JFrame {
             e.setCodigo(Integer.parseInt(txIdEndereco.getText()));
         }
         c.setEndereco(e);
-        
+
         ClienteController cc = new ClienteController();
-        
+
         if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
             c.setCodigo(Integer.parseInt(txId.getText()));
             cc.salvar(c);
-            
+
             modelo.removeRow(linhaSelecionada);
             modelo.addRow(new Object[]{c.getCodigo(), c.getAnotacoes(), c.getCelular(), c.getCpf(), c.getDtCadastro(), c.getDtNascimento(), c.getEmail(), c.getNome(), c.getRg(), c.getTelefone()});
             dispose();
@@ -486,10 +489,11 @@ public class InserirCliente extends javax.swing.JFrame {
             dispose();
         }
 
+
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        
+
         txAnotacoes.setText(null);
         txCelular.setText(null);
         txCpf.setText(null);
@@ -499,7 +503,7 @@ public class InserirCliente extends javax.swing.JFrame {
         txNome.setText(null);
         txRg.setText(null);
         txTelefone.setText(null);
-        
+
         txCidade.setText(null);
         TxComplemento.setText(null);
         txEstado.setText(null);
@@ -607,9 +611,9 @@ public class InserirCliente extends javax.swing.JFrame {
         txRua.setText(c.getEndereco().getRua());
         txCep.setText(c.getEndereco().getCep());
     }
-    
+
     private void bloquearCampos() {
-        
+
         TxComplemento.setEditable(false);
         txAnotacoes.setEditable(false);
         txCelular.setEditable(false);
@@ -630,6 +634,6 @@ public class InserirCliente extends javax.swing.JFrame {
         rbMasculino.setEnabled(false);
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
-        
+
     }
 }
