@@ -418,10 +418,8 @@
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="txEstado" alignment="0" pref="390" max="32767" attributes="0"/>
                                               <Component id="txCidade" alignment="0" pref="390" max="32767" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="txBairro" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txCep" alignment="0" pref="117" max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="txBairro" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txCep" alignment="0" pref="117" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">

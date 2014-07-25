@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Cliente;
 import modelo.negocio.Endereco;
 
+
 public class InserirCliente extends javax.swing.JFrame {
     
     private DefaultTableModel modelo;

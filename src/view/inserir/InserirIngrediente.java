@@ -10,6 +10,7 @@ import controller.SuprimentoController;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Ingrediente;
 import modelo.negocio.Suprimento;
@@ -51,6 +52,8 @@ public class InserirIngrediente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        txUnidadeMedida.setEditable(false);
+
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +66,12 @@ public class InserirIngrediente extends javax.swing.JFrame {
         unidadeMedida.setText("Unidade de medida");
 
         ingrediente.setText("Ingrediente");
+
+        cbIngrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbIngredienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
         painelFundo.setLayout(painelFundoLayout);
@@ -144,6 +153,13 @@ public class InserirIngrediente extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void cbIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIngredienteActionPerformed
+
+        Suprimento s = (Suprimento) cbIngrediente.getSelectedItem();
+        txUnidadeMedida.setText(s.getUnidadeMedida());
+
+    }//GEN-LAST:event_cbIngredienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
