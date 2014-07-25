@@ -64,6 +64,8 @@ public class ListarSuprimento extends javax.swing.JFrame {
         painelLista.setPreferredSize(new java.awt.Dimension(400, 400));
 
         btDeletar.setText("DELETAR");
+        btDeletar.setBorderPainted(false);
+        btDeletar.setContentAreaFilled(false);
         btDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btDeletarActionPerformed(evt);
@@ -71,6 +73,8 @@ public class ListarSuprimento extends javax.swing.JFrame {
         });
 
         btInserir.setText("NOVO");
+        btInserir.setBorderPainted(false);
+        btInserir.setContentAreaFilled(false);
         btInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInserirActionPerformed(evt);
@@ -78,6 +82,8 @@ public class ListarSuprimento extends javax.swing.JFrame {
         });
 
         btEditar.setText("EDITAR");
+        btEditar.setBorderPainted(false);
+        btEditar.setContentAreaFilled(false);
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEditarActionPerformed(evt);
@@ -92,14 +98,18 @@ public class ListarSuprimento extends javax.swing.JFrame {
 
         pesquisar.setText("PESQUISAR");
 
-        btVisualizar.setText("visualizar");
+        btVisualizar.setText("VISUALIZAR");
+        btVisualizar.setBorderPainted(false);
+        btVisualizar.setContentAreaFilled(false);
         btVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVisualizarActionPerformed(evt);
             }
         });
 
-        btInvestimento.setText("movimentação");
+        btInvestimento.setText("MOVIMENTAÇÃO");
+        btInvestimento.setBorderPainted(false);
+        btInvestimento.setContentAreaFilled(false);
         btInvestimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInvestimentoActionPerformed(evt);
@@ -114,45 +124,47 @@ public class ListarSuprimento extends javax.swing.JFrame {
                 .addComponent(funcionarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(painelFundoLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addComponent(pesquisar)
                         .addGap(18, 18, 18)
-                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txPesquisa)
-                            .addGroup(painelFundoLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(btInvestimento)
-                                .addGap(18, 18, 18)
-                                .addComponent(btVisualizar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btInserir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btDeletar)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(btInvestimento)
+                        .addGap(2, 2, 2)
+                        .addComponent(btVisualizar)
+                        .addGap(2, 2, 2)
+                        .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(btEditar)
+                        .addGap(2, 2, 2)
+                        .addComponent(btDeletar)))
+                .addContainerGap(118, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pesquisar))
-                .addGap(18, 18, 18)
-                .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(funcionarioLogado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btInvestimento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btVisualizar)
                     .addComponent(btInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btEditar)
-                    .addComponent(btDeletar)
-                    .addComponent(btVisualizar)
-                    .addComponent(btInvestimento))
+                    .addComponent(btDeletar))
+                .addGap(30, 30, 30)
+                .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(funcionarioLogado)
                 .addGap(224, 224, 224))
         );
 
@@ -160,11 +172,11 @@ public class ListarSuprimento extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 593, Short.MAX_VALUE)
+            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 426, Short.MAX_VALUE)
+            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
