@@ -1,7 +1,6 @@
 package modelo.persistencia;
 
 import java.util.List;
-import modelo.negocio.EntradaSuprimento;
 import modelo.negocio.Suprimento;
 import modelo.persistencia.dao.SuprimentoDAO;
 

@@ -482,6 +482,13 @@ public class InserirSuprimento extends javax.swing.JFrame {
         rbSim.setEnabled(false);
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
+        txValor.setEditable(false);
+        txUnidadeMedida.setEditable(false);
+        txDtValidade.setEditable(false);
+        rbSim1.setEnabled(false);
+        rbNao1.setEnabled(false);
+        cbOutro.setEnabled(false);
+        cbFornecedor.setEnabled(false);
 
     }
 

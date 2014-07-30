@@ -71,7 +71,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txIdEndereco = new javax.swing.JTextField();
         cep = new javax.swing.JLabel();
         txCep = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
+        bairro = new javax.swing.JLabel();
         txBairro = new javax.swing.JTextField();
         tipoProduto = new javax.swing.JPanel();
         nomeProduto = new javax.swing.JLabel();
@@ -207,9 +207,11 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         idEndereco.setText("ID");
 
+        txIdEndereco.setEditable(false);
+
         cep.setText("CEP");
 
-        jLabel1.setText("BAIRRO");
+        bairro.setText("BAIRRO");
 
         txBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +238,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
                             .addComponent(estado)
                             .addComponent(cep)
                             .addComponent(cidade)
-                            .addComponent(jLabel1))
+                            .addComponent(bairro))
                         .addGap(17, 17, 17)))
                 .addGap(45, 45, 45)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -263,7 +265,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
                     .addComponent(txCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(bairro)
                     .addComponent(txBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -430,7 +432,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txNumero.setText(null);
         txRua.setText(null);
         txCep.setText(null);
-        
+        txBairro.setText(null);
 
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -459,6 +461,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         e.setNumero(Integer.parseInt(txNumero.getText()));
         e.setRua(txRua.getText());
         e.setCep(txCep.getText());
+        e.setBairro(txBairro.getText());
         
         if (!(txIdEndereco.getText().equals("") | (txIdEndereco.getText().equals(null)))) {
             e.setCodigo(Integer.parseInt(txIdEndereco.getText()));
@@ -489,6 +492,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bairro;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JTabbedPane cadastroFornecedor;
@@ -506,7 +510,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel fax;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idEndereco;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel marcaProduto;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel nomeProduto;
@@ -562,6 +565,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txRua.setText(String.valueOf(f.getEndereco().getRua()));
         txIdEndereco.setText(String.valueOf(f.getEndereco().getCodigo()));
         txCep.setText(f.getEndereco().getCep());
+        txBairro.setText(f.getEndereco().getBairro());
     }
     
     private void bloquearCampos() {
@@ -583,6 +587,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txTelefone.setEditable(false);
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
+        txBairro.setEditable(false);
         
     }
     

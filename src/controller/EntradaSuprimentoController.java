@@ -31,4 +31,9 @@ public class EntradaSuprimentoController {
         return dao.getBySuprimento(s);
     }
 
+    public boolean excluir(int codigo) {
+        EntradaSuprimentoDAO dao = new EntradaSuprimentoDAOJPA();
+        return dao.remove(EntradaSuprimento.class, codigo);
+    }
+
 }

@@ -37,8 +37,6 @@ public class SuprimentoController {
         SuprimentoDAO dao = new SuprimentoDAOJPA();
         return dao.pesquisar(nome);
 
-    }
-//*****************************************************************************
-   
+    } 
 
 }

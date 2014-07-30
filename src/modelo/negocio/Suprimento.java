@@ -29,7 +29,7 @@ public class Suprimento {
     private Fornecedor fornecedor;
     @Column(nullable = false)
     private String formaPagamento;
-    
+
     public String getFormaPagamento() {
         return formaPagamento;
     }
@@ -116,6 +116,11 @@ public class Suprimento {
 
     public void setProducao(char producao) {
         this.producao = producao;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
     }
 
 }

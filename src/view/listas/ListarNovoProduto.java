@@ -5,25 +5,22 @@
  */
 package view.listas;
 
-import controller.EntradaSuprimentoController;
-import controller.SuprimentoController;
-import javax.swing.JOptionPane;
+import controller.EntradaProdutoController;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.EntradaProduto;
-import modelo.negocio.EntradaSuprimento;
-import view.inserir.CadastrarNovoSuprimento;
+import view.inserir.CadastrarNovoProduto;
 
-public class ListarNovoSuprimento extends javax.swing.JFrame {
+public class ListarNovoProduto extends javax.swing.JFrame {
 
     private JTable tabela;
     private DefaultTableModel modelo = new DefaultTableModel();
-    private int idSuprimento;
+    private int idProduto;
 
-    public ListarNovoSuprimento(int id) {
+    public ListarNovoProduto(int id) {
         initComponents();
 
-        this.idSuprimento = id;
+        this.idProduto = id;
         criaJTable();
         painelLista.setViewportView(tabela);
         setLocationRelativeTo(null);
@@ -41,7 +38,6 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
 
         painelLista = new javax.swing.JScrollPane();
         btNovo = new javax.swing.JToggleButton();
-        btRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -52,19 +48,10 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
             }
         });
 
-        painelLista.setBackground(new java.awt.Color(255, 255, 153));
-
         btNovo.setText("novo");
         btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNovoActionPerformed(evt);
-            }
-        });
-
-        btRemover.setText("remover");
-        btRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRemoverActionPerformed(evt);
             }
         });
 
@@ -77,9 +64,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
                 .addComponent(painelLista)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(229, Short.MAX_VALUE)
-                .addComponent(btRemover)
-                .addGap(18, 18, 18)
+                .addContainerGap(320, Short.MAX_VALUE)
                 .addComponent(btNovo)
                 .addGap(23, 23, 23))
         );
@@ -87,9 +72,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btNovo)
-                    .addComponent(btRemover))
+                .addComponent(btNovo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -99,7 +82,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
-        CadastrarNovoSuprimento novo = new CadastrarNovoSuprimento(modelo, idSuprimento);
+        CadastrarNovoProduto novo = new CadastrarNovoProduto(modelo, idProduto);
         novo.setVisible(true);
     }//GEN-LAST:event_btNovoActionPerformed
 
@@ -109,27 +92,9 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
         preencherJTable();
     }//GEN-LAST:event_formWindowGainedFocus
 
-    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        int linhaSelecionada = -1;
-        linhaSelecionada = tabela.getSelectedRow();
-
-        if (linhaSelecionada >= 0) {
-            int id = (int) tabela.getValueAt(linhaSelecionada, 0);
-
-            EntradaSuprimentoController sc = new EntradaSuprimentoController();
-            if (sc.excluir(id));
-            {
-                modelo.removeRow(linhaSelecionada);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "SELECIONE UMA LINHA");
-
-        }    }//GEN-LAST:event_btRemoverActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btNovo;
-    private javax.swing.JButton btRemover;
     private javax.swing.JScrollPane painelLista;
     // End of variables declaration//GEN-END:variables
 
@@ -141,7 +106,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
             }
         };
 
-        modelo.addColumn("DATA");
+        modelo.addColumn("VALIDADE");
         modelo.addColumn("QUANTIDADE");
         modelo.addColumn("RESPONSAVEL");
 
@@ -150,10 +115,10 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
 
     private void preencherJTable() {
 
-        EntradaSuprimentoController esc = new EntradaSuprimentoController();
+        EntradaProdutoController esc = new EntradaProdutoController();
 
-        for (EntradaSuprimento es : esc.listarEntradaSuprimento(idSuprimento)) {
-            modelo.addRow(new Object[]{es.getDtMovimento(), es.getQntdade(), es.getResponsavel()});
+        for (EntradaProduto es : esc.listarEntradaProduto(idProduto)) {
+            modelo.addRow(new Object[]{es.getDtValidade(), es.getQntidade(), es.getResponsavel()});
 
         }
 
