@@ -26,9 +26,7 @@ public class Fornecedor {
     private String descricao;
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
-    //Data em que o produto foi fornecido
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dtFornecimento;
+
 
     public Fornecedor() {
     }
@@ -103,14 +101,6 @@ public class Fornecedor {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Date getDtFornecimento() {
-        return dtFornecimento;
-    }
-
-    public void setDtFornecimento(Date dtFornecimento) {
-        this.dtFornecimento = dtFornecimento;
     }
 
     public String getMarcaProduto() {

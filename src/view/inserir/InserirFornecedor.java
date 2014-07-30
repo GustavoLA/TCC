@@ -1,8 +1,6 @@
 package view.inserir;
 
 import controller.FornecedorController;
-import java.text.SimpleDateFormat;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Endereco;
 import modelo.negocio.Fornecedor;
@@ -79,8 +77,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
         marcaProduto = new javax.swing.JLabel();
         txMarcaProduto = new javax.swing.JTextField();
         descricao = new javax.swing.JLabel();
-        dtFornecimento = new javax.swing.JLabel();
-        txDtFornecimento = new javax.swing.JFormattedTextField();
         scrollDescricao = new javax.swing.JScrollPane();
         txDescricao = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
@@ -146,12 +142,12 @@ public class InserirFornecedor extends javax.swing.JFrame {
             .addGroup(dadosFornecedorLayout.createSequentialGroup()
                 .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(32, 32, 32)
                         .addComponent(id)
                         .addGap(18, 18, 18)
                         .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(20, 20, 20)
                         .addGroup(dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nome)
                             .addGroup(dadosFornecedorLayout.createSequentialGroup()
@@ -168,9 +164,9 @@ public class InserirFornecedor extends javax.swing.JFrame {
                                     .addComponent(txFax, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(dadosFornecedorLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(20, 20, 20)
                         .addComponent(campoObrigatorio)))
-                .addGap(0, 76, Short.MAX_VALUE))
+                .addGap(0, 127, Short.MAX_VALUE))
         );
         dadosFornecedorLayout.setVerticalGroup(
             dadosFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +251,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         enderecoLayout.setHorizontalGroup(
             enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(enderecoLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(numero)
                     .addComponent(rua)
@@ -281,7 +277,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txCep, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         enderecoLayout.setVerticalGroup(
             enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +312,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
                 .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idEndereco)
                     .addComponent(txIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         cadastroFornecedor.addTab("ENDEREÇO", endereco);
@@ -331,20 +327,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
         descricao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         descricao.setText("DESCRIÇÃO");
-
-        dtFornecimento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        dtFornecimento.setText("DATA DE FORNECIMENTO *");
-
-        try {
-            txDtFornecimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txDtFornecimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txDtFornecimentoActionPerformed(evt);
-            }
-        });
 
         txDescricao.setColumns(20);
         txDescricao.setRows(5);
@@ -366,31 +348,27 @@ public class InserirFornecedor extends javax.swing.JFrame {
             .addGroup(tipoProdutoLayout.createSequentialGroup()
                 .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tipoProdutoLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dtFornecimento)
-                            .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txMarcaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(tipoProdutoLayout.createSequentialGroup()
-                                    .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(descricao)
-                                        .addComponent(nomeProduto)
-                                        .addComponent(marcaProduto))
-                                    .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tipoProdutoLayout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(tipoProdutoLayout.createSequentialGroup()
-                                            .addGap(51, 51, 51)
-                                            .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txDtFornecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                        .addGap(20, 20, 20)
+                        .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txMarcaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(tipoProdutoLayout.createSequentialGroup()
+                                .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(descricao)
+                                    .addComponent(nomeProduto)
+                                    .addComponent(marcaProduto))
+                                .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tipoProdutoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(tipoProdutoLayout.createSequentialGroup()
+                                        .addGap(51, 51, 51)
+                                        .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(tipoProdutoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         tipoProdutoLayout.setVerticalGroup(
             tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,13 +387,9 @@ public class InserirFornecedor extends javax.swing.JFrame {
                     .addComponent(descricao))
                 .addGap(20, 20, 20)
                 .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dtFornecimento)
-                    .addComponent(txDtFornecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(tipoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         cadastroFornecedor.addTab("TIPO DE PRODUTO", tipoProduto);
@@ -443,27 +417,26 @@ public class InserirFornecedor extends javax.swing.JFrame {
         painelFundoLayout.setHorizontalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFundoLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                        .addComponent(cadastroFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                        .addComponent(btSalvar)
-                        .addGap(30, 30, 30)
-                        .addComponent(btLimpar)
-                        .addGap(99, 99, 99))))
+                .addGap(30, 30, 30)
+                .addComponent(cadastroFornecedor)
+                .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btSalvar)
+                .addGap(18, 18, 18)
+                .addComponent(btLimpar)
+                .addGap(145, 145, 145))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cadastroFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btSalvar)
-                    .addComponent(btLimpar))
-                .addGap(60, 60, 60))
+                .addGap(30, 30, 30)
+                .addComponent(cadastroFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(btLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -482,7 +455,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         txDescricao.setText(null);
-        txDtFornecimento.setText(null);
         txEmail.setText(null);
         txFax.setText(null);
         txMarcaProduto.setText(null);
@@ -511,12 +483,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         f.setNomeFantasia(txNome.getText());
         f.setNomeProduto(txNomeProduto.getText());
         f.setTelefone(txTelefone.getText());
-        try {
-            String data = txDtFornecimento.getText();
-            f.setDtFornecimento(new SimpleDateFormat("dd/MM/yyyy").parse(data));
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "FORMATO INVÁLIDO! UTILIZE: DD/MM/YYYY\n" + ex);
-        }
+    
         
         Endereco e = new Endereco();
         e.setCidade(txCidade.getText());
@@ -538,7 +505,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
             fc.salvar(f);
             
             modelo.removeRow(linhaSelecionada);
-            modelo.addRow(new Object[]{f.getCodigo(), f.getCnpj(), f.getDescricao(), f.getDtFornecimento(), f.getEmail(), f.getFax(), f.getMarcaProduto(), f.getNomeFantasia(), f.getNomeProduto(), f.getTelefone()});
+            modelo.addRow(new Object[]{f.getCodigo(), f.getCnpj(), f.getDescricao(), f.getEmail(), f.getFax(), f.getMarcaProduto(), f.getNomeFantasia(), f.getNomeProduto(), f.getTelefone()});
             dispose();
         } else {
             fc.salvar(f);
@@ -562,10 +529,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void txDtFornecimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDtFornecimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txDtFornecimentoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bairro;
@@ -579,7 +542,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel complemento;
     private javax.swing.JPanel dadosFornecedor;
     private javax.swing.JLabel descricao;
-    private javax.swing.JLabel dtFornecimento;
     private javax.swing.JLabel email;
     private javax.swing.JPanel endereco;
     private javax.swing.JLabel estado;
@@ -603,7 +565,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txCnpj;
     private javax.swing.JTextField txComplemento;
     private javax.swing.JTextArea txDescricao;
-    private javax.swing.JFormattedTextField txDtFornecimento;
     private javax.swing.JTextField txEmail;
     private javax.swing.JTextField txEstado;
     private javax.swing.JFormattedTextField txFax;
@@ -632,9 +593,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txNome.setText(f.getNomeFantasia());
         txNomeProduto.setText(f.getNomeProduto());
         txTelefone.setText(f.getTelefone());
-        SimpleDateFormat formataDtFornecimento = new SimpleDateFormat("dd/MM/yyyy");
-        String dtFornecimentoEdt = formataDtFornecimento.format(f.getDtFornecimento());
-        txDtFornecimento.setText(dtFornecimentoEdt);
         //ENDEREÇO
         txCidade.setText(String.valueOf(f.getEndereco().getCidade()));
         txComplemento.setText(String.valueOf(f.getEndereco().getComplemento()));
@@ -653,7 +611,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txCnpj.setEditable(false);
         txComplemento.setEditable(false);
         txDescricao.setEditable(false);
-        txDtFornecimento.setEditable(false);
         txEmail.setEditable(false);
         txEstado.setEditable(false);
         txFax.setEditable(false);

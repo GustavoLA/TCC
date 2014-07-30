@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="bgSexo">
     </Component>
@@ -10,7 +10,6 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -33,7 +32,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="painelFundo" min="-2" max="-2" attributes="0"/>
+              <Component id="painelFundo" min="-2" pref="646" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -49,6 +48,7 @@
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder justification="2" title="CLIENTE">
               <Font PropertyName="font" name="Arial" size="18" style="1"/>
+              <Color PropertyName="color" blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -61,31 +61,23 @@
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[800, 600]"/>
         </Property>
-        <Property name="requestFocusEnabled" type="boolean" value="false"/>
+        <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="cadastroCliente" min="-2" pref="731" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btSalvar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btSalvar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="cadastroCliente" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -93,15 +85,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="cadastroCliente" min="-2" pref="499" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cadastroCliente" min="-2" pref="531" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btSalvar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="btLimpar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="btSalvar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -110,6 +100,8 @@
         <Component class="javax.swing.JButton" name="btSalvar">
           <Properties>
             <Property name="text" type="java.lang.String" value="SALVAR"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSalvarActionPerformed"/>
@@ -131,9 +123,6 @@
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
             </Property>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
-          </AccessibilityProperties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
@@ -141,9 +130,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -158,51 +144,51 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="scrollAnotacoes" alignment="1" min="-2" pref="447" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="id" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txId" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="sexo" min="-2" max="-2" attributes="0"/>
+                                      <Component id="email" min="-2" max="-2" attributes="0"/>
+                                      <Component id="celular" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dtNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rg" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cpf" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="telefone" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="anotacoes" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dtCadastro" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nome" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="id" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="txId" min="-2" pref="28" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="sexo" min="-2" max="-2" attributes="0"/>
-                                          <Component id="email" min="-2" max="-2" attributes="0"/>
-                                          <Component id="celular" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="dtNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rg" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cpf" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="telefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="nome" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="anotacoes" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="dtCadastro" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txEmail" min="-2" pref="447" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="txCelular" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="txDtCadastro" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txEmail" min="-2" pref="447" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="txCelular" min="-2" pref="100" max="-2" attributes="0"/>
-                                              <Component id="txDtCadastro" min="-2" pref="100" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="txDtNascimento" min="-2" pref="103" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="rbMasculino" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="rbFeminino" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="txRg" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                          <Component id="txCpf" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                          <Component id="txTelefone" alignment="0" min="-2" pref="438" max="-2" attributes="0"/>
-                                          <Component id="txNome" alignment="0" min="-2" pref="438" max="-2" attributes="0"/>
+                                      <Component id="txDtNascimento" min="-2" pref="103" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="rbMasculino" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="rbFeminino" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="txRg" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                      <Component id="txCpf" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                      <Component id="txTelefone" alignment="0" min="-2" pref="438" max="-2" attributes="0"/>
+                                      <Component id="txNome" alignment="0" min="-2" pref="438" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="scrollAnotacoes" min="-2" pref="447" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="94" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -245,7 +231,7 @@
                               <Component id="txEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="celular" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txCelular" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -260,12 +246,12 @@
                               <Component id="anotacoes" min="-2" max="-2" attributes="0"/>
                               <Component id="scrollAnotacoes" min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txId" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -320,9 +306,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txNome">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txNomeActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txTelefone">
                 </Component>
@@ -466,31 +449,23 @@
                                   <Component id="TxComplemento" min="-2" pref="390" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="estado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cep" min="-2" max="-2" attributes="0"/>
-                                          <Component id="bairro" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cidade" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="estado" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cidade" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cep" min="-2" max="-2" attributes="0"/>
+                                      <Component id="bairro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="idEndereco" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="txIdEndereco" min="-2" pref="25" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                          <Component id="txEstado" min="-2" pref="390" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txCep" alignment="1" min="-2" pref="390" max="-2" attributes="0"/>
-                                              <Component id="txBairro" alignment="1" min="-2" pref="390" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txEstado" alignment="0" pref="390" max="32767" attributes="0"/>
+                                      <Component id="txCidade" alignment="0" pref="390" max="32767" attributes="0"/>
+                                      <Component id="txBairro" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txCep" alignment="0" pref="117" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -498,62 +473,66 @@
                                       <Component id="rua" min="-2" max="-2" attributes="0"/>
                                       <Component id="numero" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txRua" min="-2" pref="390" max="-2" attributes="0"/>
                                       <Component id="txNumero" min="-2" pref="112" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="txCidade" alignment="1" min="-2" pref="390" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="177" max="32767" attributes="0"/>
+                          <EmptySpace pref="187" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="TxComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="complemento" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txRua" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rua" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="numero" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="estado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cep" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txCep" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txIdEndereco" min="-2" max="-2" attributes="0"/>
-                              <Component id="idEndereco" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cep" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="bairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                                  <Component id="idEndereco" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txIdEndereco" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -649,13 +628,6 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="SALVAR"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
-            <Property name="contentAreaFilled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

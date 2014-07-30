@@ -64,9 +64,7 @@ public class InserirProduto extends javax.swing.JFrame {
         painelFundo = new javax.swing.JPanel();
         cadastroProduto = new javax.swing.JPanel();
         nome = new javax.swing.JLabel();
-        descricao = new javax.swing.JLabel();
-        scrollDescricao = new javax.swing.JScrollPane();
-        txDescricao = new javax.swing.JTextArea();
+        tipo = new javax.swing.JLabel();
         txNome = new javax.swing.JTextField();
         btAdicionar = new javax.swing.JButton();
         btDeletar = new javax.swing.JButton();
@@ -74,6 +72,10 @@ public class InserirProduto extends javax.swing.JFrame {
         txId = new javax.swing.JTextField();
         painelIngrediente = new javax.swing.JScrollPane();
         jSeparator1 = new javax.swing.JSeparator();
+        jComboBox1 = new javax.swing.JComboBox();
+        valorUnitario = new javax.swing.JLabel();
+        txValorUnitário = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         btSalvar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -95,14 +97,10 @@ public class InserirProduto extends javax.swing.JFrame {
         cadastroProduto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        nome.setText("NOME");
+        nome.setText("Nome");
 
-        descricao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        descricao.setText("DESCRIÇÃO");
-
-        txDescricao.setColumns(20);
-        txDescricao.setRows(5);
-        scrollDescricao.setViewportView(txDescricao);
+        tipo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tipo.setText("Tipo");
 
         btAdicionar.setText("ADICIONAR");
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,38 +123,51 @@ public class InserirProduto extends javax.swing.JFrame {
 
         jSeparator1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INGREDIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        valorUnitario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        valorUnitario.setText("Valor Unitário");
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel1.setText("Período de Validade");
+
         javax.swing.GroupLayout cadastroProdutoLayout = new javax.swing.GroupLayout(cadastroProduto);
         cadastroProduto.setLayout(cadastroProdutoLayout);
         cadastroProdutoLayout.setHorizontalGroup(
             cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(cadastroProdutoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                        .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                                .addComponent(descricao)
-                                .addGap(18, 18, 18)
-                                .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                                .addComponent(nome)
-                                .addGap(31, 31, 31)
-                                .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(463, Short.MAX_VALUE))
+                        .addComponent(nome)
+                        .addGap(18, 18, 18)
+                        .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(532, Short.MAX_VALUE))
                     .addGroup(cadastroProdutoLayout.createSequentialGroup()
                         .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                                .addComponent(id)
-                                .addGap(18, 18, 18)
-                                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                                .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(painelIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 287, Short.MAX_VALUE))))
-            .addComponent(jSeparator1)
+                            .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(cadastroProdutoLayout.createSequentialGroup()
+                                    .addComponent(id)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(cadastroProdutoLayout.createSequentialGroup()
+                                    .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(painelIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(cadastroProdutoLayout.createSequentialGroup()
+                                    .addComponent(tipo)
+                                    .addGap(28, 28, 28)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(245, 245, 245))
+                                .addGroup(cadastroProdutoLayout.createSequentialGroup()
+                                    .addComponent(valorUnitario)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txValorUnitário, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         cadastroProdutoLayout.setVerticalGroup(
             cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,15 +176,21 @@ public class InserirProduto extends javax.swing.JFrame {
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id)
                     .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nome))
                 .addGap(18, 18, 18)
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome)
-                    .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descricao)
-                    .addComponent(scrollDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                    .addComponent(tipo)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valorUnitario)
+                    .addComponent(txValorUnitário, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(32, 32, 32)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,17 +319,19 @@ public class InserirProduto extends javax.swing.JFrame {
     private javax.swing.JButton btDeletar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JPanel cadastroProduto;
-    private javax.swing.JLabel descricao;
     private javax.swing.JLabel id;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nome;
     private javax.swing.JPanel painelFundo;
     private javax.swing.JScrollPane painelIngrediente;
-    private javax.swing.JScrollPane scrollDescricao;
-    private javax.swing.JTextArea txDescricao;
+    private javax.swing.JLabel tipo;
     private javax.swing.JTextField txId;
     private javax.swing.JTextField txNome;
+    private javax.swing.JTextField txValorUnitário;
+    private javax.swing.JLabel valorUnitario;
     // End of variables declaration//GEN-END:variables
 
     private void preencherCampos(int linhaSelecionada1, int idProduto) {
