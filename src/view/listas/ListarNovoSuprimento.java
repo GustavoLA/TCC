@@ -141,6 +141,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
             }
         };
 
+        modelo.addColumn("ID");
         modelo.addColumn("DATA");
         modelo.addColumn("QUANTIDADE");
         modelo.addColumn("RESPONSAVEL");
@@ -153,7 +154,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
         EntradaSuprimentoController esc = new EntradaSuprimentoController();
 
         for (EntradaSuprimento es : esc.listarEntradaSuprimento(idSuprimento)) {
-            modelo.addRow(new Object[]{es.getDtMovimento(), es.getQntdade(), es.getResponsavel()});
+            modelo.addRow(new Object[]{es.getCodigo(), es.getDtMovimento(), es.getQntdade(), es.getResponsavel()});
 
         }
 
