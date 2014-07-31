@@ -262,7 +262,7 @@ public class InserirProduto extends javax.swing.JFrame {
 
         Produto p = new Produto();
         p.setNome(txNome.getText());
-        p.setDescricao(txDescricao.getText());
+       /* p.setDescricao(txDescricao.getText());**/
 
         ProdutoController pc = new ProdutoController();
 
@@ -343,13 +343,13 @@ public class InserirProduto extends javax.swing.JFrame {
 
         txId.setText(String.valueOf(p.getCodigo()));
         txNome.setText(p.getNome());
-        txDescricao.setText(p.getDescricao());
+       /* txDescricao.setText(p.getDescricao());*/
 
     }
 
     private void bloquearCampos() {
 
-        txDescricao.setEditable(false);
+/*        txDescricao.setEditable(false);*/
         txNome.setEditable(false);
 
     }
