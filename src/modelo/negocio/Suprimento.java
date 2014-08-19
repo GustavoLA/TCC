@@ -17,7 +17,7 @@ public class Suprimento {
     private int codigo;
     private int qtdade;
     private String nome;
-    private Double valor;
+    private double valor;
     private String unidadeMedida;
     private char notaFiscal;
     @Temporal(javax.persistence.TemporalType.DATE)
