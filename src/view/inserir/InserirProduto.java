@@ -64,14 +64,10 @@ public class InserirProduto extends javax.swing.JFrame {
         painelFundo = new javax.swing.JPanel();
         cadastroProduto = new javax.swing.JPanel();
         nome = new javax.swing.JLabel();
-        tipo = new javax.swing.JLabel();
         txNome = new javax.swing.JTextField();
         txId = new javax.swing.JTextField();
-        cbTipo = new javax.swing.JComboBox();
-        valorUnitario = new javax.swing.JLabel();
-        txValorUnitário = new javax.swing.JTextField();
-        periodoValidade = new javax.swing.JLabel();
-        txDtValidade = new javax.swing.JFormattedTextField();
+        descricao = new javax.swing.JLabel();
+        txDescricao = new javax.swing.JTextField();
         btSalvar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -79,6 +75,7 @@ public class InserirProduto extends javax.swing.JFrame {
         btDeletar = new javax.swing.JButton();
         painelIngrediente = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -103,48 +100,33 @@ public class InserirProduto extends javax.swing.JFrame {
 
         nome.setText("Nome:  ");
 
-        tipo.setText("Tipo:  ");
-
         txId.setEditable(false);
 
-        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        descricao.setText("Descrição");
 
-        valorUnitario.setText("Valor Unitário:  ");
-
-        periodoValidade.setText("Período de Validade:  ");
-
-        try {
-            txDtValidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txDescricao.setText("jTextField1");
 
         javax.swing.GroupLayout cadastroProdutoLayout = new javax.swing.GroupLayout(cadastroProduto);
         cadastroProduto.setLayout(cadastroProdutoLayout);
         cadastroProdutoLayout.setHorizontalGroup(
             cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroProdutoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
             .addGroup(cadastroProdutoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cadastroProdutoLayout.createSequentialGroup()
                         .addComponent(nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(542, 542, 542))
                     .addGroup(cadastroProdutoLayout.createSequentialGroup()
-                        .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(periodoValidade)
-                            .addComponent(valorUnitario)
-                            .addComponent(tipo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txDtValidade)
-                            .addComponent(txValorUnitário)
-                            .addComponent(cbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(542, 542, 542))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastroProdutoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                        .addComponent(descricao)
+                        .addGap(68, 68, 68)
+                        .addComponent(txDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         cadastroProdutoLayout.setVerticalGroup(
             cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,19 +135,11 @@ public class InserirProduto extends javax.swing.JFrame {
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nome))
-                .addGap(20, 20, 20)
+                .addGap(58, 58, 58)
                 .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipo)
-                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valorUnitario)
-                    .addComponent(txValorUnitário, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(cadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(periodoValidade)
-                    .addComponent(txDtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(descricao)
+                    .addComponent(txDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
                 .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(168, 168, 168))
         );
@@ -239,15 +213,23 @@ public class InserirProduto extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 0));
 
+        jLabel2.setText("Cadastro de Produtos");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 0));
@@ -315,7 +297,8 @@ public class InserirProduto extends javax.swing.JFrame {
 
         Produto p = new Produto();
         p.setNome(txNome.getText());
-       /* p.setDescricao(txDescricao.getText());**/
+        p.setDescricao(txDescricao.getText());
+        
 
         ProdutoController pc = new ProdutoController();
 
@@ -367,10 +350,9 @@ public class InserirProduto extends javax.swing.JFrame {
         }    }//GEN-LAST:event_btDeletarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-      txDtValidade.setText(null);
         txNome.setText(null);
-        txValorUnitário.setText(null);
-        //cbTipo.setText(null);
+        txDescricao.setText(null);
+
     }//GEN-LAST:event_btLimparActionPerformed
 
 
@@ -380,20 +362,17 @@ public class InserirProduto extends javax.swing.JFrame {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JPanel cadastroProduto;
-    private javax.swing.JComboBox cbTipo;
+    private javax.swing.JLabel descricao;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel nome;
     private javax.swing.JPanel painelFundo;
     private javax.swing.JScrollPane painelIngrediente;
-    private javax.swing.JLabel periodoValidade;
-    private javax.swing.JLabel tipo;
-    private javax.swing.JFormattedTextField txDtValidade;
+    private javax.swing.JTextField txDescricao;
     private javax.swing.JTextField txId;
     private javax.swing.JTextField txNome;
-    private javax.swing.JTextField txValorUnitário;
-    private javax.swing.JLabel valorUnitario;
     // End of variables declaration//GEN-END:variables
 
     private void preencherCampos(int linhaSelecionada1, int idProduto) {
@@ -405,13 +384,13 @@ public class InserirProduto extends javax.swing.JFrame {
 
         txId.setText(String.valueOf(p.getCodigo()));
         txNome.setText(p.getNome());
-       /* txDescricao.setText(p.getDescricao());*/
+        /* txDescricao.setText(p.getDescricao());*/
 
     }
 
     private void bloquearCampos() {
 
-/*        txDescricao.setEditable(false);*/
+        /*        txDescricao.setEditable(false);*/
         txNome.setEditable(false);
 
     }

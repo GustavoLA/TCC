@@ -87,9 +87,9 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txMarcaProduto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMaximumSize(new java.awt.Dimension(1000, 800));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 800));
         setResizable(false);
 
         painelFundo.setBackground(java.awt.Color.white);
@@ -146,6 +146,8 @@ public class InserirFornecedor extends javax.swing.JFrame {
         cnpj.setText("CNPJ:  ");
 
         campoObrigatorio.setText("* CAMPO OBRIGATÓRIO");
+
+        txIdFornecedor.setEditable(false);
 
         javax.swing.GroupLayout painelDadosFornecedorLayout = new javax.swing.GroupLayout(painelDadosFornecedor);
         painelDadosFornecedor.setLayout(painelDadosFornecedorLayout);

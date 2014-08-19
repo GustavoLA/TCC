@@ -9,15 +9,15 @@ import controller.EntradaProdutoController;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.EntradaProduto;
-import view.inserir.CadastrarNovoProduto;
+import view.inserir.CadastrarEntradaProduto;
 
-public class ListarNovoProduto extends javax.swing.JFrame {
+public class EntradaProdutoGUI extends javax.swing.JFrame {
 
     private JTable tabela;
     private DefaultTableModel modelo = new DefaultTableModel();
     private int idProduto;
 
-    public ListarNovoProduto(int id) {
+    public EntradaProdutoGUI(int id) {
         initComponents();
 
         this.idProduto = id;
@@ -82,7 +82,7 @@ public class ListarNovoProduto extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 0));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("NOVOS PRODUTOS");
+        jLabel1.setText("Entrada de Produtos");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -144,7 +144,7 @@ public class ListarNovoProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
-        CadastrarNovoProduto novo = new CadastrarNovoProduto(modelo, idProduto);
+        CadastrarEntradaProduto novo = new CadastrarEntradaProduto(modelo, idProduto);
         novo.setVisible(true);
     }//GEN-LAST:event_btNovoActionPerformed
 

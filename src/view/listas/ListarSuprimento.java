@@ -110,7 +110,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
             }
         });
 
-        btInvestimento.setText("MOVIMENTAÇÃO");
+        btInvestimento.setText("Entrada");
         btInvestimento.setBorderPainted(false);
         btInvestimento.setContentAreaFilled(false);
         btInvestimento.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +190,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
                         .addComponent(pesquisar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(painelFundoLayout.createSequentialGroup()
@@ -298,7 +298,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
         SuprimentoController sc = new SuprimentoController();
 
         for (Suprimento s : sc.pesquisar(txPesquisa.getText())) {
-            modelo.addRow(new Object[]{s.getCodigo(), s.getNome(), s.getDescricao(), s.getQtdade()});
+            modelo.addRow(new Object[]{s.getCodigo(), s.getNome(), s.getDescricao()});
         }
 
     }//GEN-LAST:event_txPesquisaActionPerformed
@@ -326,7 +326,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
 
         if (selecionado >= 0) {
             Integer idSuprimento = (Integer) modelo.getValueAt(selecionado, 0);
-            ListarNovoSuprimento novo = new ListarNovoSuprimento(idSuprimento);
+            EntradaSuprimentoGUI novo = new EntradaSuprimentoGUI(idSuprimento);
             novo.setLocationRelativeTo(null);
             novo.setVisible(true);
         } else {
@@ -364,7 +364,6 @@ public class ListarSuprimento extends javax.swing.JFrame {
 
         modelo.addColumn("ID");
         modelo.addColumn("NOME");
-        modelo.addColumn("QUANTIDADE");
 
         preencherJTable();
     }
@@ -374,7 +373,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
         SuprimentoController sc = new SuprimentoController();
 
         for (Suprimento s : sc.listarSuprimento()) {
-            modelo.addRow(new Object[]{s.getCodigo(), s.getNome(), s.getQtdade()});
+            modelo.addRow(new Object[]{s.getCodigo(), s.getNome()});
 
         }
 

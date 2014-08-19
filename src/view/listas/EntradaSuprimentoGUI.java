@@ -11,16 +11,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.EntradaProduto;
+//import modelo.negocio.EntradaSuprimento;
 import modelo.negocio.EntradaSuprimento;
-import view.inserir.CadastroNovoSuprimento;
+import view.inserir.CadastroEntradaSuprimento;
 
-public class ListarNovoSuprimento extends javax.swing.JFrame {
+public class EntradaSuprimentoGUI extends javax.swing.JFrame {
 
     private JTable tabela;
     private DefaultTableModel modelo = new DefaultTableModel();
     private int idSuprimento;
 
-    public ListarNovoSuprimento(int id) {
+    public EntradaSuprimentoGUI(int id) {
         initComponents();
 
         this.idSuprimento = id;
@@ -96,7 +97,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 0));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("NOVO SUPRIMENTO");
+        jLabel1.setText("Entrada de Suprimento");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -164,7 +165,7 @@ public class ListarNovoSuprimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
-        CadastroNovoSuprimento novo = new CadastroNovoSuprimento( modelo, idSuprimento);
+        CadastroEntradaSuprimento novo = new CadastroEntradaSuprimento( modelo, idSuprimento);
         novo.setVisible(true);
     }//GEN-LAST:event_btNovoActionPerformed
 

@@ -1,7 +1,5 @@
 package modelo.negocio;
 
-import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,27 +13,25 @@ public class Suprimento {
     @Id
     @GeneratedValue
     private int codigo;
-    private int qtdade;
     private String nome;
-    private double valor;
     private String unidadeMedida;
     private char notaFiscal;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dtVencimento;
     @Lob
     private String descricao;
     private char producao;
     @ManyToOne
     private Fornecedor fornecedor;
-    @Column(nullable = false)
-    private String formaPagamento;
 
-    public String getFormaPagamento() {
-        return formaPagamento;
+    //Para fazer a soma de todos as entradas de produto
+    private int qnqtidadeTotal;
+
+    public int getQnqtidadeTotal() {
+        return qnqtidadeTotal;
     }
 
-    public void setFormaPagamento(String formaPagamento) {
-        this.formaPagamento = formaPagamento;
+    public void setQnqtidadeTotal(int qnqtidadeTotal) {
+        this.qnqtidadeTotal = qnqtidadeTotal;
     }
 
     public Fornecedor getFornecedor() {
@@ -44,14 +40,6 @@ public class Suprimento {
 
     public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
-    }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
     }
 
     public String getUnidadeMedida() {
@@ -70,28 +58,12 @@ public class Suprimento {
         this.notaFiscal = notaFiscal;
     }
 
-    public Date getDtVencimento() {
-        return dtVencimento;
-    }
-
-    public void setDtVencimento(Date dtVencimento) {
-        this.dtVencimento = dtVencimento;
-    }
-
     public int getCodigo() {
         return codigo;
     }
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public int getQtdade() {
-        return qtdade;
-    }
-
-    public void setQtdade(int qtdade) {
-        this.qtdade = qtdade;
     }
 
     public String getNome() {

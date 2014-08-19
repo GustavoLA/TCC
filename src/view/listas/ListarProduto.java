@@ -330,7 +330,7 @@ public class ListarProduto extends javax.swing.JFrame {
 
         if (selecionado >= 0) {
             Integer idProduto = (Integer) modelo.getValueAt(selecionado, 0);
-            ListarNovoProduto novo = new ListarNovoProduto(idProduto);
+            EntradaProdutoGUI novo = new EntradaProdutoGUI(idProduto);
             novo.setLocationRelativeTo(null);
             novo.setVisible(true);
         } else {

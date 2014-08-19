@@ -16,12 +16,12 @@ import modelo.negocio.Produto;
  *
  * @author GUSTAVO
  */
-public class CadastrarNovoProduto extends javax.swing.JFrame {
+public class CadastrarEntradaProduto extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
     private int idProduto;
 
-    public CadastrarNovoProduto(DefaultTableModel modelo, int idProduto) {
+    public CadastrarEntradaProduto(DefaultTableModel modelo, int idProduto) {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
@@ -43,7 +43,6 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         responsavel = new javax.swing.JLabel();
-        txResponsavel = new javax.swing.JFormattedTextField();
         dtFabricacao = new javax.swing.JLabel();
         txDtFabricacao = new javax.swing.JFormattedTextField();
         dtValidade = new javax.swing.JLabel();
@@ -51,13 +50,14 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
         qntidade = new javax.swing.JLabel();
         txQntidade = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
+        cbFuncionario = new javax.swing.JComboBox();
+        valorUnitario = new javax.swing.JLabel();
+        txValorUnitario = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(217, 176, 60));
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -123,6 +123,10 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
+        cbFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        valorUnitario.setText("Valor unitario");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,11 +136,11 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(responsavel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txResponsavel))
+                                .addComponent(cbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -148,9 +152,13 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(txDtFabricacao)))
                                 .addGap(31, 31, 31)
-                                .addComponent(dtValidade)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dtValidade)
+                                    .addComponent(valorUnitario))
                                 .addGap(18, 18, 18)
-                                .addComponent(txDtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txDtValidade, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                    .addComponent(txValorUnitario))))
                         .addContainerGap(337, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -172,7 +180,7 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(responsavel)
-                            .addComponent(txResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(dtFabricacao)
@@ -182,7 +190,9 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(qntidade)
-                            .addComponent(txQntidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txQntidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(valorUnitario)
+                            .addComponent(txValorUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
@@ -193,7 +203,7 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dtFabricacao, qntidade, responsavel, txDtFabricacao, txQntidade, txResponsavel});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dtFabricacao, qntidade, responsavel, txDtFabricacao, txQntidade});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,7 +213,7 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -214,7 +224,8 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
         EntradaProduto entrada = new EntradaProduto();
 
         entrada.setQntidade(Integer.parseInt(txQntidade.getText()));
-        entrada.setResponsavel(txResponsavel.getText());
+//Combo funcionario        
+//entrada.setResponsavel(txResponsavel.getText());
         try {
             String data = txDtFabricacao.getText();
             entrada.setDtFabricacao(new SimpleDateFormat("dd/MM/yyyy").parse(data));
@@ -240,6 +251,7 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSalvar;
+    private javax.swing.JComboBox cbFuncionario;
     private javax.swing.JLabel dtFabricacao;
     private javax.swing.JLabel dtValidade;
     private javax.swing.JButton jButton1;
@@ -251,6 +263,7 @@ public class CadastrarNovoProduto extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txDtFabricacao;
     private javax.swing.JFormattedTextField txDtValidade;
     private javax.swing.JFormattedTextField txQntidade;
-    private javax.swing.JFormattedTextField txResponsavel;
+    private javax.swing.JFormattedTextField txValorUnitario;
+    private javax.swing.JLabel valorUnitario;
     // End of variables declaration//GEN-END:variables
 }

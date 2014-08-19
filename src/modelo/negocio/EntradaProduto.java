@@ -23,6 +23,7 @@ public class EntradaProduto {
     @Id
     @GeneratedValue
     private int codigo;
+    //Terá que virar uma lista de funcionarios Combobox
     private String responsavel;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtFabricacao;
