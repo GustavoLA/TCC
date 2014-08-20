@@ -6,13 +6,10 @@
 package view.listas;
 
 import controller.EntradaSuprimentoController;
-import controller.SuprimentoController;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import modelo.negocio.EntradaProduto;
-//import modelo.negocio.EntradaSuprimento;
 import modelo.negocio.EntradaSuprimento;
+import modelo.util.Acesso;
 import view.inserir.CadastroEntradaSuprimento;
 
 public class EntradaSuprimentoGUI extends javax.swing.JFrame {
@@ -28,6 +25,7 @@ public class EntradaSuprimentoGUI extends javax.swing.JFrame {
         criaJTable();
         painelLista.setViewportView(tabela);
         setLocationRelativeTo(null);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
 
     }
 
@@ -41,12 +39,12 @@ public class EntradaSuprimentoGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btRemover = new javax.swing.JButton();
         btNovo = new javax.swing.JToggleButton();
         painelLista = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -58,16 +56,6 @@ public class EntradaSuprimentoGUI extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(java.awt.Color.white);
-
-        btRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
-        btRemover.setBorder(null);
-        btRemover.setBorderPainted(false);
-        btRemover.setContentAreaFilled(false);
-        btRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRemoverActionPerformed(evt);
-            }
-        });
 
         btNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/1407207130_insert-table.png"))); // NOI18N
         btNovo.setBorder(null);
@@ -106,7 +94,7 @@ public class EntradaSuprimentoGUI extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(698, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,34 +108,35 @@ public class EntradaSuprimentoGUI extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(funcionarioLogado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(painelLista)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 685, Short.MAX_VALUE)
-                        .addComponent(btRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btNovo)
                         .addGap(75, 75, 75))))
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(funcionarioLogado))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,7 +154,7 @@ public class EntradaSuprimentoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
-        CadastroEntradaSuprimento novo = new CadastroEntradaSuprimento( modelo, idSuprimento);
+        CadastroEntradaSuprimento novo = new CadastroEntradaSuprimento(modelo, idSuprimento);
         novo.setVisible(true);
     }//GEN-LAST:event_btNovoActionPerformed
 
@@ -175,27 +164,10 @@ public class EntradaSuprimentoGUI extends javax.swing.JFrame {
         preencherJTable();
     }//GEN-LAST:event_formWindowGainedFocus
 
-    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        int linhaSelecionada = -1;
-        linhaSelecionada = tabela.getSelectedRow();
-
-        if (linhaSelecionada >= 0) {
-            int id = (int) tabela.getValueAt(linhaSelecionada, 0);
-
-            EntradaSuprimentoController sc = new EntradaSuprimentoController();
-            if (sc.excluir(id));
-            {
-                modelo.removeRow(linhaSelecionada);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "SELECIONE UMA LINHA");
-
-        }    }//GEN-LAST:event_btRemoverActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btNovo;
-    private javax.swing.JButton btRemover;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

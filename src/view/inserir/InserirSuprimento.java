@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Fornecedor;
 import modelo.negocio.Suprimento;
+import modelo.util.Acesso;
 
 public class InserirSuprimento extends javax.swing.JFrame {
 
@@ -23,6 +24,8 @@ public class InserirSuprimento extends javax.swing.JFrame {
         this.modelo = modelo;
         carregarCombo();
         setResizable(false);
+                funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
 
     }
 
@@ -71,8 +74,10 @@ public class InserirSuprimento extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txDescricao = new javax.swing.JTextField();
         descricao = new javax.swing.JLabel();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 800));
 
         painelFundo.setBackground(java.awt.Color.white);
 
@@ -212,7 +217,10 @@ public class InserirSuprimento extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(painelFundoLayout.createSequentialGroup()
                         .addComponent(descricao)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addComponent(funcionarioLogado)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,13 +246,15 @@ public class InserirSuprimento extends javax.swing.JFrame {
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descricao)
                     .addComponent(txDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimpar))
-                .addGap(30, 30, 30))
+                .addGap(5, 5, 5)
+                .addComponent(funcionarioLogado)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -321,6 +331,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbOutro;
     private javax.swing.JLabel descricao;
     private javax.swing.JLabel fornecedor;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -341,6 +352,9 @@ public class InserirSuprimento extends javax.swing.JFrame {
         initComponents();
         this.linhaSelecionada = linhaSelecionada1;
         setLocationRelativeTo(null);
+                funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
+        
         SuprimentoController sc = new SuprimentoController();
         Suprimento s = sc.listarSuprimentoPorId(idSuprimento);
 

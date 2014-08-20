@@ -18,7 +18,6 @@ public class ListarSuprimento extends javax.swing.JFrame {
         criaJTable();
         painelLista.setViewportView(tabela);
         setLocationRelativeTo(null);
-        //Tá bonito agora
         funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
     }
 
@@ -37,7 +36,6 @@ public class ListarSuprimento extends javax.swing.JFrame {
         btInserir = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         txPesquisa = new javax.swing.JTextField();
-        funcionarioLogado = new javax.swing.JLabel();
         pesquisar = new javax.swing.JLabel();
         btVisualizar = new javax.swing.JButton();
         btInvestimento = new javax.swing.JButton();
@@ -45,6 +43,7 @@ public class ListarSuprimento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -193,16 +192,16 @@ public class ListarSuprimento extends javax.swing.JFrame {
                 .addContainerGap(99, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(painelFundoLayout.createSequentialGroup()
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFundoLayout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(funcionarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelFundoLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(funcionarioLogado)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,10 +222,10 @@ public class ListarSuprimento extends javax.swing.JFrame {
                 .addComponent(painelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(85, 85, 85)
                 .addComponent(funcionarioLogado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

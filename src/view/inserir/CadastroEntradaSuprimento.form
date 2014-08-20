@@ -72,52 +72,60 @@
                   </Group>
               </Group>
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="nome" min="-2" max="-2" attributes="0"/>
-                              <Component id="responsavel" min="-2" pref="84" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbFuncionario" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbNome" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="nome" min="-2" max="-2" attributes="0"/>
+                                      <Component id="responsavel" min="-2" pref="84" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbFuncionario" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbNome" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="qntidade" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                                          <Component id="txQntidade" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="dtMovimentacao" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txDtMovimentacao" min="-2" pref="95" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="valor" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="formaPagamento" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="cbFormaPagamento" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txValor" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="qntidade" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="txQntidade" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="dtMovimentacao" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txDtMovimentacao" min="-2" pref="95" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="valor" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="formaPagamento" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbFormaPagamento" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txValor" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="funcionarioLogado" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="289" max="32767" attributes="0"/>
@@ -169,7 +177,9 @@
                       <Component id="btLimpar" min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="btSalvar" min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <Component id="funcionarioLogado" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -344,6 +354,8 @@
               </StringArray>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="funcionarioLogado">
         </Component>
       </SubComponents>
     </Container>

@@ -86,20 +86,20 @@
               </Group>
               <Component id="jPanel1" max="32767" attributes="0"/>
               <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+              <Component id="jPanel4" alignment="1" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="funcionarioLogado" min="-2" pref="183" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="painelLista" min="-2" pref="707" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="funcionarioLogado" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <Component id="jPanel4" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -123,10 +123,10 @@
                   <Component id="painelLista" min="-2" pref="305" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="funcionarioLogado" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -191,8 +191,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txPesquisaActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="funcionarioLogado">
         </Component>
         <Component class="javax.swing.JLabel" name="pesquisar">
           <Properties>
@@ -302,6 +300,8 @@
             </DimensionLayout>
           </Layout>
         </Container>
+        <Component class="javax.swing.JLabel" name="funcionarioLogado">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

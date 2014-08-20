@@ -46,24 +46,26 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel2" max="32767" attributes="0"/>
+              <Component id="jPanel3" alignment="1" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="funcionarioLogado" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel2" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Component id="painelLista" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="685" max="32767" attributes="0"/>
-                          <Component id="btRemover" min="-2" pref="51" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="btNovo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <Component id="jPanel3" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -71,35 +73,20 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btNovo" min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="btRemover" min="-2" pref="41" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btNovo" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="painelLista" min="-2" pref="323" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="funcionarioLogado" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btRemover">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/image/delete.png"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-            <Property name="borderPainted" type="boolean" value="false"/>
-            <Property name="contentAreaFilled" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRemoverActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JToggleButton" name="btNovo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -157,7 +144,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="698" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -182,6 +169,8 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="funcionarioLogado">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

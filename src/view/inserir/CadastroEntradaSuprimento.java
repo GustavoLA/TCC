@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.EntradaSuprimento;
 import modelo.negocio.Suprimento;
+import modelo.util.Acesso;
 
 /**
  *
@@ -27,6 +28,8 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
         this.modelo = modelo;
         this.idSuprimento = idSuprimento;
         setResizable(false);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
     }
 
     /**
@@ -58,6 +61,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         cbNome = new javax.swing.JComboBox();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -167,41 +171,46 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
                         .addComponent(txIdSuprimento, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))))
             .addGroup(painelFundoLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nome)
-                            .addComponent(responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
-                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(painelFundoLayout.createSequentialGroup()
-                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(painelFundoLayout.createSequentialGroup()
-                                .addComponent(qntidade)
-                                .addGap(65, 65, 65)
-                                .addComponent(txQntidade))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelFundoLayout.createSequentialGroup()
-                                .addComponent(dtMovimentacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txDtMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelFundoLayout.createSequentialGroup()
                                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nome)
+                                    .addComponent(responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(54, 54, 54)
+                                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(painelFundoLayout.createSequentialGroup()
+                                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(painelFundoLayout.createSequentialGroup()
-                                        .addComponent(valor)
-                                        .addGap(114, 114, 114))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                                        .addComponent(formaPagamento)
-                                        .addGap(36, 36, 36)))
-                                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txValor))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(qntidade)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(txQntidade))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelFundoLayout.createSequentialGroup()
+                                        .addComponent(dtMovimentacao)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txDtMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelFundoLayout.createSequentialGroup()
+                                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(painelFundoLayout.createSequentialGroup()
+                                                .addComponent(valor)
+                                                .addGap(114, 114, 114))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
+                                                .addComponent(formaPagamento)
+                                                .addGap(36, 36, 36)))
+                                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txValor))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(funcionarioLogado)))
                 .addContainerGap(289, Short.MAX_VALUE))
         );
         painelFundoLayout.setVerticalGroup(
@@ -242,7 +251,9 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(funcionarioLogado)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -301,6 +312,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
     private javax.swing.JComboBox cbNome;
     private javax.swing.JLabel dtMovimentacao;
     private javax.swing.JLabel formaPagamento;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
