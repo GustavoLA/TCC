@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Cliente;
 import modelo.negocio.Endereco;
+import modelo.util.Acesso;
 
 /**
  *
@@ -20,7 +21,7 @@ public class InserirCliente extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
     private int linhaSelecionada;
-    
+
 //Inserir
     public InserirCliente(DefaultTableModel modelo) {
         initComponents();
@@ -28,20 +29,23 @@ public class InserirCliente extends javax.swing.JFrame {
         txIdEndereco.setVisible(false);
         setLocationRelativeTo(null);
         this.modelo = modelo;
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
 
     }
 //EDITAR LINHA SELECIONADA
+
     public InserirCliente(DefaultTableModel modelo, int linhaSelecionada, int idCliente) {
         this.modelo = modelo;
         PreencherCampos(linhaSelecionada, idCliente);
     }
-      //VISUALIZAR LINHA SELECIONADA
+
+    //VISUALIZAR LINHA SELECIONADA
+
     public InserirCliente(int linhaSelecionada, int idCliente) {
         PreencherCampos(linhaSelecionada, idCliente);
         bloquearCampos();
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,6 +102,7 @@ public class InserirCliente extends javax.swing.JFrame {
         celular = new javax.swing.JLabel();
         txCelular = new javax.swing.JFormattedTextField();
         jPanel5 = new javax.swing.JPanel();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -443,6 +448,10 @@ public class InserirCliente extends javax.swing.JFrame {
                 .addGap(93, 93, 93))
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(painelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(painelFundoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(funcionarioLogado)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +467,9 @@ public class InserirCliente extends javax.swing.JFrame {
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(funcionarioLogado)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -476,7 +487,7 @@ public class InserirCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-  txAnotacoes.setText(null);
+        txAnotacoes.setText(null);
         txCelular.setText(null);
         txCpf.setText(null);
         txDtCadastro.setText(null);
@@ -485,7 +496,7 @@ public class InserirCliente extends javax.swing.JFrame {
         txNome.setText(null);
         txRg.setText(null);
         txTelefone.setText(null);
-        
+
         txCidade.setText(null);
         txComplemento.setText(null);
         txNumero.setText(null);
@@ -495,7 +506,7 @@ public class InserirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-  Cliente c = new Cliente();
+        Cliente c = new Cliente();
 
         //CLIENTE
         c.setAnotacoes(txAnotacoes.getText());
@@ -505,7 +516,7 @@ public class InserirCliente extends javax.swing.JFrame {
         c.setNome(txNome.getText());
         c.setRg(rg.getText());
         c.setTelefone(txTelefone.getText());
-        
+
         try {
             String data = txDtCadastro.getText();
             c.setDtCadastro(new SimpleDateFormat("dd/mm/yyyy").parse(data));
@@ -518,19 +529,19 @@ public class InserirCliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "FORMATO INVÁLIDO! UTILIZE DD/MM/YYYY\n" + ex);
         }
-        
+
         if (rbMasculino.isSelected()) {
             c.setSexo('M');
         } else {
             c.setSexo('F');
         }
-        
+
         Endereco e = new Endereco();
-        
+
         e.setCidade(txCidade.getText());
         e.setComplemento(txComplemento.getText());
         //fazer combo
-       // e.setEstado(txEstado.getText());
+        // e.setEstado(txEstado.getText());
         e.setNumero(Integer.parseInt(txNumero.getText()));
         e.setRua(txRua.getText());
         e.setCep(txCep.getText());
@@ -539,13 +550,13 @@ public class InserirCliente extends javax.swing.JFrame {
             e.setCodigo(Integer.parseInt(txIdEndereco.getText()));
         }
         c.setEndereco(e);
-        
+
         ClienteController cc = new ClienteController();
-        
+
         if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
             c.setCodigo(Integer.parseInt(txId.getText()));
             cc.salvar(c);
-            
+
             modelo.removeRow(linhaSelecionada);
             modelo.addRow(new Object[]{c.getCodigo(), c.getAnotacoes(), c.getCelular(), c.getCpf(), c.getDtCadastro(), c.getDtNascimento(), c.getEmail(), c.getNome(), c.getRg(), c.getTelefone()});
             dispose();
@@ -553,10 +564,9 @@ public class InserirCliente extends javax.swing.JFrame {
             cc.salvar(c);
             dispose();
         }
-                            
+
     }//GEN-LAST:event_btSalvarActionPerformed
 
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel anotacoes;
@@ -574,6 +584,7 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JLabel dtNascimento;
     private javax.swing.JLabel email;
     private javax.swing.JLabel estado;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel nome;
@@ -608,12 +619,12 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txTelefone;
     // End of variables declaration//GEN-END:variables
 
-    
-    
     private void PreencherCampos(int linhaSelecionada1, int idCliente) {
         initComponents();
         this.linhaSelecionada = linhaSelecionada1;
         setLocationRelativeTo(null);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
         ClienteController cc = new ClienteController();
         Cliente c = cc.listarClientePorId(idCliente);
         //CLIENTE
@@ -641,15 +652,15 @@ public class InserirCliente extends javax.swing.JFrame {
         txNumero.setText(String.valueOf(c.getEndereco().getNumero()));
         txCidade.setText(c.getEndereco().getCidade());
         txComplemento.setText(c.getEndereco().getComplemento());
-       //combo txEstado.setText(c.getEndereco().getEstado());
+        //combo txEstado.setText(c.getEndereco().getEstado());
         txRua.setText(c.getEndereco().getRua());
         txCep.setText(c.getEndereco().getCep());
         txBairro.setText(c.getEndereco().getBairro());
-        
+
     }
-    
+
     private void bloquearCampos() {
-        
+
         txComplemento.setEditable(false);
         txAnotacoes.setEditable(false);
         txCelular.setEditable(false);
@@ -671,5 +682,5 @@ public class InserirCliente extends javax.swing.JFrame {
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
         txBairro.setEditable(false);
-    }}
-
+    }
+}
