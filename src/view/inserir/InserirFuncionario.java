@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Endereco;
 import modelo.negocio.Funcionario;
+import modelo.util.Acesso;
 
 public class InserirFuncionario extends javax.swing.JFrame {
 
@@ -21,6 +22,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
     }
 
     //Visualizar
@@ -42,6 +44,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
         bgSexo = new javax.swing.ButtonGroup();
         painelFundo = new javax.swing.JPanel();
         painelTopo = new javax.swing.JPanel();
+        funcionario = new javax.swing.JLabel();
         painelRodape = new javax.swing.JPanel();
         btLimpar = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
@@ -93,26 +96,36 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txLogin = new javax.swing.JTextField();
         senha = new javax.swing.JLabel();
         txSenha = new javax.swing.JPasswordField();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 800));
         setResizable(false);
 
         painelFundo.setBackground(java.awt.Color.white);
 
         painelTopo.setBackground(new java.awt.Color(255, 255, 0));
 
+        funcionario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        funcionario.setText("FUNCIONÁRIOS");
+
         javax.swing.GroupLayout painelTopoLayout = new javax.swing.GroupLayout(painelTopo);
         painelTopo.setLayout(painelTopoLayout);
         painelTopoLayout.setHorizontalGroup(
             painelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(painelTopoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(funcionario)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelTopoLayout.setVerticalGroup(
             painelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTopoLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(funcionario)
+                .addContainerGap())
         );
 
         painelRodape.setBackground(new java.awt.Color(255, 255, 0));
@@ -497,6 +510,10 @@ public class InserirFuncionario extends javax.swing.JFrame {
             .addComponent(painelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(painelFundoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(funcionarioLogado)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,7 +533,9 @@ public class InserirFuncionario extends javax.swing.JFrame {
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71))
+                .addGap(20, 20, 20)
+                .addComponent(funcionarioLogado)
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -638,6 +657,8 @@ public class InserirFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel dtDemissao;
     private javax.swing.JLabel dtNascimento;
     private javax.swing.JLabel estado;
+    private javax.swing.JLabel funcionario;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel login;
@@ -683,6 +704,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
         initComponents();
         this.linhaSelecionada = linhaSelecionada;
         setLocationRelativeTo(null);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
 
         FuncionarioController fc = new FuncionarioController();
         Funcionario f = fc.listarFuncionarioPorId(idFuncionario);
