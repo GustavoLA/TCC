@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.EntradaProduto;
 import modelo.negocio.Produto;
+import modelo.util.Acesso;
 
 /**
  *
@@ -27,6 +28,8 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
         this.modelo = modelo;
         this.idProduto = idProduto;
         setResizable(false);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
     }
 
     /**
@@ -53,6 +56,7 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
         cbFuncionario = new javax.swing.JComboBox();
         valorUnitario = new javax.swing.JLabel();
         txValorUnitario = new javax.swing.JFormattedTextField();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -160,8 +164,9 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
                                     .addComponent(txDtValidade, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                                     .addComponent(txValorUnitario))))
                         .addContainerGap(337, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(funcionarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,7 +201,9 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(funcionarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -254,6 +261,7 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
     private javax.swing.JComboBox cbFuncionario;
     private javax.swing.JLabel dtFabricacao;
     private javax.swing.JLabel dtValidade;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
