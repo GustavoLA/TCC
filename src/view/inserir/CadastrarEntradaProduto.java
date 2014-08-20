@@ -6,10 +6,15 @@
 package view.inserir;
 
 import controller.EntradaProdutoController;
+import controller.FuncionarioController;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.EntradaProduto;
+import modelo.negocio.Funcionario;
 import modelo.negocio.Produto;
 import modelo.util.Acesso;
 
@@ -28,6 +33,7 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
         this.modelo = modelo;
         this.idProduto = idProduto;
         setResizable(false);
+        carregarCombo();
         funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
 
     }
@@ -127,7 +133,7 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
-        cbFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione" }));
 
         valorUnitario.setText("Valor unitario");
 
@@ -231,8 +237,7 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
         EntradaProduto entrada = new EntradaProduto();
 
         entrada.setQntidade(Integer.parseInt(txQntidade.getText()));
-//Combo funcionario        
-//entrada.setResponsavel(txResponsavel.getText());
+        entrada.setResponsavel((Funcionario) cbFuncionario.getSelectedItem());
         try {
             String data = txDtFabricacao.getText();
             entrada.setDtFabricacao(new SimpleDateFormat("dd/MM/yyyy").parse(data));
@@ -274,4 +279,18 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txValorUnitario;
     private javax.swing.JLabel valorUnitario;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarCombo() {
+        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbFuncionario.getModel();
+        comboModel.removeAllElements();
+        List<Funcionario> f = new ArrayList<>();
+        FuncionarioController fc = new FuncionarioController();
+        f = fc.listarFuncionario();
+
+        for (int linha = 0; linha < f.size(); linha++) {
+            Funcionario fb = f.get(linha);
+            comboModel.addElement(fb);
+        }
+
+    }
 }
