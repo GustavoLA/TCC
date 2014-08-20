@@ -7,16 +7,12 @@ package view.inserir;
 
 import controller.IngredienteController;
 import controller.ProdutoController;
-import controller.SuprimentoController;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Ingrediente;
 import modelo.negocio.Produto;
-import modelo.negocio.Suprimento;
+import modelo.util.Acesso;
 
 public class InserirProduto extends javax.swing.JFrame {
 
@@ -27,6 +23,7 @@ public class InserirProduto extends javax.swing.JFrame {
     //Produto
     private DefaultTableModel modelo;
     private int linhaSelecionada;
+    
 
     //INSERIR
     public InserirProduto(DefaultTableModel modelo) {
@@ -36,6 +33,8 @@ public class InserirProduto extends javax.swing.JFrame {
         setResizable(false);
         criaJTable();
         painelIngrediente.setViewportView(tabelaIngrediente);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
     }
 
     //EDITAR LINHA SELECIONADA 
@@ -77,6 +76,7 @@ public class InserirProduto extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -103,8 +103,6 @@ public class InserirProduto extends javax.swing.JFrame {
         txId.setEditable(false);
 
         descricao.setText("Descrição");
-
-        txDescricao.setText("jTextField1");
 
         javax.swing.GroupLayout cadastroProdutoLayout = new javax.swing.GroupLayout(cadastroProduto);
         cadastroProduto.setLayout(cadastroProdutoLayout);
@@ -253,7 +251,9 @@ public class InserirProduto extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(funcionarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,11 +270,17 @@ public class InserirProduto extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                .addGap(43, 43, 43))
+                    .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(funcionarioLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -298,7 +304,6 @@ public class InserirProduto extends javax.swing.JFrame {
         Produto p = new Produto();
         p.setNome(txNome.getText());
         p.setDescricao(txDescricao.getText());
-        
 
         ProdutoController pc = new ProdutoController();
 
@@ -363,6 +368,7 @@ public class InserirProduto extends javax.swing.JFrame {
     private javax.swing.JButton btSalvar;
     private javax.swing.JPanel cadastroProduto;
     private javax.swing.JLabel descricao;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -379,6 +385,8 @@ public class InserirProduto extends javax.swing.JFrame {
         initComponents();
         this.linhaSelecionada = linhaSelecionada1;
         setLocationRelativeTo(null);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
         ProdutoController pc = new ProdutoController();
         Produto p = pc.listarProdutoPorId(idProduto);
 
