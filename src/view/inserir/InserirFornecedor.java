@@ -9,6 +9,7 @@ import controller.FornecedorController;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Endereco;
 import modelo.negocio.Fornecedor;
+import modelo.util.Acesso;
 
 /**
  *
@@ -24,6 +25,8 @@ public class InserirFornecedor extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
     }
 
     //EDITAR LINHA SELECIONADA
@@ -85,6 +88,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         txDescricao = new javax.swing.JTextPane();
         txNomeProduto = new javax.swing.JTextField();
         txMarcaProduto = new javax.swing.JTextField();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 800));
@@ -385,7 +389,9 @@ public class InserirFornecedor extends javax.swing.JFrame {
             .addComponent(painelTopo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(painelRodape, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(funcionarioLogado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btLimpar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,9 +413,11 @@ public class InserirFornecedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(painelRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btLimpar)
-                    .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btLimpar)
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(funcionarioLogado))
                 .addContainerGap())
         );
 
@@ -486,7 +494,6 @@ public class InserirFornecedor extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btSalvarActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bairro;
@@ -502,6 +509,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel email;
     private javax.swing.JLabel estado;
     private javax.swing.JLabel fax;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel marcaProduto;
@@ -534,10 +542,12 @@ public class InserirFornecedor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txTelefone;
     // End of variables declaration//GEN-END:variables
 
- private void PreencherCampos(int linhaSelecionada1, int idFornecedor) {
+    private void PreencherCampos(int linhaSelecionada1, int idFornecedor) {
         initComponents();
         this.linhaSelecionada = linhaSelecionada1;
         setLocationRelativeTo(null);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
         FornecedorController fc = new FornecedorController();
         Fornecedor f = fc.listarFornecedorPorId(idFornecedor);
         //FORNECEDOR
@@ -552,16 +562,16 @@ public class InserirFornecedor extends javax.swing.JFrame {
         //ENDEREÇO
         txCidade.setText(String.valueOf(f.getEndereco().getCidade()));
         txComplemento.setText(String.valueOf(f.getEndereco().getComplemento()));
-       //COMBO txEstado.setText(String.valueOf(f.getEndereco().getEstado()));
+        //COMBO txEstado.setText(String.valueOf(f.getEndereco().getEstado()));
         txNumero.setText(String.valueOf(f.getEndereco().getNumero()));
         txRua.setText(String.valueOf(f.getEndereco().getRua()));
         txIdEndereco.setText(String.valueOf(f.getEndereco().getCodigo()));
         txCep.setText(f.getEndereco().getCep());
         txBairro.setText(f.getEndereco().getBairro());
     }
-    
+
     private void bloquearCampos() {
-        
+
         txCep.setEditable(false);
         txCidade.setEditable(false);
         txCnpj.setEditable(false);
@@ -579,8 +589,7 @@ public class InserirFornecedor extends javax.swing.JFrame {
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
         txBairro.setEditable(false);
-        
-    }
-    
-}
 
+    }
+
+}
