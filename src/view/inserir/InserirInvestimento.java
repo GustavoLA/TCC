@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Investimento;
+import modelo.util.Acesso;
 
 public class InserirInvestimento extends javax.swing.JFrame {
 
@@ -16,6 +17,8 @@ public class InserirInvestimento extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
     }
 
     //EDITAR LINHA SELECIONADA
@@ -58,6 +61,7 @@ public class InserirInvestimento extends javax.swing.JFrame {
         cbPagamento = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -233,11 +237,15 @@ public class InserirInvestimento extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94))
+            .addGroup(painelFundoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(funcionarioLogado)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelFundoLayout.setVerticalGroup(
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,11 +255,14 @@ public class InserirInvestimento extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addGroup(painelFundoLayout.createSequentialGroup()
+                        .addComponent(btLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(funcionarioLogado))
                     .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(98, 98, 98))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -264,7 +275,7 @@ public class InserirInvestimento extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 516, Short.MAX_VALUE)
         );
 
         pack();
@@ -274,7 +285,7 @@ public class InserirInvestimento extends javax.swing.JFrame {
 
         txDescricao.setText(null);
         txDtInvestimento.setText(null);
-       //combo  txPagamento.setText(null);
+        //combo  txPagamento.setText(null);
         txNumeroParcela.setText(null);
         txValorParcela.setText(null);
         txValorTotal.setText(null);
@@ -321,6 +332,7 @@ public class InserirInvestimento extends javax.swing.JFrame {
     private javax.swing.JLabel descricaoInvestimento;
     private javax.swing.JLabel dtInvestimento;
     private javax.swing.JLabel formaPagamento;
+    private javax.swing.JLabel funcionarioLogado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -336,15 +348,18 @@ public class InserirInvestimento extends javax.swing.JFrame {
     private javax.swing.JLabel valorParcela;
     private javax.swing.JLabel valorTotal;
     // End of variables declaration//GEN-END:variables
-private void preencherCampos(int linhaSelecionada1, int idInvestimento) {
+
+    private void preencherCampos(int linhaSelecionada1, int idInvestimento) {
         initComponents();
         this.linhaSelecionada = linhaSelecionada1;
         setLocationRelativeTo(null);
+        funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
+
         InvestimentoController ic = new InvestimentoController();
         Investimento i = ic.listarInvestimentoPorId(idInvestimento);
         txId.setText(String.valueOf(i.getCodigo()));
         txDescricao.setText(i.getDescricaoInvestimento());
-       //combo txPagamento.setText(i.getFormaPagamento());
+        //combo txPagamento.setText(i.getFormaPagamento());
         txNumeroParcela.setText(String.valueOf(i.getNumeroParcelas()));
         txValorParcela.setText(String.valueOf(i.getValorParcela()));
         txValorTotal.setText(String.valueOf(i.getValorTotal()));
