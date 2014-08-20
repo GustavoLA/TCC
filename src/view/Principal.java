@@ -159,11 +159,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 89, Short.MAX_VALUE)
+            .addGap(0, 75, Short.MAX_VALUE)
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/SALGADOS-E-ASSADOS-PARA-FESTA-CROCANTES-E-RECHEADOS-20140528171949.jpg"))); // NOI18N
