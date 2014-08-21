@@ -239,7 +239,7 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
                 //&& Validadores.validaCampoVazio((String) cbFuncionario.getSelectedItem(), "Responsável")
                 && Validadores.validaData(txDtFabricacao.getText(), "Data de Fabricação")
                 && Validadores.validaData(txDtValidade.getText(), "Data de Validade")
-                && Validadores.validaDouble(txQntidade.getText(), "Quantidade")
+                && Validadores.somenteNumeros(txQntidade.getText(), "Quantidade")
                 && Validadores.validaDouble(txValorUnitario.getText(), "Valor Unitário")) {
 
             EntradaProduto entrada = new EntradaProduto();
