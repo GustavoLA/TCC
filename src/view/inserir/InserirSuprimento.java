@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Fornecedor;
 import modelo.negocio.Suprimento;
 import modelo.util.Acesso;
+import validadores.Validadores;
 
 public class InserirSuprimento extends javax.swing.JFrame {
 
@@ -287,45 +288,51 @@ public class InserirSuprimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        Suprimento s = new Suprimento();
 
-        s.setUnidadeMedida(txUnidadeMedida.getText());
-        //Quero ver fazer listar e editar
-        //Se combo fornecedor for utilizado, checkBox inativo.
-        //Se CheckBox utilizado, comboBox inativo
-        if (cbOutro.isSelected()) {
-            s.setFornecedor(null);
-        } else {
-            s.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
-        }
+        if (Validadores.validaCampoVazio(txDescricao.getText(), "Descrição")
+                && Validadores.validaCampoVazio(txNome.getText(), "Nome")
+                && Validadores.validaCampoVazio(txUnidadeMedida.getText(), "Unidade de Medida")
+                && Validadores.somenteLetras(txNome.getText(), "Nome")
+                && Validadores.somenteLetras(txUnidadeMedida.getText(), "Unidade de Medida")) {
 
-        if (rbNao1.isSelected()) {
-            s.setNotaFiscal('N');
-        } else {
-            s.setNotaFiscal('S');
-        }
+            Suprimento s = new Suprimento();
 
-        s.setDescricao(txDescricao.getText());
-        s.setNome(txNome.getText());
+            s.setUnidadeMedida(txUnidadeMedida.getText());
+            //Visualizar e editar não estao setando os valores corretamente
+            if (cbOutro.isSelected()) {
+                s.setFornecedor(null);
+            } else {
+                s.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
+            }
 
-        if (rbNao.isSelected()) {
-            s.setProducao('N');
-        } else {
-            s.setProducao('S');
-        }
+            if (rbNao1.isSelected()) {
+                s.setNotaFiscal('N');
+            } else {
+                s.setNotaFiscal('S');
+            }
 
-        SuprimentoController sc = new SuprimentoController();
+            s.setDescricao(txDescricao.getText());
+            s.setNome(txNome.getText());
 
-        if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
-            s.setCodigo(Integer.parseInt(txId.getText()));
-            sc.salvar(s);
+            if (rbNao.isSelected()) {
+                s.setProducao('N');
+            } else {
+                s.setProducao('S');
+            }
 
-            modelo.removeRow(linhaSelecionada);
-            modelo.addRow(new Object[]{s.getCodigo(), s.getDescricao(), s.getNome()});
-            dispose();
-        } else {
-            sc.salvar(s);
-            dispose();
+            SuprimentoController sc = new SuprimentoController();
+
+            if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
+                s.setCodigo(Integer.parseInt(txId.getText()));
+                sc.salvar(s);
+
+                modelo.removeRow(linhaSelecionada);
+                modelo.addRow(new Object[]{s.getCodigo(), s.getDescricao(), s.getNome()});
+                dispose();
+            } else {
+                sc.salvar(s);
+                dispose();
+            }
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
