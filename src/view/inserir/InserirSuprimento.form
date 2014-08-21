@@ -61,6 +61,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="nome" min="-2" max="-2" attributes="0"/>
                               <Component id="fornecedor" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="descricao" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -78,7 +79,7 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="190" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btSalvar" min="-2" pref="54" max="-2" attributes="0"/>
@@ -107,13 +108,16 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="descricao" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="funcionarioLogado" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="funcionarioLogado" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="unidaeMedida" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txUnidadeMedida" min="-2" pref="133" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="495" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -142,11 +146,16 @@
                       <Component id="rbNao1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="descricao" min="-2" max="-2" attributes="0"/>
-                      <Component id="txDescricao" min="-2" pref="109" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="unidaeMedida" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txUnidadeMedida" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="211" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txDescricao" min="-2" pref="109" max="-2" attributes="0"/>
+                      <Component id="descricao" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="167" max="32767" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -255,6 +264,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Outro"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbOutroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="producao">
           <Properties>
@@ -346,6 +358,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="funcionarioLogado">
+        </Component>
+        <Component class="javax.swing.JLabel" name="unidaeMedida">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Unidade de medida"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txUnidadeMedida">
         </Component>
       </SubComponents>
     </Container>

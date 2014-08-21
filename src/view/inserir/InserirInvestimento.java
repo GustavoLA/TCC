@@ -123,7 +123,7 @@ public class InserirInvestimento extends javax.swing.JFrame {
         txDescricao.setRows(5);
         scrollDescricao.setViewportView(txDescricao);
 
-        cbPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dinheiro", "Cheque", "Cartão de Crédito", "Outros" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -297,7 +297,8 @@ public class InserirInvestimento extends javax.swing.JFrame {
         Investimento i = new Investimento();
 
         i.setDescricaoInvestimento(txDescricao.getText());
-        //combo i.setPagamento(txFormaPagamento.getText());
+        i.setFormaPagamento(cbPagamento.getSelectedItem() + "");
+//combo i.setPagamento(txFormaPagamento.getText());
         i.setNumeroParcelas(Integer.parseInt(txNumeroParcela.getText()));
         i.setValorParcela(Double.parseDouble(txValorParcela.getText()));
         i.setValorTotal(Double.parseDouble(txValorTotal.getText()));
@@ -359,7 +360,17 @@ public class InserirInvestimento extends javax.swing.JFrame {
         Investimento i = ic.listarInvestimentoPorId(idInvestimento);
         txId.setText(String.valueOf(i.getCodigo()));
         txDescricao.setText(i.getDescricaoInvestimento());
-        //combo txPagamento.setText(i.getFormaPagamento());
+
+        if (i.getFormaPagamento().equals("Dinheiro")) {
+            cbPagamento.setSelectedItem("Dinheiro");
+        } else if (i.getFormaPagamento().equals("Cheque")) {
+            cbPagamento.setSelectedItem("Cheque");
+        } else if (i.getFormaPagamento().equals("Cartãao de Crédito")) {
+            cbPagamento.setSelectedItem("Cartão de Crédito");
+        } else if (i.getFormaPagamento().equals("Outros")) {
+            cbPagamento.setSelectedItem("Outros");
+        }
+//combo txPagamento.setText(i.getFormaPagamento());
         txNumeroParcela.setText(String.valueOf(i.getNumeroParcelas()));
         txValorParcela.setText(String.valueOf(i.getValorParcela()));
         txValorTotal.setText(String.valueOf(i.getValorTotal()));
@@ -372,7 +383,7 @@ public class InserirInvestimento extends javax.swing.JFrame {
 
         txDescricao.setEditable(false);
         txDtInvestimento.setEditable(false);
-        cbPagamento.setEditable(false);
+        cbPagamento.setEnabled(false);
         txNumeroParcela.setEditable(false);
         txValorParcela.setEditable(false);
         txValorTotal.setEditable(false);

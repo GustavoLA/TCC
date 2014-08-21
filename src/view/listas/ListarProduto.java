@@ -108,7 +108,7 @@ public class ListarProduto extends javax.swing.JFrame {
             }
         });
 
-        btInvestimento.setText("MOVIMENTAÇÃO");
+        btInvestimento.setText("Produção");
         btInvestimento.setBorder(null);
         btInvestimento.setBorderPainted(false);
         btInvestimento.setContentAreaFilled(false);
@@ -185,7 +185,7 @@ public class ListarProduto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFundoLayout.createSequentialGroup()
-                        .addGap(0, 433, Short.MAX_VALUE)
+                        .addGap(0, 471, Short.MAX_VALUE)
                         .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFundoLayout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -23,8 +23,8 @@ public class EntradaProduto {
     @Id
     @GeneratedValue
     private int codigo;
-    //Terá que virar uma lista de funcionarios Combobox
-    private String responsavel;
+    @ManyToOne
+    private Funcionario responsavel;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtFabricacao;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -42,11 +42,11 @@ public class EntradaProduto {
         this.codigo = codigo;
     }
 
-    public String getResponsavel() {
+    public Funcionario getResponsavel() {
         return responsavel;
     }
 
-    public void setResponsavel(String responsavel) {
+    public void setResponsavel(Funcionario responsavel) {
         this.responsavel = responsavel;
     }
 

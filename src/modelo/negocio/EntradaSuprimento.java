@@ -23,8 +23,8 @@ public class EntradaSuprimento {
     @Id
     @GeneratedValue
     private int codigo;
-    //Será uma lista dos funcionarios já cadastrados
-    private String responsavel;
+    @ManyToOne
+    private Funcionario responsavel;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtMovimento;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -35,6 +35,25 @@ public class EntradaSuprimento {
     private Suprimento suprimento;
     private double valor;
     private String formaPagamento;
+
+    //Para fazer a soma de todos as entradas de produto
+    private int qnqtidadeTotal;
+
+    public int getQnqtidadeTotal() {
+        return qnqtidadeTotal;
+    }
+
+    public void setQnqtidadeTotal(int qnqtidadeTotal) {
+        this.qnqtidadeTotal = qnqtidadeTotal;
+    }
+
+    public Funcionario getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(Funcionario responsavel) {
+        this.responsavel = responsavel;
+    }
 
     public Date getDtVencimento() {
         return dtVencimento;
@@ -66,14 +85,6 @@ public class EntradaSuprimento {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public String getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
     }
 
     public Date getDtMovimento() {

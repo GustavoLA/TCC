@@ -6,10 +6,18 @@
 package view.inserir;
 
 import controller.EntradaSuprimentoController;
+import controller.EstoqueController;
+import controller.FuncionarioController;
+import controller.SuprimentoController;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.EntradaSuprimento;
+import modelo.negocio.Estoque;
+import modelo.negocio.Funcionario;
 import modelo.negocio.Suprimento;
 import modelo.util.Acesso;
 
@@ -18,18 +26,19 @@ import modelo.util.Acesso;
  * @author User
  */
 public class CadastroEntradaSuprimento extends javax.swing.JFrame {
-
+    
     private DefaultTableModel modelo;
     private int idSuprimento;
-
+    
     public CadastroEntradaSuprimento(DefaultTableModel modelo, int idSuprimento) {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
         this.idSuprimento = idSuprimento;
         setResizable(false);
+        carregarCombo();
         funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
-
+        
     }
 
     /**
@@ -44,7 +53,6 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
         painelFundo = new javax.swing.JPanel();
         painelTopo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        nome = new javax.swing.JLabel();
         responsavel = new javax.swing.JLabel();
         dtMovimentacao = new javax.swing.JLabel();
         txDtMovimentacao = new javax.swing.JFormattedTextField();
@@ -59,8 +67,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
         formaPagamento = new javax.swing.JLabel();
         cbFormaPagamento = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        cbNome = new javax.swing.JComboBox();
+        txDtVencimento = new javax.swing.JFormattedTextField();
         funcionarioLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -98,9 +105,6 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
             .addGap(0, 18, Short.MAX_VALUE)
         );
 
-        nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        nome.setText("Nome:   ");
-
         responsavel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         responsavel.setText("Responsável:  ");
 
@@ -135,23 +139,19 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
             }
         });
 
-        cbFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         valor.setText("Valor");
 
         formaPagamento.setText("Forma de pagamento");
 
-        cbFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dinheiro", "Cheque", "Cartão de Crédito", "Outros" }));
 
         jLabel2.setText("Data de vencimento");
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txDtVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-
-        cbNome.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout painelFundoLayout = new javax.swing.GroupLayout(painelFundo);
         painelFundo.setLayout(painelFundoLayout);
@@ -176,13 +176,9 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelFundoLayout.createSequentialGroup()
-                                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nome)
-                                    .addComponent(responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(54, 54, 54)
-                                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelFundoLayout.createSequentialGroup()
                                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(painelFundoLayout.createSequentialGroup()
@@ -207,7 +203,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txDtVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(painelFundoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(funcionarioLogado)))
@@ -217,11 +213,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
             painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFundoLayout.createSequentialGroup()
                 .addComponent(painelTopo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome)
-                    .addComponent(cbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(75, 75, 75)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(responsavel)
                     .addComponent(cbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -230,7 +222,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
                     .addComponent(dtMovimentacao)
                     .addComponent(txDtMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txDtVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(painelFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(qntidade)
@@ -272,35 +264,44 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         EntradaSuprimento entrada = new EntradaSuprimento();
-
+        
         entrada.setQntdade(Integer.parseInt(txQntidade.getText()));
-        //ComboBox
-        //entrada.setResponsavel(cbResponsavel.get());
+        entrada.setResponsavel((Funcionario) cbFuncionario.getSelectedItem());
+        entrada.setFormaPagamento(cbFormaPagamento.getSelectedItem() + "");
+        
         try {
             String data = txDtMovimentacao.getText();
             entrada.setDtMovimento(new SimpleDateFormat("dd/MM/yyyy").parse(data));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao converter a data");
         }
+        try {
+            String data = txDtVencimento.getText();
+            entrada.setDtVencimento(new SimpleDateFormat("dd/MM/yyyy").parse(data));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao converter a data");
+        }
 
+//      entrada.setQnqtidadeTotal(entrada.getQnqtidadeTotal() + entrada.getQntdade());
         Suprimento suprimentos = new Suprimento();
         suprimentos.setCodigo(idSuprimento);
-        //       suprimentos.setQnqtidadeTotal(suprimentos.getQnqtidadeTotal() + entrada.getQntdade());
         entrada.setSuprimento(suprimentos);
-
+        
         EntradaSuprimentoController sc = new EntradaSuprimentoController();
         sc.salvar(entrada);
 
+        //        Estoque e = new Estoque();
+        //        e.setQntidade(entrada.getQntdade() + e.getQntidade());
+        //        EstoqueController ec = new EstoqueController();
+        //        ec.salvar(e);
         dispose();
-
 
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-
+        
         txDtMovimentacao.setText(null);
         txQntidade.setText(null);
-
     }//GEN-LAST:event_btLimparActionPerformed
 
 
@@ -309,22 +310,35 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
     private javax.swing.JButton btSalvar;
     private javax.swing.JComboBox cbFormaPagamento;
     private javax.swing.JComboBox cbFuncionario;
-    private javax.swing.JComboBox cbNome;
     private javax.swing.JLabel dtMovimentacao;
     private javax.swing.JLabel formaPagamento;
     private javax.swing.JLabel funcionarioLogado;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel nome;
     private javax.swing.JPanel painelFundo;
     private javax.swing.JPanel painelTopo;
     private javax.swing.JLabel qntidade;
     private javax.swing.JLabel responsavel;
     private javax.swing.JFormattedTextField txDtMovimentacao;
+    private javax.swing.JFormattedTextField txDtVencimento;
     private javax.swing.JTextField txIdSuprimento;
     private javax.swing.JFormattedTextField txQntidade;
     private javax.swing.JFormattedTextField txValor;
     private javax.swing.JLabel valor;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarCombo() {
+        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbFuncionario.getModel();
+        comboModel.removeAllElements();
+        List<Funcionario> f = new ArrayList<>();
+        FuncionarioController fc = new FuncionarioController();
+        f = fc.listarFuncionario();
+        
+        for (int linha = 0; linha < f.size(); linha++) {
+            Funcionario fb = f.get(linha);
+            comboModel.addElement(fb);
+        }
+        
+    }
+    
 }
