@@ -6,9 +6,7 @@
 package view.inserir;
 
 import controller.EntradaSuprimentoController;
-import controller.EstoqueController;
 import controller.FuncionarioController;
-import controller.SuprimentoController;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +18,17 @@ import modelo.negocio.Estoque;
 import modelo.negocio.Funcionario;
 import modelo.negocio.Suprimento;
 import modelo.util.Acesso;
+import validadores.Validadores;
 
 /**
  *
  * @author User
  */
 public class CadastroEntradaSuprimento extends javax.swing.JFrame {
-    
+
     private DefaultTableModel modelo;
     private int idSuprimento;
-    
+
     public CadastroEntradaSuprimento(DefaultTableModel modelo, int idSuprimento) {
         initComponents();
         setLocationRelativeTo(null);
@@ -38,7 +37,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
         setResizable(false);
         carregarCombo();
         funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
-        
+
     }
 
     /**
@@ -263,43 +262,53 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        EntradaSuprimento entrada = new EntradaSuprimento();
-        
-        entrada.setQntdade(Integer.parseInt(txQntidade.getText()));
-        entrada.setResponsavel((Funcionario) cbFuncionario.getSelectedItem());
-        entrada.setFormaPagamento(cbFormaPagamento.getSelectedItem() + "");
-        
-        try {
-            String data = txDtMovimentacao.getText();
-            entrada.setDtMovimento(new SimpleDateFormat("dd/MM/yyyy").parse(data));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao converter a data");
-        }
-        try {
-            String data = txDtVencimento.getText();
-            entrada.setDtVencimento(new SimpleDateFormat("dd/MM/yyyy").parse(data));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao converter a data");
-        }
+
+        if (Validadores.validaCampoVazio(txDtMovimentacao.getText(), "Data de Movimentação")
+                && Validadores.validaCampoVazio(txDtVencimento.getText(), "Data de Vencimento")
+                && Validadores.validaCampoVazio(txQntidade.getText(), "Quantidade")
+                && Validadores.validaCampoVazio(txValor.getText(), "Valor")
+                && Validadores.validaData(txDtMovimentacao.getText(), "Data de Movimentação")
+                && Validadores.validaData(txDtVencimento.getText(), "Data de Vencimento")
+                && Validadores.validaDouble(txQntidade.getText(), "Quantidade")
+                && Validadores.validaDouble(txValor.getText(), "Valor")) {
+
+            EntradaSuprimento entrada = new EntradaSuprimento();
+
+            entrada.setQntdade(Integer.parseInt(txQntidade.getText()));
+            entrada.setResponsavel((Funcionario) cbFuncionario.getSelectedItem());
+            entrada.setFormaPagamento(cbFormaPagamento.getSelectedItem() + "");
+
+            try {
+                String data = txDtMovimentacao.getText();
+                entrada.setDtMovimento(new SimpleDateFormat("dd/MM/yyyy").parse(data));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao converter a data");
+            }
+            try {
+                String data = txDtVencimento.getText();
+                entrada.setDtVencimento(new SimpleDateFormat("dd/MM/yyyy").parse(data));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao converter a data");
+            }
 
 //      entrada.setQnqtidadeTotal(entrada.getQnqtidadeTotal() + entrada.getQntdade());
-        Suprimento suprimentos = new Suprimento();
-        suprimentos.setCodigo(idSuprimento);
-        entrada.setSuprimento(suprimentos);
-        
-        EntradaSuprimentoController sc = new EntradaSuprimentoController();
-        sc.salvar(entrada);
+            Suprimento suprimentos = new Suprimento();
+            suprimentos.setCodigo(idSuprimento);
+            entrada.setSuprimento(suprimentos);
 
-        //        Estoque e = new Estoque();
-        //        e.setQntidade(entrada.getQntdade() + e.getQntidade());
-        //        EstoqueController ec = new EstoqueController();
-        //        ec.salvar(e);
-        dispose();
+            EntradaSuprimentoController sc = new EntradaSuprimentoController();
+            sc.salvar(entrada);
 
+            //        Estoque e = new Estoque();
+            //        e.setQntidade(entrada.getQntdade() + e.getQntidade());
+            //        EstoqueController ec = new EstoqueController();
+            //        ec.salvar(e);
+            dispose();
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        
+
         txDtMovimentacao.setText(null);
         txQntidade.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
@@ -333,12 +342,12 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
         List<Funcionario> f = new ArrayList<>();
         FuncionarioController fc = new FuncionarioController();
         f = fc.listarFuncionario();
-        
+
         for (int linha = 0; linha < f.size(); linha++) {
             Funcionario fb = f.get(linha);
             comboModel.addElement(fb);
         }
-        
+
     }
-    
+
 }
