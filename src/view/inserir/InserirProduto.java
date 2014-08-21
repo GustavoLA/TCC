@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Ingrediente;
 import modelo.negocio.Produto;
 import modelo.util.Acesso;
+import validadores.Validadores;
 
 public class InserirProduto extends javax.swing.JFrame {
 
@@ -23,7 +24,6 @@ public class InserirProduto extends javax.swing.JFrame {
     //Produto
     private DefaultTableModel modelo;
     private int linhaSelecionada;
-    
 
     //INSERIR
     public InserirProduto(DefaultTableModel modelo) {
@@ -301,25 +301,29 @@ public class InserirProduto extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
 
-        Produto p = new Produto();
-        p.setNome(txNome.getText());
-        p.setDescricao(txDescricao.getText());
+        if (Validadores.validaCampoVazio(txDescricao.getText(), "Descrição")
+                && Validadores.validaCampoVazio(txNome.getText(), "Nome")
+                && Validadores.somenteLetras(txNome.getText(), "Nome")) {
 
-        ProdutoController pc = new ProdutoController();
+            Produto p = new Produto();
+            p.setNome(txNome.getText());
+            p.setDescricao(txDescricao.getText());
 
-        if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
-            p.setCodigo(Integer.parseInt(txId.getText()));
-            pc.salvar(p);
+            ProdutoController pc = new ProdutoController();
 
-            modelo.removeRow(linhaSelecionada);
-            modelo.addRow(new Object[]{p.getCodigo(), p.getNome(), p.getDescricao()});
-            dispose();
+            if (!(txId.getText().equals("") | (txId.getText().equals(null)))) {
+                p.setCodigo(Integer.parseInt(txId.getText()));
+                pc.salvar(p);
 
-        } else {
-            pc.salvar(p);
-            dispose();
+                modelo.removeRow(linhaSelecionada);
+                modelo.addRow(new Object[]{p.getCodigo(), p.getNome(), p.getDescricao()});
+                dispose();
+
+            } else {
+                pc.salvar(p);
+                dispose();
+            }
         }
-
 
     }//GEN-LAST:event_btSalvarActionPerformed
 

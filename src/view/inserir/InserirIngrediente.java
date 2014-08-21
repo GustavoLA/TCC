@@ -10,10 +10,10 @@ import controller.SuprimentoController;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Ingrediente;
 import modelo.negocio.Suprimento;
+import validadores.Validadores;
 
 /**
  *
@@ -208,16 +208,19 @@ public class InserirIngrediente extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
 
-        Ingrediente novo = new Ingrediente();
-        novo.setNome((Suprimento) cbIngrediente.getSelectedItem());
-        novo.setMedida(txUnidadeMedida.getText());
-        novo.setQntidade(Integer.parseInt(txQntidade.getText()));
+        if (Validadores.validaCampoVazio(txQntidade.getText(), "Quantidade")
+                && Validadores.somenteNumeros(txQntidade.getText(), "Quantidade")) {
 
-        IngredienteController ic = new IngredienteController();
+            Ingrediente novo = new Ingrediente();
+            novo.setNome((Suprimento) cbIngrediente.getSelectedItem());
+            novo.setMedida(txUnidadeMedida.getText());
+            novo.setQntidade(Integer.parseInt(txQntidade.getText()));
 
-        ic.salvar(novo);
-        dispose();
+            IngredienteController ic = new IngredienteController();
 
+            ic.salvar(novo);
+            dispose();
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void cbIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIngredienteActionPerformed
@@ -228,10 +231,7 @@ public class InserirIngrediente extends javax.swing.JFrame {
     }//GEN-LAST:event_cbIngredienteActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-         txQntidade.setText(null);
-        txUnidadeMedida.setText(null);
-      //nao me lembro cbIngrediente
-        
+        txQntidade.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
 
