@@ -51,6 +51,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
 
         painelFundo = new javax.swing.JPanel();
         painelTopo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         responsavel = new javax.swing.JLabel();
         dtMovimentacao = new javax.swing.JLabel();
@@ -80,15 +81,23 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
 
         painelTopo.setBackground(new java.awt.Color(255, 255, 0));
 
+        jLabel1.setText("Entrada de Suprimentos");
+
         javax.swing.GroupLayout painelTopoLayout = new javax.swing.GroupLayout(painelTopo);
         painelTopo.setLayout(painelTopoLayout);
         painelTopoLayout.setHorizontalGroup(
             painelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(painelTopoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelTopoLayout.setVerticalGroup(
             painelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 67, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTopoLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));
@@ -137,6 +146,8 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
                 btSalvarActionPerformed(evt);
             }
         });
+
+        txIdSuprimento.setEditable(false);
 
         valor.setText("Valor");
 
@@ -322,6 +333,7 @@ public class CadastroEntradaSuprimento extends javax.swing.JFrame {
     private javax.swing.JLabel dtMovimentacao;
     private javax.swing.JLabel formaPagamento;
     private javax.swing.JLabel funcionarioLogado;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel painelFundo;
