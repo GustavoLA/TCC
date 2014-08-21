@@ -40,14 +40,14 @@ public class InserirProduto extends javax.swing.JFrame {
     //EDITAR LINHA SELECIONADA 
     public InserirProduto(DefaultTableModel modelo, int linhaSelecionada, int idProduto) {
         this.modelo = modelo;
-
         preencherCampos(linhaSelecionada, idProduto);
-
+        preencherJTable();
     }
 
     //VISUALIZAR LINHA SELECIONADA
     public InserirProduto(int linhaSelecionada, int idProduto) {
         preencherCampos(linhaSelecionada, idProduto);
+        preencherJTable();
         bloquearCampos();
     }
 
@@ -396,36 +396,19 @@ public class InserirProduto extends javax.swing.JFrame {
 
         txId.setText(String.valueOf(p.getCodigo()));
         txNome.setText(p.getNome());
-        /* txDescricao.setText(p.getDescricao());*/
+        txDescricao.setText(p.getDescricao());
+        criaJTable();
 
     }
 
     private void bloquearCampos() {
 
-        /*        txDescricao.setEditable(false);*/
+        txDescricao.setEditable(false);
         txNome.setEditable(false);
 
     }
 
-//    Carregar comboBox com suprimentos que são para produção
-//    private void carregarCombo() {
-//
-//        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbIngrediente.getModel();
-//        comboModel.removeAllElements();
-//        List<Suprimento> s = new ArrayList<>();
-//
-//        SuprimentoController sc = new SuprimentoController();
-//        s = sc.listarSuprimento();
-//
-//        for (int linha = 0; linha < s.size(); linha++) {
-//            Suprimento sb = s.get(linha);
-//            if (sb.getProducao() == 'S') {
-//
-//                comboModel.addElement(sb);
-//
-//            }
-//        }
-//    }
+    //JTable ingrediente
     private void criaJTable() {
 
         tabelaIngrediente = new JTable(modeloIngrediente) {
@@ -442,6 +425,7 @@ public class InserirProduto extends javax.swing.JFrame {
         preencherJTable();
     }
 
+    //JTable ingrediente
     private void preencherJTable() {
 
         IngredienteController sc = new IngredienteController();
@@ -451,4 +435,25 @@ public class InserirProduto extends javax.swing.JFrame {
         }
 
     }
+
+    /**
+     * Carregar comboBox com suprimentos que são para produção private void
+     * carregarCombo() {
+     *
+     * DefaultComboBoxModel comboModel = (DefaultComboBoxModel)
+     * cbIngrediente.getModel(); comboModel.removeAllElements();
+     * List<Suprimento> s = new ArrayList<>();
+     *
+     * SuprimentoController sc = new SuprimentoController(); s =
+     * sc.listarSuprimento();
+     *
+     * for (int linha = 0; linha < s.size(); linha++) { Suprimento sb =
+     * s.get(linha); if (sb.getProducao() == 'S') {
+     *
+     * comboModel.addElement(sb);
+     *
+     * }
+     * }
+     * }
+     */
 }

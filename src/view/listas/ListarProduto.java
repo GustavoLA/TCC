@@ -271,7 +271,7 @@ public class ListarProduto extends javax.swing.JFrame {
             InserirProduto editar = new InserirProduto(modelo, linhaSelecionada, idProduto);
             editar.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "SELECIONE UMA LINHA");
+            JOptionPane.showMessageDialog(null, "É necessário selecionar uma linha");
         }
 
     }//GEN-LAST:event_btEditarActionPerformed
@@ -289,7 +289,7 @@ public class ListarProduto extends javax.swing.JFrame {
                 modelo.removeRow(linhaSelecionada);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "SELECIONE UMA LINHA");
+            JOptionPane.showMessageDialog(null, "É necessário selecionar uma linha");
 
         }
     }//GEN-LAST:event_btDeletarActionPerformed
@@ -322,7 +322,7 @@ public class ListarProduto extends javax.swing.JFrame {
             InserirProduto visualizar = new InserirProduto(linhaSelecionada, idProduto);
             visualizar.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "SELECIONE UMA LINHA");
+            JOptionPane.showMessageDialog(null, "É necessário selecionar uma linha");
         }
 
     }//GEN-LAST:event_btVisualizarActionPerformed
