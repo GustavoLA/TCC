@@ -17,6 +17,7 @@ import modelo.negocio.EntradaProduto;
 import modelo.negocio.Funcionario;
 import modelo.negocio.Produto;
 import modelo.util.Acesso;
+import validadores.Validadores;
 
 /**
  *
@@ -231,30 +232,40 @@ public class CadastrarEntradaProduto extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
 
-        EntradaProduto entrada = new EntradaProduto();
+        if (Validadores.validaCampoVazio(txDtFabricacao.getText(), "Data de Fabricação")
+                && Validadores.validaCampoVazio(txDtValidade.getText(), "Data de Validade")
+                && Validadores.validaCampoVazio(txQntidade.getText(), "Quantidade")
+                && Validadores.validaCampoVazio(txValorUnitario.getText(), "Valor Unitário")
+                && Validadores.validaCampoVazio((String) cbFuncionario.getSelectedItem(), "Responsável")
+                && Validadores.validaData(txDtFabricacao.getText(), "Data de Fabricação")
+                && Validadores.validaData(txDtValidade.getText(), "Data de Validade")
+                && Validadores.validaDouble(txQntidade.getText(), "Quantidade")
+                && Validadores.validaDouble(txValorUnitario.getText(), "Valor Unitário")) {
 
-        entrada.setQntidade(Integer.parseInt(txQntidade.getText()));
-        entrada.setResponsavel((Funcionario) cbFuncionario.getSelectedItem());
-        try {
-            String data = txDtFabricacao.getText();
-            entrada.setDtFabricacao(new SimpleDateFormat("dd/MM/yyyy").parse(data));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao converter a data");
+            EntradaProduto entrada = new EntradaProduto();
+
+            entrada.setQntidade(Integer.parseInt(txQntidade.getText()));
+            entrada.setResponsavel((Funcionario) cbFuncionario.getSelectedItem());
+            try {
+                String data = txDtFabricacao.getText();
+                entrada.setDtFabricacao(new SimpleDateFormat("dd/MM/yyyy").parse(data));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao converter a data");
+            }
+            try {
+                String data = txDtValidade.getText();
+                entrada.setDtValidade(new SimpleDateFormat("dd/MM/yyyy").parse(data));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao converter a data");
+            }
+            Produto produtos = new Produto();
+            produtos.setCodigo(idProduto);
+            entrada.setProduto(produtos);
+
+            EntradaProdutoController epc = new EntradaProdutoController();
+            epc.salvar(entrada);
+            dispose();
         }
-        try {
-            String data = txDtValidade.getText();
-            entrada.setDtValidade(new SimpleDateFormat("dd/MM/yyyy").parse(data));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao converter a data");
-        }
-        Produto produtos = new Produto();
-        produtos.setCodigo(idProduto);
-        entrada.setProduto(produtos);
-
-        EntradaProdutoController epc = new EntradaProdutoController();
-        epc.salvar(entrada);
-        dispose();
-
     }//GEN-LAST:event_btSalvarActionPerformed
 
 
