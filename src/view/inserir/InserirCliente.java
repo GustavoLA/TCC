@@ -7,6 +7,7 @@ package view.inserir;
 
 import controller.ClienteController;
 import java.text.SimpleDateFormat;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Cliente;
@@ -29,6 +30,7 @@ public class InserirCliente extends javax.swing.JFrame {
         txIdEndereco.setVisible(false);
         setLocationRelativeTo(null);
         this.modelo = modelo;
+        preencherEstado();
         funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
 
     }
@@ -40,7 +42,6 @@ public class InserirCliente extends javax.swing.JFrame {
     }
 
     //VISUALIZAR LINHA SELECIONADA
-
     public InserirCliente(int linhaSelecionada, int idCliente) {
         PreencherCampos(linhaSelecionada, idCliente);
         bloquearCampos();
@@ -510,11 +511,11 @@ public class InserirCliente extends javax.swing.JFrame {
 
         //CLIENTE
         c.setAnotacoes(txAnotacoes.getText());
-        c.setCelular(celular.getText());
+        c.setCelular(txCelular.getText());
         c.setCpf(txCpf.getText());
         c.setEmail(txEmail.getText());
         c.setNome(txNome.getText());
-        c.setRg(rg.getText());
+        c.setRg(txRg.getText());
         c.setTelefone(txTelefone.getText());
 
         try {
@@ -540,8 +541,7 @@ public class InserirCliente extends javax.swing.JFrame {
 
         e.setCidade(txCidade.getText());
         e.setComplemento(txComplemento.getText());
-        //fazer combo
-        // e.setEstado(txEstado.getText());
+        e.setEstado((String) cbEstado.getSelectedItem());
         e.setNumero(Integer.parseInt(txNumero.getText()));
         e.setRua(txRua.getText());
         e.setCep(txCep.getText());
@@ -623,6 +623,7 @@ public class InserirCliente extends javax.swing.JFrame {
         initComponents();
         this.linhaSelecionada = linhaSelecionada1;
         setLocationRelativeTo(null);
+        preencherEstado();
         funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
 
         ClienteController cc = new ClienteController();
@@ -652,11 +653,64 @@ public class InserirCliente extends javax.swing.JFrame {
         txNumero.setText(String.valueOf(c.getEndereco().getNumero()));
         txCidade.setText(c.getEndereco().getCidade());
         txComplemento.setText(c.getEndereco().getComplemento());
-        //combo txEstado.setText(c.getEndereco().getEstado());
         txRua.setText(c.getEndereco().getRua());
         txCep.setText(c.getEndereco().getCep());
         txBairro.setText(c.getEndereco().getBairro());
-
+        if (c.getEndereco().getEstado().equals("AC")) {
+            cbEstado.setSelectedIndex(0);
+        } else if (c.getEndereco().getEstado().equals("AL")) {
+            cbEstado.setSelectedIndex(1);
+        } else if (c.getEndereco().getEstado().equals("AP")) {
+            cbEstado.setSelectedIndex(2);
+        } else if (c.getEndereco().getEstado().equals("AM")) {
+            cbEstado.setSelectedIndex(3);
+        } else if (c.getEndereco().getEstado().equals("BA")) {
+            cbEstado.setSelectedIndex(4);
+        } else if (c.getEndereco().getEstado().equals("CE")) {
+            cbEstado.setSelectedIndex(5);
+        } else if (c.getEndereco().getEstado().equals("DF")) {
+            cbEstado.setSelectedIndex(6);
+        } else if (c.getEndereco().getEstado().equals("ES")) {
+            cbEstado.setSelectedIndex(7);
+        } else if (c.getEndereco().getEstado().equals("GO")) {
+            cbEstado.setSelectedIndex(8);
+        } else if (c.getEndereco().getEstado().equals("MA")) {
+            cbEstado.setSelectedIndex(9);
+        } else if (c.getEndereco().getEstado().equals("MT")) {
+            cbEstado.setSelectedIndex(10);
+        } else if (c.getEndereco().getEstado().equals("MS")) {
+            cbEstado.setSelectedIndex(11);
+        } else if (c.getEndereco().getEstado().equals("MG")) {
+            cbEstado.setSelectedIndex(12);
+        } else if (c.getEndereco().getEstado().equals("PA")) {
+            cbEstado.setSelectedIndex(13);
+        } else if (c.getEndereco().getEstado().equals("PB")) {
+            cbEstado.setSelectedIndex(14);
+        } else if (c.getEndereco().getEstado().equals("PR")) {
+            cbEstado.setSelectedIndex(15);
+        } else if (c.getEndereco().getEstado().equals("PE")) {
+            cbEstado.setSelectedIndex(16);
+        } else if (c.getEndereco().getEstado().equals("PI")) {
+            cbEstado.setSelectedIndex(17);
+        } else if (c.getEndereco().getEstado().equals("RJ")) {
+            cbEstado.setSelectedIndex(18);
+        } else if (c.getEndereco().getEstado().equals("RN")) {
+            cbEstado.setSelectedIndex(19);
+        } else if (c.getEndereco().getEstado().equals("RS")) {
+            cbEstado.setSelectedIndex(20);
+        } else if (c.getEndereco().getEstado().equals("RO")) {
+            cbEstado.setSelectedIndex(21);
+        } else if (c.getEndereco().getEstado().equals("RR")) {
+            cbEstado.setSelectedIndex(22);
+        } else if (c.getEndereco().getEstado().equals("SC")) {
+            cbEstado.setSelectedIndex(23);
+        } else if (c.getEndereco().getEstado().equals("SP")) {
+            cbEstado.setSelectedIndex(24);
+        } else if (c.getEndereco().getEstado().equals("SE")) {
+            cbEstado.setSelectedIndex(25);
+        } else if (c.getEndereco().getEstado().equals("TO")) {
+            cbEstado.setSelectedIndex(26);
+        }
     }
 
     private void bloquearCampos() {
@@ -671,7 +725,7 @@ public class InserirCliente extends javax.swing.JFrame {
         txDtCadastro.setEditable(false);
         txDtNascimento.setEditable(false);
         txEmail.setEditable(false);
-        cbEstado.setEditable(false);
+        cbEstado.setEnabled(false);
         txNome.setEditable(false);
         txNumero.setEditable(false);
         txRg.setEditable(false);
@@ -682,5 +736,39 @@ public class InserirCliente extends javax.swing.JFrame {
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
         txBairro.setEditable(false);
+    }
+
+    private void preencherEstado() {
+
+        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbEstado.getModel();
+        comboModel.removeAllElements();
+        comboModel.addElement("AC");
+        comboModel.addElement("AL");
+        comboModel.addElement("AP");
+        comboModel.addElement("AM");
+        comboModel.addElement("BA");
+        comboModel.addElement("CE");
+        comboModel.addElement("DF");
+        comboModel.addElement("ES");
+        comboModel.addElement("GO");
+        comboModel.addElement("MA");
+        comboModel.addElement("MT");
+        comboModel.addElement("MS");
+        comboModel.addElement("MG");
+        comboModel.addElement("PA");
+        comboModel.addElement("PB");
+        comboModel.addElement("PR");
+        comboModel.addElement("PE");
+        comboModel.addElement("PI");
+        comboModel.addElement("RJ");
+        comboModel.addElement("RN");
+        comboModel.addElement("RS");
+        comboModel.addElement("RO");
+        comboModel.addElement("RR");
+        comboModel.addElement("SC");
+        comboModel.addElement("SP");
+        comboModel.addElement("SE");
+        comboModel.addElement("TO");
+
     }
 }

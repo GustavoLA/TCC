@@ -370,7 +370,6 @@ public class InserirInvestimento extends javax.swing.JFrame {
         } else if (i.getFormaPagamento().equals("Outros")) {
             cbPagamento.setSelectedItem("Outros");
         }
-//combo txPagamento.setText(i.getFormaPagamento());
         txNumeroParcela.setText(String.valueOf(i.getNumeroParcelas()));
         txValorParcela.setText(String.valueOf(i.getValorParcela()));
         txValorTotal.setText(String.valueOf(i.getValorTotal()));

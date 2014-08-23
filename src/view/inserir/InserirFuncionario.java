@@ -6,6 +6,7 @@ package view.inserir;
  */
 import controller.FuncionarioController;
 import java.text.SimpleDateFormat;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.negocio.Endereco;
@@ -22,6 +23,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.modelo = modelo;
+        preencherEstado();
         funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
     }
 
@@ -633,7 +635,6 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txSalario.setText(null);
         txCidade.setText(null);
         txComplemento.setText(null);
-        // COMBO txEstado.setText(null);
         txNumero.setText(null);
         txRua.setText(null);
         txCep.setText(null);
@@ -704,6 +705,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
         initComponents();
         this.linhaSelecionada = linhaSelecionada;
         setLocationRelativeTo(null);
+        preencherEstado();
         funcionarioLogado.setText(Acesso.getFuncionarioLogado().getNome());
 
         FuncionarioController fc = new FuncionarioController();
@@ -738,10 +740,65 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txNumero.setText(String.valueOf(f.getEndereco().getNumero()));
         txCidade.setText(f.getEndereco().getCidade());
         txComplemento.setText(f.getEndereco().getComplemento());
-        //Combo txEstado.setText(f.getEndereco().getEstado());
         txRua.setText(f.getEndereco().getRua());
         txCep.setText(f.getEndereco().getCep());
         txBairro.setText(f.getEndereco().getCep());
+        if (f.getEndereco().getEstado().equals("AC")) {
+            cbEstado.setSelectedIndex(0);
+        } else if (f.getEndereco().getEstado().equals("AL")) {
+            cbEstado.setSelectedIndex(1);
+        } else if (f.getEndereco().getEstado().equals("AP")) {
+            cbEstado.setSelectedIndex(2);
+        } else if (f.getEndereco().getEstado().equals("AM")) {
+            cbEstado.setSelectedIndex(3);
+        } else if (f.getEndereco().getEstado().equals("BA")) {
+            cbEstado.setSelectedIndex(4);
+        } else if (f.getEndereco().getEstado().equals("CE")) {
+            cbEstado.setSelectedIndex(5);
+        } else if (f.getEndereco().getEstado().equals("DF")) {
+            cbEstado.setSelectedIndex(6);
+        } else if (f.getEndereco().getEstado().equals("ES")) {
+            cbEstado.setSelectedIndex(7);
+        } else if (f.getEndereco().getEstado().equals("GO")) {
+            cbEstado.setSelectedIndex(8);
+        } else if (f.getEndereco().getEstado().equals("MA")) {
+            cbEstado.setSelectedIndex(9);
+        } else if (f.getEndereco().getEstado().equals("MT")) {
+            cbEstado.setSelectedIndex(10);
+        } else if (f.getEndereco().getEstado().equals("MS")) {
+            cbEstado.setSelectedIndex(11);
+        } else if (f.getEndereco().getEstado().equals("MG")) {
+            cbEstado.setSelectedIndex(12);
+        } else if (f.getEndereco().getEstado().equals("PA")) {
+            cbEstado.setSelectedIndex(13);
+        } else if (f.getEndereco().getEstado().equals("PB")) {
+            cbEstado.setSelectedIndex(14);
+        } else if (f.getEndereco().getEstado().equals("PR")) {
+            cbEstado.setSelectedIndex(15);
+        } else if (f.getEndereco().getEstado().equals("PE")) {
+            cbEstado.setSelectedIndex(16);
+        } else if (f.getEndereco().getEstado().equals("PI")) {
+            cbEstado.setSelectedIndex(17);
+        } else if (f.getEndereco().getEstado().equals("RJ")) {
+            cbEstado.setSelectedIndex(18);
+        } else if (f.getEndereco().getEstado().equals("RN")) {
+            cbEstado.setSelectedIndex(19);
+        } else if (f.getEndereco().getEstado().equals("RS")) {
+            cbEstado.setSelectedIndex(20);
+        } else if (f.getEndereco().getEstado().equals("RO")) {
+            cbEstado.setSelectedIndex(21);
+        } else if (f.getEndereco().getEstado().equals("RR")) {
+            cbEstado.setSelectedIndex(22);
+        } else if (f.getEndereco().getEstado().equals("SC")) {
+            cbEstado.setSelectedIndex(23);
+        } else if (f.getEndereco().getEstado().equals("SP")) {
+            cbEstado.setSelectedIndex(24);
+        } else if (f.getEndereco().getEstado().equals("SE")) {
+            cbEstado.setSelectedIndex(25);
+        } else if (f.getEndereco().getEstado().equals("TO")) {
+            cbEstado.setSelectedIndex(26);
+        }
+
     }
 
     private void bloquearCampos() {
@@ -753,7 +810,7 @@ public class InserirFuncionario extends javax.swing.JFrame {
         txCtps.setEditable(false);
         txDtDemissao.setEditable(false);
         txDtNascimento.setEditable(false);
-        cbEstado.setEditable(false);
+        cbEstado.setEnabled(false);
         txLogin.setEditable(false);
         txNumero.setEditable(false);
         txObservacao.setEditable(false);
@@ -768,6 +825,40 @@ public class InserirFuncionario extends javax.swing.JFrame {
         btLimpar.setEnabled(false);
         btSalvar.setEnabled(false);
         txBairro.setEnabled(false);
+
+    }
+
+    private void preencherEstado() {
+
+        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbEstado.getModel();
+        comboModel.removeAllElements();
+        comboModel.addElement("AC");
+        comboModel.addElement("AL");
+        comboModel.addElement("AP");
+        comboModel.addElement("AM");
+        comboModel.addElement("BA");
+        comboModel.addElement("CE");
+        comboModel.addElement("DF");
+        comboModel.addElement("ES");
+        comboModel.addElement("GO");
+        comboModel.addElement("MA");
+        comboModel.addElement("MT");
+        comboModel.addElement("MS");
+        comboModel.addElement("MG");
+        comboModel.addElement("PA");
+        comboModel.addElement("PB");
+        comboModel.addElement("PR");
+        comboModel.addElement("PE");
+        comboModel.addElement("PI");
+        comboModel.addElement("RJ");
+        comboModel.addElement("RN");
+        comboModel.addElement("RS");
+        comboModel.addElement("RO");
+        comboModel.addElement("RR");
+        comboModel.addElement("SC");
+        comboModel.addElement("SP");
+        comboModel.addElement("SE");
+        comboModel.addElement("TO");
 
     }
 }
