@@ -21,6 +21,15 @@ public class Suprimento {
     private char producao;
     @ManyToOne
     private Fornecedor fornecedor;
+    private char outroFornecedor;
+
+    public char getOutroFornecedor() {
+        return outroFornecedor;
+    }
+
+    public void setOutroFornecedor(char outroFornecedor) {
+        this.outroFornecedor = outroFornecedor;
+    }
 
     //Para fazer a soma de todos as entradas de produto
     private int qnqtidadeTotal;

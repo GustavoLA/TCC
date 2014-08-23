@@ -300,7 +300,7 @@ public class InserirSuprimento extends javax.swing.JFrame {
             s.setUnidadeMedida(txUnidadeMedida.getText());
             //Visualizar e editar não estao setando os valores corretamente
             if (cbOutro.isSelected()) {
-                s.setFornecedor(null);
+                s.setOutroFornecedor('O');
             } else {
                 s.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
             }
@@ -395,13 +395,12 @@ public class InserirSuprimento extends javax.swing.JFrame {
         txNome.setText(s.getNome());
         txUnidadeMedida.setText(s.getUnidadeMedida());
 
-//        carregarComboESetarValor(s.getFornecedor());
-        if (s.getFornecedor() == null) {
-            carregarComboESetarValor(s.getFornecedor());
-        } else {
-            cbOutro.isSelected();
+        carregarComboESetarValor(s.getFornecedor());
+        if (s.getOutroFornecedor() == 'O') {
+//            carregarComboESetarValor(s.getFornecedor());
+            cbOutro.setSelected(true);
+            cbFornecedor.setEnabled(false);
         }
-
         if (s.getNotaFiscal() == 'N') {
             rbNao1.setSelected(true);
         } else {
